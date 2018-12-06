@@ -1,0 +1,14 @@
+{
+  "name": "plato2",
+  "version": "0.1.0",
+  "description": "Plato2 - mruby IoT framework",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Hiroshi Mimaki",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^3.0.10"
+  }
+}

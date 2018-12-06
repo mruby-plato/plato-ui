@@ -1,0 +1,307 @@
+@charset "UTF-8";
+
+body {
+  font-family: sans-serif;
+}
+
+/* outer */
+.outer {
+  position: relative;
+  /* top: 80px; */
+  left: 0px;
+  width: 650px;
+  /* height: 500px; */
+  margin: 10px;
+}
+
+/* myCanvas */
+.myCanvas {
+  /* background-color:coral; */
+  position: absolute;
+  top: 80px;
+  left: 0px;
+  width: 650px;
+  height: 900px;
+}
+
+/* fieldset */
+fieldset {
+  border-radius: 10px;
+}
+fieldset legend {
+  cursor: pointer;
+}
+
+/* iot_job (fieldset) */
+.iot_job {
+  position: relative;
+}
+.iot_job .icon {
+  width: 32px;
+  height: 32px;
+  position: relative;
+  top: 16px;
+  opacity: 0;
+}
+.iot_job:hover .icon { opacity: 0.5; }
+.iot_job:active .icon { opacity: 0; }
+.iot_job .icon:hover { opacity: 1; }
+
+.iot_job:hover .hint { opacity: 0; }
+.iot_job .hint:hover { opacity: 1; }
+
+/* power-siml. and settings icon */
+td .icon img { opacity: 0.5; }
+td .icon img:hover { opacity: 1; }
+
+/* IoT item */
+.item {
+  height: 120px;
+  width: 120px;
+  /* float: left; */
+  border: 2px solid #666666;
+  background-color: #ccc;
+  margin: 10px auto;
+  -webkit-border-radius: 12px;
+  -ms-border-radius: 12px;
+  -moz-border-radius: 12px;
+  border-radius: 12px;
+  -webkit-box-shadow: inset 0 0 3px #000;
+  -ms-box-shadow: inset 0 0 3px #000;
+  box-shadow: inset 0 0 3px #000;
+  text-align: center;
+  cursor: move;
+  position: relative;
+}
+.item img {
+  margin-top: 10px;
+  -webkit-user-drag: none;
+}
+.item .caption {
+  text-align: center;
+  color: #fff;
+  line-height: 120px;
+}
+.item .mask {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  -webkit-border-radius: 12px;
+  -ms-border-radius: 12px;
+  -moz-border-radius: 12px;
+  border-radius: 12px;
+  top: 0;
+  left: 0;
+  opacity: 0;	/* マスクを表示しない */
+  background-color: rgba(0, 0, 0, 0.5);
+  -webkit-transition: all 0.6s ease;
+  transition: all 0.6s ease;
+}
+.item:hover .mask { opacity: 0.9;	} /* マスクを表示する */
+.item:active .mask { opacity: 0; }  /* マスクを表示しない */
+
+.item .icon {
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  top: -8px;
+  opacity: 0;
+  z-index: 3;
+}
+.item .icon .l {
+  position: absolute;
+  left: 0;
+}
+.item .icon .r {
+  position: absolute;
+  left: 88px;
+}
+.item:hover .icon { opacity: 1; }
+.item:active .icon { opacity: 0; }
+.item .icon .l:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+.item .icon .r:hover {
+  opacity: 1;
+  cursor: pointer;
+}
+
+/* Hint of items */
+.item .hint {
+  position: absolute;
+  top: 48px;
+  left: 16px;
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 0.6);
+  text-align: left;
+  display: flex;
+  flex-direction: row;
+  width: 150px;
+  color: #eee;
+}
+
+/* table */
+td {
+  width: 180px;
+  margin: auto;
+}
+.icon_table {
+  position: absolute;
+  top: 0px;
+  z-index: 1;
+  width: 620px;
+  height: 20px;
+}
+.job_table {
+  position: relative;
+  text-align: center;
+  height: 150px;
+  z-index: 0;
+  width: 100%;
+}
+.job_table td {
+  text-align: center;
+}
+
+/* button */
+a.plt_btn {
+  position: relative;
+  display: block;
+  /* width: 160px; */
+  padding: 0.8em;
+  text-align: center;
+  font-weight: bold;
+  text-decoration: none;
+  color: #FFF;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.0);
+  background: #808080;
+  transition: .4s;
+  border-radius: 8px;
+}
+a.plt_btn:hover {
+  text-shadow: -6px 0px 15px rgba(255, 255, 240, 0.83), 6px 0px 15px rgba(255, 255, 240, 0.83);
+  transition: .4s;
+}
+.mini {
+  width: 100px;
+  height: 20px;
+}
+.wide {
+  width: 480px;
+}
+
+/* tab */
+.tab_wrap {
+  width: 650px;
+  /* height: 480px; */
+  margin: 10px;
+  border: #000000;
+}
+input[type="radio"] {
+  display:none;
+}
+.tab_area {
+  margin: 0 10px;
+  text-align: left;
+}
+.tab_area label {
+  width: 100px;
+  margin: 0 5px;
+  display:inline-block;
+  padding:12px 0;
+  color: #999;
+  background-color: #bbb;
+  text-align: center;
+  font-size:14px;
+  cursor:pointer;
+  transition: ease 0.2s opacity;
+  border-top-left-radius:10px;
+  border-top-right-radius:10px;
+}
+.tab_area label:hover {
+  opacity: 0.5;
+}
+.panel_area {
+  background:#ddd;
+}
+.tab_panel {
+  width: 100%;
+  height: 300px;
+  padding: 16px;
+  display: none;
+  overflow:auto;
+}
+.tab_panel .item {
+  float: left;
+}
+
+#tab1:checked ~ .tab_area .tab1_label{background:#ddd; color:#000;}
+#tab1:checked ~ .panel_area #panel1{display:block;}
+#tab2:checked ~ .tab_area .tab2_label{background:#ddd; color:#000;}
+#tab2:checked ~ .panel_area #panel2{display:block;}
+#tab3:checked ~ .tab_area .tab3_label{background:#ddd; color:#000;}
+#tab3:checked ~ .panel_area #panel3{display:block;}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  width: 650px;
+  height: 80%;
+  background: rgba(0, 0, 0, .8);
+  opacity: 0;
+  visibility: hidden;
+  transition: .3s linear;
+  margin-top: 10%;
+  margin-left: 20px;
+  border: 2px;
+
+  font-size:14px;
+}
+.overlay.is-open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.settings {
+  color: #fff;
+}
+.settings table {
+  margin: 30px;
+  color: #fff;
+}
+
+/* input (textbox, ...) */
+input {
+  font-size: 16px;
+}
+/* select */
+select {
+  font-size: 16px;
+}
+
+.top {
+  width: 100%;
+  position: absolute;
+  top: 0px;
+}
+.top td {
+  text-align: right;
+}
+.top img {
+  width: 48x;
+  height: 48px;
+}
+
+.conf_app {
+  width: 100%;
+  height: 85%;
+  font-size:14px;
+}
+
+/* trigger list */
+.trig_list {
+  width: 500px;
+}

@@ -1,0 +1,43 @@
+<html>
+<head>
+  <meta charset='UTF-8'>
+  <title>Plato2</title>
+  <link rel="stylesheet" href="plato2.css">
+  <script src="plato2-common.js"></script>
+  <script src="en/plato2-lang.js"></script>
+  <script src="ja/plato2-lang.js"></script>
+  <script src="plato2-joblist.js"></script>
+</head>
+<body>
+
+  <h1 id="list_top">IoTジョブ一覧</h1>
+  <table class="top">
+    <tbody><tr>
+      <td>
+        <div class="icon">
+          <img src="img/power-simul.png" onclick="javascript:inProgress()">
+          <img src="img/settings.png" onclick="javascript:inProgress()">
+        </div>
+      </td>
+    </tr></tbody>
+  </table>
+
+  <canvas id="mycanvas" class="myCanvas" width="650" height="900"></canvas>
+  <div class="outer" align="center">
+    <table align="center">
+      <tr>
+        <td colspan="4"><div class="icon">
+          <img class="icon" align="left" src="img/plus.png" width="48" height="48" onclick="editJob()">
+        </div></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td align="right"><a id="prev" href="javascript:location.replace(mainPage);" class="plt_btn">前へ</a></td>
+        <td align="right"><a id="next" href="javascript:location.replace(confirmPage);" class="plt_btn">次へ</a></td>
+        <td></td>
+      </tr>
+    </table>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Welcome to Plato2</title>
+    <link rel="stylesheet" href="plato2.css">
+    <script src="plato2-common.js"></script>
+    <script src="en/plato2-lang.js"></script>
+    <script src="ja/plato2-lang.js"></script>
+    <script src="plato2.js"></script>
+    </head>
+  <body>
+    <div class="outer" align="center">
+      <table>
+        <tr><td colspan="3" align="center"><h1>Plato2 - mruby IoT framework 2.0</h1></td></tr>
+        <tr>
+          <td colspan="2"></td>
+          <td>
+              <a href="#" id="lang_ja" onclick="javascript:changeLang('ja')">日本語</a>
+              <a href="#" id="lang_en" onclick="javascript:changeLang('en')" hidden>English</a>
+          </td>
+        </tr>
+        <tr></tr>
+        <tr></tr>
+        <tr>
+          <td></td>
+          <td>
+            <a class="plt_btn" id="new_app" href="javascript:openMain();">新規アプリケーションの作成</a>
+          </td>
+          <td></td>
+        </tr>
+        <tr></tr>
+        <tr>
+          <td></td>
+          <td>
+            <a class="plt_btn wide" id="open_app" href="javascript:openJob();">既存アプリケーションの読み込み</a>
+            <input type="file" id="sel_file" hidden>
+          </td>
+          <td></td>
+        </tr>
+        <tr></tr>
+      </table>
+      <table id="show_open" hidden>
+        <tr>
+          <td></td>
+          <td>
+            <a class="plt_btn wide" id="open_app_file" href="javascript:openMain();">開く</a>
+          </td>
+          <td></td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,418 @@
+<html>
+<head>
+  <meta charset='UTF-8'>
+  <title>Plato2 - ジョブ登録</title>
+  <link rel="stylesheet" href="plato2.css">
+  <script src="plato2-common.js"></script>
+  <script src="en/plato2-lang.js"></script>
+  <script src="ja/plato2-lang.js"></script>
+  <script src="plato2-addjob.js"></script>
+</head>
+<body>
+
+  <h2 id="addjob_top">センサ・タイミング・アクションを選択して下さい</h2>
+
+  <canvas id="mycanvas" class="myCanvas" width="650" height="900"></canvas>
+  <div class="outer" align="center">
+    <fieldset id="itemfield" align="left">
+      <legend id="job_name" onclick="changeJobName();"></legend>
+      <table align="center" height="150">
+        <tr>
+          <td name="sensors"></td>
+          <td name="timings"></td>
+          <td name="actions"></td>
+        </tr>
+      </table>
+    </fieldset>
+
+    <div class="tab_wrap">
+      <input id="tab1" type="radio" name="tab_btn" checked>
+      <input id="tab2" type="radio" name="tab_btn">
+      <input id="tab3" type="radio" name="tab_btn">
+
+      <div class="tab_area">
+        <label class="tab1_label" id="tab_sensor" for="tab1">センサ</label>
+        <label class="tab2_label" id="tab_timing" for="tab2">タイミング</label>
+        <label class="tab3_label" id="tab_action" for="tab3">アクション</label>
+      </div>
+
+      <div class="panel_area">
+        <div id="panel1" class="tab_panel">
+          <div class="item" name="sensor/temperature" draggable="true">
+            <img src="img/temperature.png" width="100" height="100">
+            <div class="mask"><div class="caption" id="sen_temp">温度センサ</div></div>
+            <div class="icon" name="add_icon"><img src="img/plus_light.png" width="32" height="32"></div>
+          </div>
+          <div class="item" name="sensor/humidity" draggable="true">
+            <img src="img/humidity.png" width="100" height="100">
+            <div class="mask"><div class="caption" id="sen_humi">湿度センサ</div></div>
+            <div class="icon" name="add_icon"><img src="img/plus_light.png" width="32" height="32"></div>
+          </div>
+          <div class="item" name="sensor/air_pressure" draggable="true">
+            <img src="img/air-pressure.png" width="100" height="100">
+            <div class="mask"><div class="caption" id="sen_pres">気圧センサ</div></div>
+            <div class="icon" name="add_icon"><img src="img/plus_light.png" width="32" height="32"></div>
+          </div>
+          <div class="item" name="sensor/distance" draggable="true">
+            <img src="img/gps-location.png" width="100" height="100">
+            <div class="mask"><div class="caption" id="sen_loca">GPS(位置情報)</div></div>
+            <div class="icon" name="add_icon"><img src="img/plus_light.png" width="32" height="32"></div>
+          </div>
+          <div class="item" name="sensor/velocity" draggable="true">
+            <img src="img/gps-direction.png" width="100" height="100">
+            <div class="mask"><div class="caption" id="sen_velo">GPS(移動情報)</div></div>
+            <div class="icon" name="add_icon"><img src="img/plus_light.png" width="32" height="32"></div>
+          </div>
+          <div class="item" name="sensor/angle" draggable="true">
+            <img src="img/angle.png" width="100" height="100">
+            <div class="mask"><div class="caption" id="sen_angl">角度センサ</div></div>
+            <div class="icon" name="add_icon"><img src="img/plus_light.png" width="32" height="32"></div>
+          </div>
+          <div class="item" name="sensor/battery" draggable="true">
+            <img src="img/battery.png" width="100" height="100">
+            <div class="mask"><div class="caption" id="sen_batt">バッテリレベル</div></div>
+            <div class="icon" name="add_icon"><img src="img/plus_light.png" width="32" height="32"></div>
+          </div>
+          <div class="item" name="sensor/digital_in" draggable="true">
+            <img src="img/digitalin.png" width="100" height="100">
+            <div class="mask"><div class="caption" id="sen_din">ディジタル入力</div></div>
+            <div class="icon" name="add_icon"><img src="img/plus_light.png" width="32" height="32"></div>
+          </div>
+          <div class="item" name="sensor/analog_in" draggable="true">
+            <img src="img/analogin.png" width="100" height="100">
+            <div class="mask"><div class="caption" id="sen_ain">アナログ入力</div></div>
+            <div class="icon" name="add_icon"><img src="img/plus_light.png" width="32" height="32"></div>
+          </div>
+        </div>
+
+        <div id="panel2" class="tab_panel">
+          <div class="item" name="timing/interval" draggable="true">
+            <img src="img/interval.png" width="100" height="100">
+            <div class="mask"><div class="caption" id="tim_intr">周期指定</div></div>
+            <div class="icon" name="add_icon"><img src="img/plus_light.png" width="32" height="32"></div>
+          </div>
+          <div class="item" name="timing/ontime" draggable="true">
+            <img src="img/ontime.png" width="100" height="100">
+            <div class="mask"><div class="caption" id="tim_time">時刻指定</div></div>
+            <div class="icon" name="add_icon"><img src="img/plus_light.png" width="32" height="32"></div>
+          </div>
+          <div class="item" name="timing/part_time" draggable="true">
+            <img src="img/part-time.png" width="100" height="100">
+            <div class="mask"><div class="caption" id="tim_part">時間帯指定</div></div>
+            <div class="icon" name="add_icon"><img src="img/plus_light.png" width="32" height="32"></div>
+          </div>
+          <div class="item" name="timing/trigger" draggable="true">
+            <img src="img/trigger.png" width="100" height="100">
+            <div class="mask"><div class="caption" id="tim_trig">トリガ指定</div></div>
+            <div class="icon" name="add_icon"><img src="img/plus_light.png" width="32" height="32"></div>
+          </div>
+        </div>
+
+        <div id="panel3" class="tab_panel">
+          <div class="item" name="action/bluetooth" draggable="true">
+            <img src="img/bluetooth.png" width="100" height="100">
+            <div class="mask"><div class="caption" id="act_bt">Bluetooth送信</div></div>
+            <div class="icon" name="add_icon"><img src="img/plus_light.png" width="32" height="32"></div>
+          </div>
+          <div class="item" name="action/onoff" draggable="true">
+            <img src="img/onoff.png" width="100" height="100">
+            <div class="mask"><div class="caption" id="act_swi">ON/OFF制御</div></div>
+            <div class="icon" name="add_icon"><img src="img/plus_light.png" width="32" height="32"></div>
+          </div>
+          <div class="item" name="action/gpio" draggable="true">
+            <img src="img/gpio.png" width="100" height="100">
+            <div class="mask"><div class="caption" id="act_gpio">GPIO出力</div></div>
+            <div class="icon" name="add_icon"><img src="img/plus_light.png" width="32" height="32"></div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <table align="center">
+          <tr>
+            <td><a href="#" class="plt_btn" name="cancel" onclick="location.replace(listPage);">キャンセル</a></td>
+            <td><a href="#" class="plt_btn" id="register" onclick="if (window.confirm(MSG.set_confirm)) {updateJob();};">登録</a></td>
+          </tr>
+        </table>
+      </div>
+    </div>  <!-- outer -->
+
+    <form class="overlay" id="setting">
+      <div class="settings" id="set-analog_in" style="display: none;">
+        <h2 id="set_ain_title">アナログ入力設定</h2>
+        <table>
+          <tr>
+            <td id="set_ain_pin">アナログPIN:</td>
+            <td align="left"><select id="ain_pin">
+              <option value="1" selected>1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+            </select></td>
+          </tr>
+        </table>
+      </div>  <!-- set-analog_io -->
+
+      <div class="settings" id="set-digital_in" style="display: none;">
+        <h2 id="set_din_title">ディジタル入力設定</h2>
+        <table>
+          <tr>
+            <td id="set_din_pin">ディジタルPIN:</td>
+            <td align="left"><select id="din_pin">
+              <option value="1" selected>1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+              <option value="6">6</option>
+            </select></td>
+          </tr>
+        </table>
+      </div>  <!-- set-digital_in -->
+
+      <div class="settings" id="set-interval" style="display: none;">
+        <h2 id="set_int_title">周期設定</h2>
+        <table width="70%">
+          <tr>
+            <td id="set_int_period">周期:</td>
+            <td align="right"><input id="interval_time" type="number" value="1" min="1" max="99999"></td>
+            <td align="left"><select id="interval_time_unit">
+              <option value="hour" id="set_int_per_h" selected>時間毎</option>
+              <option value="minute" id="set_int_per_m">分毎</option>
+              <option value="second" id="set_int_per_s">秒毎</option>
+            </select></td>
+          </tr>
+          <tr>
+            <td id="set_int_start">開始時刻:</td>
+            <td align="right"><input id="interval_start" type="time"></td>
+          </tr>
+          <tr>
+            <td id="set_int_end">終了時刻:</td>
+            <td align="right"><input id="interval_end" type="time"></td>
+          </tr>
+        </table>
+      </div>  <!-- set-interval -->
+
+      <div class="settings" id="set-ontime" style="display: none;">
+        <h2 id="set_tim_title">時刻指定</h2>
+        <table width="60%">
+          <tr>
+            <td id="" name="set_tim_time">動作時刻 #1:</td>
+            <td align="right"><input type="time"></td>
+            <td width="36">
+              <!-- <img src="img/minus.png" width="32" height="32"> -->
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td></td>
+            <td width="36"><img src="img/plus_light.png" width="32" height="32"></td>
+          </tr>
+        </table>
+      </div>  <!-- set-ontime -->
+
+      <div class="settings" id="set-part_time" style="display: none;">
+        <h2 id="set_par_title">時間帯指定</h2>
+        <table>
+          <tr>
+            <td id="set_par_start">開始時刻:</td>
+            <td><input type="time" value="09:00:00"></td>
+          </tr>
+          <tr>
+            <td id="set_par_end">終了時刻:</td>
+            <td><input type="time" value="18:00:00"></td>
+          </tr>
+        </table>
+      </div>  <!-- set-part-time -->
+
+      <div class="settings" id="set-trigger" style="display: none;">
+        <h2 id="set_tri_title">トリガ指定</h2>
+        <table width="80%">
+          <tr>
+            <td id="set_tri_period">トリガ判定周期:</td>
+            <td>
+              <input type="number" id="trig_period" value="10" min="1" max="999999">
+              <select id="trig_peri_unit">
+                <option value="hour" name="set_tri_per_h">時間毎</option>
+                <option value="minute" name="set_tri_per_m" selected>分毎</option>
+                <option value="second" name="set_tri_per_s">秒毎</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td id="set_tri_cond" colspan="3">トリガ条件:</td>
+          </tr>
+          <tr>
+            <td colspan="3">
+              <select id="and_or" hidden>
+                <option id="set_tri_or" value="or" selected>または</option>
+                <option id="set_tri_and" value="and">かつ</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <select id="trig_params" onchange="javascript:changeTriggerParameter(this.value);">
+                <!-- <option value="temperature">温度</option>
+                <option value="humidity">湿度</option>
+                <option value="air_pressure">気圧</option>
+                <option value="vibration">振動回数</option>
+                <option value="angle">傾斜角度</option>
+                <option value="distance">移動距離</option>
+                <option value="velocity">速度</option>
+                <option value="battery">電池残量</option>
+                <option value="analog_in">アナログ</option>
+                <option value="digital_in">ディジタル</option> -->
+              </select>
+              <label id="set_tri_is">が</label>
+              <input type="text" id="trig_value" size="8"> <!--placeholder="値を入力"-->
+              <label id="trig_val_unit">℃</label>
+              <select id="trig_cond">
+                <option id="set_tri_gt" value="gt">より大きい</option>
+                <option id="set_tri_ge" value="ge">以上</option>
+                <option id="set_tri_le" value="le">以下</option>
+                <option id="set_tri_lt" value="lt">より小さい</option>
+              </select>
+            </td>
+            <td>
+              <div class="icon">
+                <img src="img/plus_light.png" width="32" height="32" onclick="javascript:addTrigger();">
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <select class="trig_list" id="trig_list" size="4">
+                <!-- <option>温度 が 30℃ 以上</option> -->
+              </select>
+            </td>
+            <td valign="top">
+              <div class="icon">
+                <img src="img/minus_light.png" width="32" height="32" onclick="javascript:deleteTrigger();">
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="3">
+              <input type="checkbox" id="trigger_on_status">
+              <label id="set_tri_dly_1" for="trigger_on_status">条件を満たした状態が</label>
+              <input type="number" id="trig_delay_time" value="30" min="1" max="999">
+              <select id="trig_delay_unit">
+                <option id="set_tri_dly_h" value="hour">時間</option>
+                <option id="set_tri_dly_m" value="minute" selected>分</option>
+                <option id="set_tri_dly_s" value="second">秒</option>
+              </select>
+              <label id="set_tri_dly_2" for="trigger_on_status">継続すればトリガ条件成立とみなす</label>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="3">
+              <input type="checkbox" id="trigger_off" checked>
+              <label id="set_tri_cancel" for="trigger_off">条件不成立となった場合にトリガを取り消す</label>
+            </td>
+          </tr>
+          <tr>
+            <td colspan="3">
+              <input type="checkbox" id="while_trigger_on">
+              <label id="set_tri_cnt_1" for="while_trigger_on">トリガ条件の成立が継続している場合に</label>
+              <input type="number" id="while_trigger_time" value="1" min="1" max="999">
+              <select id="while_trigger_unit">
+                <option name="set_tri_per_h" value="hour" selected>時間毎</option>
+                <option name="set_tri_per_m" value="minute">分毎</option>
+                <option name="set_tri_per_s" value="second">秒毎</option>
+              </select>
+              <label id="set_tri_cnt_2" for="while_trigger_on">に繰り返す</label>
+            </td>
+          </tr>
+          </table>
+      </div>  <!-- set-trigger -->
+
+      <div class="settings" id="set-bluetooth" style="display: none;">
+        <h2 id="set_bt_title">Bluetooth送信設定</h2>
+        <table id="set_bt_data_list">
+          <tr><td id="set_bt_data">送信データ:</td></tr>
+          <!-- <tr><td><input type="checkbox" checked>温度 [℃]</td></tr> -->
+          <!-- <tr><td><input type="checkbox" checked>湿度 [%]</td></tr> -->
+        </table>
+      </div>  <!-- set-bluetooth -->
+
+      <div class="settings" id="set-onoff" style="display: none;">
+        <h2 id="set_job_title">IoTジョブ制御設定</h2>
+        <table width="60%">
+          <tr>
+            <td align="center">
+              <select>
+                <option id="set_job_start" value="1" selected>開始する</option>
+                <option id="set_job_stop" value="0">停止する</option>
+              </select>
+              <!-- the -->
+              <select>
+                <option value="1" selected>IoT job #1</option>
+                <option value="2">IoT job #2</option>
+                <option value="3">IoT job #3</option>
+              </select>
+            </td>
+          </tr>
+        </table>
+      </div>  <!-- set-onoff -->
+
+      <div class="settings" id="set-gpio" style="display: none;">
+        <h2 id="set_gpio_title">GPIO制御設定</h2>
+        <table width="70%">
+          <tr>
+            <td id="set_gpio_pin">PIN番号:</td>
+            <td><select>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+            </select></td>
+          </tr>
+          <tr>
+            <td id="set_gpio_mode">出力モード:</td>
+            <td><select>
+              <option id="set_gpio_mode_d" value="D">ディジタル</option>
+              <option id="set_gpio_mode_a" value="A">アナログ</option>
+            </select></td>
+          </tr>
+          <tr>
+            <td id="set_gpio_value">出力値:</td>
+            <td><select>
+              <option value="low">LOW</option>
+              <option value="high">HIGH</option>
+            </select></td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <input type="checkbox" id="repeat_high_low">
+              <label id="set_gpio_intr" for="repeat_high_low">一定周期でHIGH/LOWを繰り返す</label>
+            </td>
+          </tr>
+          <tr>
+            <td id="set_gpio_intr_p">HIGH/LOWの周期:</td>
+            <td><input type="number" min="1" max="999">msec</td>
+          </tr>
+          <tr>
+            <td colspan="2">
+              <input type="checkbox" id="stop_timer">
+              <label id="set_gpio_timer" for="stop_timer">一定時間経過すると出力を停止する</label>
+            </td>
+          </tr>
+          <tr>
+            <td id="set_gpio_tim_t">停止までの時間:</td>
+            <td><input type="number" min="1" max="999">msec</td>
+          </tr>
+        </table>
+      </div>  <!-- set-gpio -->
+
+      <table align="center">
+        <tr>
+          <td><a class="plt_btn" name="cancel" onclick="onSettingCancel();">キャンセル</a></td>
+          <td><a class="plt_btn" id="ok" onclick="onSettingOK()">OK</a></td>
+        </tr>
+      </table>
+    </form>  <!-- overlay -->
+  </div>
+</body>
+</html>
