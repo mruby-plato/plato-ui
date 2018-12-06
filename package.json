@@ -9,6 +9,7 @@
   "author": "Hiroshi Mimaki",
   "license": "MIT",
   "devDependencies": {
-    "electron": "^3.0.10"
+    "electron": "^3.0.10",
+    "electron-packager": "^13.0.0"
   }
 }
