@@ -31,4 +31,14 @@ $ make run
 
 ## Make plato-ui application
 
-Work in progress.
+### for Windows
+
+```
+$ make win
+```
+
+### for macOS
+
+```
+$ make mac
+```
