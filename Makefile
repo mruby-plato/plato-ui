@@ -3,7 +3,7 @@ init:
 	npm install electron-packager@13.0.0 --save-dev
 
 run:
-	./node_modules/.bin/electron .
+	./node_modules/.bin/electron src/
 
 win:
 	rm -rf ../bin/plato2-win32-*

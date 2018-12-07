@@ -1,9 +1,9 @@
 const packager = require("electron-packager");
-const package = require("./package.json");
+const package = require("./src/package.json");
 
 packager({
   name: package["name"],
-  dir: ".",       // source directory
+  dir: "src/",    // source directory
   out: "../bin/", // output directory
   icon: "src/img/icon.ico",   // icon
   platform: "win32",
@@ -16,7 +16,7 @@ packager({
   "app-copyright": "Copyright (C) 2018 " + package["author"] + ".",
 
   "version-string": { // opntions for Windows
-    CompanyName: "SCSK KYUSHU CORP.",
+    CompanyName: "Specified non-profit corporation mruby Forum",
     FileDescription: package["name"],
     OriginalFilename: "electron.exe",
     ProductName: package["name"],

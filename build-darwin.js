@@ -1,9 +1,9 @@
 const packager = require("electron-packager");
-const package = require("./package.json");
+const package = require("./src/package.json");
 
 packager({
   name: package["name"],
-  dir: ".",       // source directory
+  dir: "src/",    // source directory
   out: "../bin/", // output directory
   icon: "src/img/icon.icns",  // icon
   platform: "darwin",

@@ -3,7 +3,7 @@ let mainWindow;
 function createWindow() {
   mainWindow = new BrowserWindow({ width: 680, height: 330});
   // mainWindow.setResizable(false);
-  mainWindow.loadURL(`file://${__dirname}/src/index.html`);
+  mainWindow.loadURL(`file://${__dirname}/index.html`);
   mainWindow.on("closed", () => { mainWindow = null; });
 }
 app.on("ready", createWindow);
