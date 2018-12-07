@@ -12,3 +12,6 @@ win:
 mac:
 	rm -rf ../bin/plato2-darwin-*
 	node build-darwin.js
+
+clean:
+	rm -rf bin/plato2-*
