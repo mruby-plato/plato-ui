@@ -6,7 +6,8 @@ run:
 	./node_modules/.bin/electron .
 
 win:
-	@echo "Not supported, yet!"
+	rm -rf ../bin/plato2-win32-*
+	node build-win32.js
 
 mac:
 	rm -rf ../bin/plato2-darwin-*
