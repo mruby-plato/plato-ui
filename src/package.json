@@ -10,7 +10,9 @@
   "license": "MIT",
   "devDependencies": {
     "electron": "^3.0.10",
-    "electron-packager": "^13.0.0",
+    "electron-packager": "^13.0.0"
+  },
+  "dependencies": {
     "electron-prompt": "^1.2.0"
   }
 }
