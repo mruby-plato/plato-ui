@@ -195,7 +195,7 @@ a.plt_btn:hover {
 .tab_wrap {
   width: 650px;
   /* height: 480px; */
-  margin: 10px;
+  margin-top: 10px;
   border: #000000;
 }
 input[type="radio"] {
