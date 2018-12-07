@@ -654,9 +654,17 @@ window.addEventListener("load", function() {
 
 // change job name
 function changeJobName() {
-  var name = window.prompt('ジョブ名を入力してください。', targetJob.name);
-  if (name && name != targetJob.name) {
-    targetJob.name = name;
-    document.getElementById('job_name').innerText = name;
-  }
+  prompt({
+    title: 'Plato2',
+    label: MSG.inp_jobname,
+    value: targetJob.name,
+    inputAttrs: { type: 'text', required: true }
+  })
+  .then((name) => {
+    if (name !== null && name !== '') {
+      targetJob.name = name;
+      document.getElementById('job_name').innerText = name;
+    }
+  })
+  .catch(console.error);
 }

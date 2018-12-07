@@ -59,6 +59,7 @@ if (LANG == LANG_JA) {
   MSG.set_ain_pin   = 'アナログPIN:';
   MSG.set_din_title = 'ディジタル入力設定';
   MSG.set_din_pin   = 'ディジタルPIN:';
+  MSG.inp_jobname   = 'ジョブ名を入力して下さい。';
 
   MSG.set_int_title   = '周期指定';
   MSG.set_int_period  = '周期:';

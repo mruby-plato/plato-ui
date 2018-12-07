@@ -1,6 +1,7 @@
 init:
 	npm install electron@3.0.10 --save-dev
 	npm install electron-packager@13.0.0 --save-dev
+	npm install electron-prompt --save-dev
 
 run:
 	./node_modules/.bin/electron src/

@@ -75,6 +75,9 @@ const andOr = {};
 // Remote window
 const mainWindow = require('electron').remote;
 
+// prompt dialog
+const prompt = require('electron-prompt');
+
 //
 // language
 //

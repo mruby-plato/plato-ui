@@ -59,6 +59,7 @@ if (LANG == LANG_EN) {
   MSG.set_ain_pin   = 'Analog pin:';
   MSG.set_din_title = 'Digital input settings';
   MSG.set_din_pin   = 'Digital pin:';
+  MSG.inp_jobname   = 'Input IoT job name.';
 
   MSG.set_int_title   = 'Interval settings';
   MSG.set_int_period  = 'Interval period:';
