@@ -37,6 +37,28 @@ function showDeviceID() {
   }
 }
 
+// update job
+function updateSetting() {
+  // TODO: check settings
+
+  setting.name = document.getElementById('grpname').selectedOptions[0].text;
+
+  /* Bluetooth settings */
+  setting.bt_setting.grpid  = document.getElementById('proximity').value;
+  setting.bt_setting.devid  = document.getElementById('start_deviceid').value;
+  setting.bt_setting.devcnt = document.getElementById('device_count').value;
+  /* LoRaWAN settings */
+  setting.lora_setting.custom = document.getElementById('custom_eui').checked;
+  setting.lora_setting.deveui = document.getElementById('deveui').value;
+  setting.lora_setting.appeui = document.getElementById('appeui').value;
+  setting.lora_setting.appkey = document.getElementById('appkey').value;
+
+  // Update setting
+  setSetting(setting);
+
+  location.replace(mainPage);
+}
+
 // onload event handler
 window.addEventListener("load", function() {
   /* initialize words */
@@ -55,7 +77,7 @@ window.addEventListener("load", function() {
   /* LoRaWAN settings */
   document.getElementById('custom_eui').checked = setting.lora_setting.custom;
   enableLoRaParams(setting.lora_setting.custom);
-  document.getElementById('deveui').checked = setting.lora_setting.deveui;
-  document.getElementById('appeui').checked = setting.lora_setting.appeui;
-  document.getElementById('appkey').checked = setting.lora_setting.appkey;
+  document.getElementById('deveui').value = setting.lora_setting.deveui;
+  document.getElementById('appeui').value = setting.lora_setting.appeui;
+  document.getElementById('appkey').value = setting.lora_setting.appkey;
 }, false);

@@ -92,26 +92,27 @@ var LANG = LANG_EN;
 var project = {
   name: "",
   jobList: [],
-  maxJobCount: 0
+  maxJobCount: 0,
+  setting: {}
 };
 var jobList = [];
 var targetJob = {name:"", sensor:[], timing:[], action:[]};
 
-// setting information
-var setting = {
-  name: "",
-  bt_setting: {
-    grpid: "FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF",
-    devid: "000000",
-    devcnt: 1
-  },
-  lora_setting: {
-    custom: false,
-    deveui: "",
-    appeui: "",
-    appkey: ""
-  }
-};
+// // setting information
+// var setting = {
+//   name: "",
+//   bt_setting: {
+//     grpid: "FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF",
+//     devid: "000000",
+//     devcnt: 1
+//   },
+//   lora_setting: {
+//     custom: false,
+//     deveui: "",
+//     appeui: "",
+//     appkey: ""
+//   }
+// };
 
 // max job count (for job number)
 // var maxJobCount = 0;
@@ -318,6 +319,10 @@ function setJob(idx, job) {
 
 // Initialize setting
 function initSetting(name) {
+  var setting = {
+    bt_setting: {},
+    lora_setting: {}
+  };
   // initialize setting information
   if (typeof name === 'undefined')
     setting.name = 'New group setting';
@@ -332,17 +337,21 @@ function initSetting(name) {
   setting.lora_setting.appeui = "";
   setting.lora_setting.appkey = "";
 
-  sessionStorage.setting = JSON.stringify(setting);
+  project = getProject();
+  project.setting = setting;
+  setProject(project);
 }
 
 // Get setting information from sessionStorage
 function getSetting() {
-  return JSON.parse(sessionStorage.setting);
+  return getProject().setting;
 }
 
 // Set setting information into sessionStorage
 function setSetting(setting) {
-  sessionStorage.setting = JSON.stringify(setting);
+  project = getProject();
+  project.setting = setting;
+  setProject(project);
 }
 
 // input Hex value
