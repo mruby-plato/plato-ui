@@ -97,6 +97,22 @@ var project = {
 var jobList = [];
 var targetJob = {name:"", sensor:[], timing:[], action:[]};
 
+// setting information
+var setting = {
+  name: "",
+  bt_setting: {
+    grpid: "FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF",
+    devid: "000000",
+    devcnt: 1
+  },
+  lora_setting: {
+    custom: false,
+    deveui: "",
+    appeui: "",
+    appkey: ""
+  }
+};
+
 // max job count (for job number)
 // var maxJobCount = 0;
 
@@ -298,6 +314,35 @@ function setJob(idx, job) {
     jobs.push(job);
   }
   setProject(prj);
+}
+
+// Initialize setting
+function initSetting(name) {
+  // initialize setting information
+  if (typeof name === 'undefined')
+    setting.name = 'New group setting';
+  else
+    setting.name = name;
+
+  setting.bt_setting.grpid  = "FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF";
+  setting.bt_setting.devid  = "000000";
+  setting.bt_setting.devcnt = 1;
+  setting.lora_setting.custom = false;
+  setting.lora_setting.deveui = "";
+  setting.lora_setting.appeui = "";
+  setting.lora_setting.appkey = "";
+
+  sessionStorage.setting = JSON.stringify(setting);
+}
+
+// Get setting information from sessionStorage
+function getSetting() {
+  return JSON.parse(sessionStorage.setting);
+}
+
+// Set setting information into sessionStorage
+function setSetting(setting) {
+  sessionStorage.setting = JSON.stringify(setting);
 }
 
 // input Hex value

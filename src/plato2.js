@@ -45,6 +45,8 @@ function changeLang(lang) {
 window.addEventListener("load", function() {
   /* initialize project */
   initProject();
+  /* initialiez setting */
+  initSetting();
 
   /* initialize words */
   MSGS.forEach(function(id, _idx, _ary) {

@@ -44,4 +44,18 @@ window.addEventListener("load", function() {
   MSGS.forEach(function(id, _idx, _ary) {
     document.getElementById(id).innerText = MSG[id];
   })
+
+  /* set values */
+  setting = getSetting();
+  /* Bluetooth settings */
+  document.getElementById('proximity').value = setting.bt_setting.grpid;
+  document.getElementById('start_deviceid').value = setting.bt_setting.devid;
+  document.getElementById('device_count').value = setting.bt_setting.devcnt;
+  showDeviceID();
+  /* LoRaWAN settings */
+  document.getElementById('custom_eui').checked = setting.lora_setting.custom;
+  enableLoRaParams(setting.lora_setting.custom);
+  document.getElementById('deveui').checked = setting.lora_setting.deveui;
+  document.getElementById('appeui').checked = setting.lora_setting.appeui;
+  document.getElementById('appkey').checked = setting.lora_setting.appkey;
 }, false);
