@@ -31,7 +31,7 @@ if (LANG == LANG_EN) {
   MSG.bt_dev_cnt    = 'Number of devices:';
   MSG.lora_setting  = 'LoRaWAN settings';
   MSG.user_eui      = 'Set DevEUI, AppEUI and AppKey';
-  MSG.save_confirm      = 'Save the group setting.';
+  MSG.save_confirm  = 'Save the group setting.';
   // MSG.overwrite_confirm = '`Overwrite the group setting "${setting.name}."`';
 
   // plato2-joblist.html
