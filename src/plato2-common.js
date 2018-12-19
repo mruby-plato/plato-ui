@@ -331,7 +331,7 @@ function initSetting(name) {
   };
   // initialize setting information
   if (typeof name === 'undefined')
-    setting.name = 'New group setting';
+    setting.name = '';
   else
     setting.name = name;
 

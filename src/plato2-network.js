@@ -45,7 +45,8 @@ function saveSetting() {
 
   /* setup setting data */
   /* Group setting name */
-  setting.name = document.getElementById('grpname').selectedOptions[0].text;
+  // setting.name = document.getElementById('grpname').selectedOptions[0].text;
+  setting.name = document.getElementById('grpname').value;
   /* Bluetooth settings */
   setting.bt_setting.grpid  = document.getElementById('proximity').value;
   setting.bt_setting.devid  = document.getElementById('start_deviceid').value;
@@ -73,7 +74,9 @@ function saveSetting() {
 function updateSetting() {
   // TODO: check settings
 
-  setting.name = document.getElementById('grpname').selectedOptions[0].text;
+  /* Group setting name */
+  // setting.name = document.getElementById('grpname').selectedOptions[0].text;
+  setting.name = document.getElementById('grpname').value;
 
   /* Bluetooth settings */
   setting.bt_setting.grpid  = document.getElementById('proximity').value;
@@ -101,6 +104,8 @@ window.addEventListener("load", function() {
 
   /* set values */
   setting = getSetting();
+  /* Group setting name */
+  document.getElementById('grpname').value = setting.name;
   /* Bluetooth settings */
   document.getElementById('proximity').value = setting.bt_setting.grpid;
   document.getElementById('start_deviceid').value = setting.bt_setting.devid;

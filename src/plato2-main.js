@@ -9,6 +9,8 @@ MSGS = [
   'next',
 ]
 
+GROUP_HEADER_LINES = 2;
+
 function nextPage() {
   // TODO: check project name
   var prj = getProject();
@@ -48,16 +50,19 @@ window.addEventListener("load", function() {
   })
 
   /* initialize group setting list */
+  var setting = getSetting();
   var settings = enumGroupSettings();
   var sel = document.getElementById('grp_list');
-  while(sel.children.length > 2) {
+  while(sel.children.length > GROUP_HEADER_LINES) {
     sel.removeChild(sel.lastChild);
   }
-  settings.forEach(function (setting, i, ary) {
+  settings.forEach(function (set, i, ary) {
     var op = document.createElement("option");
-    op.value  = setting;
-    op.text   = setting;
+    op.value  = set;
+    op.text   = set;
     sel.appendChild(op);
+    if (set === setting.name) {
+      sel.selectedIndex = i + GROUP_HEADER_LINES;
+    }
   });
-
 }, false);
