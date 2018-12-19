@@ -20,7 +20,7 @@ if (LANG == LANG_EN) {
   MSG.app_name      = 'Application name:';
   MSG.grp_setting   = 'Group setting:';
 
-  // plato2-netowrk.html
+  // plato2-network.html
   MSG.group_title   = 'Plato2 - Group settings';
   MSG.bt_setting    = 'Bluetooth settings';
   MSG.bt_id         = 'Group ID:';
@@ -28,6 +28,8 @@ if (LANG == LANG_EN) {
   MSG.bt_dev_cnt    = 'Number of devices:';
   MSG.lora_setting  = 'LoRaWAN settings';
   MSG.user_eui      = 'Set DevEUI, AppEUI and AppKey';
+  MSG.save_confirm      = 'Save the group setting.';
+  // MSG.overwrite_confirm = '`Overwrite the group setting "${setting.name}."`';
 
   // plato2-joblist.html
   MSG.list_title    = 'Plato2 - List of IoT jobs';
@@ -161,6 +163,7 @@ if (LANG == LANG_EN) {
   function getMessage(id, param) {
     switch (id) {
     case 'open_app_file': return `open '${param}'`;
+    case 'overwrite_confirm': return `Overwrite the group setting "${param}."`;
     }
   }
 

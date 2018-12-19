@@ -20,7 +20,7 @@ if (LANG == LANG_JA) {
   MSG.app_name      = 'アプリケーション名:';
   MSG.grp_setting   = 'グループ設定:';
 
-  // plato2-netowrk.html
+  // plato2-network.html
   MSG.group_title   = 'Plato2 - グループ設定';
   MSG.bt_setting    = 'Bluetooth端末設定';
   MSG.bt_id         = '識別ID:';
@@ -28,6 +28,8 @@ if (LANG == LANG_JA) {
   MSG.bt_dev_cnt    = '端末数:';
   MSG.lora_setting  = 'LoRaWAN設定';
   MSG.user_eui      = 'DevEUI / AppEUI / AppKey を設定する';
+  MSG.save_confirm      = 'グループ設定を保存します。';
+  // MSG.overwrite_confirm = '`グループ設定 ${setting.name} を上書きします。`';
 
   // plato2-joblist.html
   MSG.list_title    = 'Plato2 - IoTジョブ一覧';
@@ -161,6 +163,7 @@ if (LANG == LANG_JA) {
   function getMessage(id, param) {
     switch (id) {
     case 'open_app_file': return `'${param}' を開く`;
+    case 'overwrite_confirm': return `グループ設定 "${param}" を上書きします。`;
     }
   }
 

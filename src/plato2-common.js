@@ -6,6 +6,13 @@
 // constants
 //
 
+// requires
+const app = require('electron').remote.app;
+const mainWindow = require('electron').remote;
+const prompt = require('electron-prompt');
+const fs = require('fs');
+
+// languages
 const MSG = {};
 const LANG_EN = 0;
 const LANG_JA = 1;
@@ -72,12 +79,6 @@ const trigCondition = {};
 // and/or
 const andOr = {};
 
-// Remote window
-const mainWindow = require('electron').remote;
-
-// prompt dialog
-const prompt = require('electron-prompt');
-
 //
 // language
 //
@@ -97,6 +98,11 @@ var project = {
 };
 var jobList = [];
 var targetJob = {name:"", sensor:[], timing:[], action:[]};
+
+// paths
+var platoRoot = app.getPath('home') + '/plato2';
+// var uiPath = platoRoot + '/ui';
+var settingPath = platoRoot + '/settings';
 
 // // setting information
 // var setting = {
@@ -400,6 +406,27 @@ function inputUUID(elem, temp) {
 
 function inProgress() {
   alert("WORK IN PROGRESS !\nComing soon...");
+}
+
+// save file
+function saveFile(name, data) {
+  fs.writeFile(name, data, 'utf8', function(err) {
+    if (err) {
+      alert(err);
+    }
+  });
+}
+
+// check file exists
+function isFileExist(name) {
+  try {
+    fs.statSync(name);
+    return true;
+  }
+  catch (err) {
+    // file not exist
+  }
+  return false;
 }
 
 // Initialize language
