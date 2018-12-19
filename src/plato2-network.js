@@ -37,29 +37,34 @@ function showDeviceID() {
   }
 }
 
-// save setting
-function saveSetting() {
-  var settingName;
-//----- TODO: merge with updateSetting()
+// update setting from UI
+function getSettingFromUI() {
+  var setting = getSetting();
+
   // TODO: check settings
 
-  /* setup setting data */
   /* Group setting name */
-  // setting.name = document.getElementById('grpname').selectedOptions[0].text;
-  setting.name = document.getElementById('grpname').value;
+  setting.name                = document.getElementById('grpname').value;
   /* Bluetooth settings */
-  setting.bt_setting.grpid  = document.getElementById('proximity').value;
-  setting.bt_setting.devid  = document.getElementById('start_deviceid').value;
-  setting.bt_setting.devcnt = document.getElementById('device_count').value;
+  setting.bt_setting.grpid    = document.getElementById('proximity').value;
+  setting.bt_setting.devid    = document.getElementById('start_deviceid').value;
+  setting.bt_setting.devcnt   = document.getElementById('device_count').value;
   /* LoRaWAN settings */
   setting.lora_setting.custom = document.getElementById('custom_eui').checked;
   setting.lora_setting.deveui = document.getElementById('deveui').value;
   setting.lora_setting.appeui = document.getElementById('appeui').value;
   setting.lora_setting.appkey = document.getElementById('appkey').value;
-//-----
+
+  return setting;
+}
+
+// save setting
+function saveSetting() {
+  // update setting from UI
+  var setting = getSettingFromUI();
 
   // confirm save
-  setting_name = getSettingPath() + '/' + setting.name + '.json';
+  var setting_name = getSettingPath() + '/' + setting.name + '.json';
   if (isFileExist(setting_name)) {
     if (!window.confirm(getMessage('overwrite_confirm', setting.name))) return;
   }
@@ -72,25 +77,13 @@ function saveSetting() {
 
 // update job
 function updateSetting() {
-  // TODO: check settings
-
-  /* Group setting name */
-  // setting.name = document.getElementById('grpname').selectedOptions[0].text;
-  setting.name = document.getElementById('grpname').value;
-
-  /* Bluetooth settings */
-  setting.bt_setting.grpid  = document.getElementById('proximity').value;
-  setting.bt_setting.devid  = document.getElementById('start_deviceid').value;
-  setting.bt_setting.devcnt = document.getElementById('device_count').value;
-  /* LoRaWAN settings */
-  setting.lora_setting.custom = document.getElementById('custom_eui').checked;
-  setting.lora_setting.deveui = document.getElementById('deveui').value;
-  setting.lora_setting.appeui = document.getElementById('appeui').value;
-  setting.lora_setting.appkey = document.getElementById('appkey').value;
+  // update setting from UI
+  var setting = getSettingFromUI();
 
   // Update setting
   setSetting(setting);
 
+  // return to main page
   location.replace(mainPage);
 }
 
