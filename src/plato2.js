@@ -68,7 +68,7 @@ window.addEventListener("load", function() {
           document.getElementById('show_open').style.display = 'block';
         }
         catch(e) {
-          alert(MSG.openError);
+          alert(MSG.open_app_err);
         }
       }
       reader.readAsText(selFile.files[0]);

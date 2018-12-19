@@ -58,7 +58,7 @@ function saveSetting() {
 //-----
 
   // confirm save
-  setting_name = settingPath + '/' + setting.name + '.json';
+  setting_name = getSettingPath() + '/' + setting.name + '.json';
   if (isFileExist(setting_name)) {
     if (!window.confirm(getMessage('overwrite_confirm', setting.name))) return;
   }

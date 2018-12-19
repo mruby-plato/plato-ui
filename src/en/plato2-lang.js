@@ -12,13 +12,16 @@ if (LANG == LANG_EN) {
   MSG.new_app       = 'Create application';
   MSG.open_app      = 'Open application';
   MSG.open_app_file = '"Open `${project.name}`"';
-  MSG.open_error    = 'Failed to read the application file.';
+  MSG.open_app_err  = 'Failed to read the application file.';
 
   // plato2-main.html
   MSG.main_title    = 'Plato2 - Create new application';
   MSG.main_top      = 'Enter basic information for an application';
   MSG.app_name      = 'Application name:';
   MSG.grp_setting   = 'Group setting:';
+  MSG.new_grpset    = 'New group setting...';
+  MSG.sel_grpset    = '-- Select group setting --';
+  MSG.open_set_err  = 'Failed to read the group setting file.';
 
   // plato2-network.html
   MSG.group_title   = 'Plato2 - Group settings';

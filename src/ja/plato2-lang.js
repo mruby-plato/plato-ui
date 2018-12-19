@@ -12,13 +12,16 @@ if (LANG == LANG_JA) {
   MSG.new_app       = '新規アプリケーションの作成';
   MSG.open_app      = '既存アプリケーションの読み込み';
   MSG.open_app_file = '`${project.name} を開く`';
-  MSG.open_error    = 'アプリケーションファイルの読み込みに失敗しました。';
+  MSG.open_app_err  = 'アプリケーションファイルの読み込みに失敗しました。';
 
   // plato2-main.html
   MSG.main_title    = 'Plato2 - 新規アプリケーションの作成';
   MSG.main_top      = 'アプリケーションの基本情報を入力してください';
   MSG.app_name      = 'アプリケーション名:';
   MSG.grp_setting   = 'グループ設定:';
+  MSG.new_grpset    = '新規グループ設定...';
+  MSG.sel_grpset    = '-- 選択して下さい --';
+  MSG.open_set_err  = 'グループ設定ファイルの読み込みに失敗しました。';
 
   // plato2-network.html
   MSG.group_title   = 'Plato2 - グループ設定';

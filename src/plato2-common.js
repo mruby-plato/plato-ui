@@ -408,6 +408,18 @@ function inProgress() {
   alert("WORK IN PROGRESS !\nComing soon...");
 }
 
+// loda group setting file
+function loadSettingFile(name) {
+  try {
+    var rawSetting = fs.readFileSync(name);
+    var setting = JSON.parse(rawSetting);
+    setSetting(setting);
+  }
+  catch(e) {
+    alert(MSG.open_set_err);
+  }
+}
+
 // save file
 function saveFile(name, data) {
   fs.writeFile(name, data, 'utf8', function(err) {
@@ -428,6 +440,28 @@ function isFileExist(name) {
   }
   return false;
 }
+
+// get group setting list
+function enumGroupSettings() {
+  var files = fs.readdirSync(settingPath);
+  var settings = [];
+  files.filter(function(file) {
+    return fs.statSync(getSettingPath() + '/' + file).isFile && /.*\.json$/.test(file);
+  }).forEach(function(file) {
+    settings.push(file.replace(/\.json$/, ""))
+  })
+
+  return settings;
+}
+
+// get settings path
+function getSettingPath() {
+  return platoRoot + '/settings';
+}
+
+//
+// Initialize process
+//
 
 // Initialize language
 if (!sessionStorage.lang) {

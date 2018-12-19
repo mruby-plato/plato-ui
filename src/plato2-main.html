@@ -23,14 +23,12 @@
 
       <tr>
         <td id="grp_setting">グループ設定:</td>
-        <td><select>
-          <option selected>Group setting #1</option>
-          <option>Group setting #2</option>
-          <option>------------------------------------</option>
-          <option>New group setting...</option>
+        <td><select id="grp_list" onchange="onGroupChange();">
+          <option id="new_grpset">新規グループ設定...</option>
+          <option id="sel_grpset" selected>-- 選択して下さい --</option>
         </select></td>
         <td>
-          <a class="plt_btn mini" id="browse" href="javascript:location.replace(networkPage)">参照...</a>
+          <a class="plt_btn mini" id="browse" href="javascript:openSettingPage(document.getElementById('grp_list').selectedIndex);">参照...</a>
         </td>
       </tr>
     </table>
