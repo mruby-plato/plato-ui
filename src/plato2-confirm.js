@@ -15,14 +15,24 @@ const TAB = "    ";
 
 // generate application JSON
 function makeApplication() {
-  var output = new Blob([sessionStorage.project], {type: "text/plain"});
-  project = getProject();
-  var a = document.createElement('a');
-  a.href = URL.createObjectURL(output);
-  a.download = project.name.trim().replace(/[- ]/g, '_') + '.json';
-  a.target = '_blank';
-  a.href = URL.createObjectURL(output);
-  a.click();
+  // var output = new Blob([sessionStorage.project], {type: "text/plain"});
+  // project = getProject();
+
+  // var a = document.createElement('a');
+  // a.href = URL.createObjectURL(output);
+  // a.download = project.name.trim().replace(/[- ]/g, '_') + '.json';
+  // a.target = '_blank';
+  // a.href = URL.createObjectURL(output);
+  // a.click();
+
+  // create application directory and app.json
+  var app_path = getAppPath();
+  mkdir(app_path);
+  saveFile(app_path + '/app.json', JSON.stringify(getProject()));
+
+  // generate application
+  // `ruby $(tool_path)/prjmaker.rb $(app_path)`
+  launchApplication('ruby ' + getToolPath() + '/prjmaker.rb ' + app_path);
 }
 
 // onload event handler

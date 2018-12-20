@@ -459,6 +459,28 @@ function getSettingPath() {
   return platoRoot + '/settings';
 }
 
+// get application path
+function getAppPath() {
+  return platoRoot + '/' + getProject().name.replace(/ /g, '_');
+}
+
+// get tool path
+function getToolPath() {
+  return platoRoot + '/.plato/tools';
+}
+
+// mkdir
+function mkdir(path) {
+  try {
+    fs.mkdirSync(path);
+  }
+  catch(err) {
+    if (err.code !== 'EEXIST') {
+      alert(err);
+    }
+  }
+}
+
 // launch native application
 function launchApplication(cmd) {
   try {
