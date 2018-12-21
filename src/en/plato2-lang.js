@@ -171,28 +171,28 @@ if (LANG == LANG_EN) {
   }
 
   // Inspect digital_in setting
-  function inspectDigitalIn(item) {
-    return 'Digital in' + BR
-      + SP + SP + 'Digital PIN: ' + item.params.pin;
+  function inspectDigitalIn(item, tab=SP, lf=BR, ind=0) {
+    return tabs(ind, tab) + 'Digital in' + lf
+      + tabs(ind + 1, tab) + 'Digital PIN: ' + item.params.pin + lf;
   }
 
   // Inspect analog_in setting
-  function inspectAnalogIn(item) {
-    return 'Analog in' + BR
-      + SP + SP + 'Analog PIN: ' + item.params.pin;
+  function inspectAnalogIn(item, tab=SP, lf=BR, ind=0) {
+    return tabs(ind, tab) + 'Analog in' + lf
+      + tabs(ind + 1, tab) + 'Analog PIN: ' + item.params.pin + lf;
   }
 
   // Inspect interval setting
-  function inspectInterval(item) {
-    var str = 'Interval settings' + BR
-      + SP + SP + 'Period: '
+  function inspectInterval(item, tab=SP, lf=BR, ind=0) {
+    var str = tabs(ind, tab) + 'Interval settings' + lf
+      + tabs(ind + 1, tab) + 'Period: '
       + item.params.interval_time
-      + item.params.interval_time_unit + BR;
+      + item.params.interval_time_unit + lf;
     if (item.params.interval_start) {
-      str += SP + SP + 'Start time: ' + item.params.interval_start + BR;
+      str += tabs(ind + 1, tab) + 'Start time: ' + item.params.interval_start + lf;
     }
     if (item.params.interval_end) {
-      str += SP + SP + 'End time: ' + item.params.interval_end;
+      str += tabs(ind + 1, tab) + 'End time: ' + item.params.interval_end + lf;
     }
     return str;
   }

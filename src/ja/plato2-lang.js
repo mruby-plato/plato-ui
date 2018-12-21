@@ -82,7 +82,7 @@ if (LANG == LANG_JA) {
   MSG.set_par_end   = '終了時刻:';
 
   MSG.set_tri_title   = 'トリガ指定';
-  MSG.set_tri_period  = 'トリガ判定周期';
+  MSG.set_tri_period  = 'トリガ判定周期:';
   MSG.set_tri_per_h   = '時間毎';
   MSG.set_tri_per_m   = '分毎';
   MSG.set_tri_per_s   = '秒毎';
@@ -171,28 +171,28 @@ if (LANG == LANG_JA) {
   }
 
   // Inspect digital_in setting
-  function inspectDigitalIn(item) {
-    return 'ディジタル入力' + BR
-      + SP + SP + 'ディジタルPIN: ' + item.params.pin;
+  function inspectDigitalIn(item, tab=SP, lf=BR, ind=0) {
+    return tabs(ind, tab) + 'ディジタル入力' + lf
+      + tabs(ind + 1, tab) + 'ディジタルPIN: ' + item.params.pin + lf;
   }
 
   // Inspect analog_in setting
-  function inspectAnalogIn(item) {
-    return 'アナログ入力' + BR
-      + SP + SP + 'アナログPIN: ' + item.params.pin;
+  function inspectAnalogIn(item, tab=SP, lf=BR, ind=0) {
+    return tabs(ind, tab) + 'アナログ入力' + lf
+      + tabs(ind + 1, tab) + 'アナログPIN: ' + item.params.pin + lf;
   }
 
   // Inspect interval setting
-  function inspectInterval(item) {
-    var str = '周期指定' + BR
-      + SP + SP + '周期: '
+  function inspectInterval(item, tab=SP, lf=BR, ind=0) {
+    var str = tabs(ind, tab) + '周期指定' + lf
+      + tabs(ind + 1, tab) + '周期: '
       + item.params.interval_time
-      + item.params.interval_time_unit + BR;
+      + item.params.interval_time_unit + lf;
     if (item.params.interval_start) {
-      str += SP + SP + '開始時刻: ' + item.params.interval_start + BR;
+      str += tabs(ind + 1, tab) + '開始時刻: ' + item.params.interval_start + lf;
     }
     if (item.params.interval_end) {
-      str += SP + SP + '終了時刻: ' + item.params.interval_end;
+      str += tabs(ind + 1, tab) + '終了時刻: ' + item.params.interval_end + lf;
     }
     return str;
   }

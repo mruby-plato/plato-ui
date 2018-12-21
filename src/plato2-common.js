@@ -67,7 +67,7 @@ const defaultParams = {
 const LF = "\n";
 const CR = "\r";
 const BR = "<br />";
-const SP = "&nbsp;"
+const SP = "&emsp;"
 
 // trigger parameters (sensors)
 const trigParameter = {};
@@ -406,6 +406,19 @@ function inputUUID(elem, temp) {
 
 function inProgress() {
   alert("WORK IN PROGRESS !\nComing soon...");
+}
+
+// tab
+function tabs(n, tab=TAB) {
+  txt = '';
+  for (var i=0; i<n; i++) txt += tab;
+  return txt;
+}
+
+function spaces(n, spc=SP) {
+  txt = '';
+  for (var i=0; i<n; i++) txt += spc;
+  return txt;
 }
 
 // loda group setting file
