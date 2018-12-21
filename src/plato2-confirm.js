@@ -50,15 +50,7 @@ function formatTimings(timings) {
       txt += tabs(3) + MSG.tim_part + ':' + LF;
       break;
     case 'trigger':
-      txt += tabs(3) + MSG.tim_trig + ':' + LF;
-      txt += tabs(4) + MSG.set_tri_period + ' ' + params.trig_period + ' ' + params.trig_peri_unit + LF;
-      txt += tabs(4) + MSG.set_tri_cond + LF;
-      params.triggers.forEach(function(trig, i) {
-        txt += tabs(5);
-        if (i > 0) txt += trig.and_or + ' ';
-        txt += 'TODO'
-        txt += LF;
-      })
+      txt += inspectTrigger(timing, TAB, LF, 3);
       break;
     }
   })

@@ -182,18 +182,37 @@ if (LANG == LANG_EN) {
       + tabs(ind + 1, tab) + 'Analog PIN: ' + item.params.pin + lf;
   }
 
-  // Inspect interval setting
-  function inspectInterval(item, tab=SP, lf=BR, ind=0) {
-    var str = tabs(ind, tab) + 'Interval settings' + lf
-      + tabs(ind + 1, tab) + 'Period: '
-      + item.params.interval_time
-      + item.params.interval_time_unit + lf;
-    if (item.params.interval_start) {
-      str += tabs(ind + 1, tab) + 'Start time: ' + item.params.interval_start + lf;
-    }
-    if (item.params.interval_end) {
-      str += tabs(ind + 1, tab) + 'End time: ' + item.params.interval_end + lf;
-    }
+  // // Inspect interval setting
+  // function inspectInterval(item, tab=SP, lf=BR, ind=0) {
+  //   var str = tabs(ind, tab) + 'Interval settings' + lf
+  //     + tabs(ind + 1, tab) + 'Period: '
+  //     + item.params.interval_time
+  //     + item.params.interval_time_unit + lf;
+  //   if (item.params.interval_start) {
+  //     str += tabs(ind + 1, tab) + 'Start time: ' + item.params.interval_start + lf;
+  //   }
+  //   if (item.params.interval_end) {
+  //     str += tabs(ind + 1, tab) + 'End time: ' + item.params.interval_end + lf;
+  //   }
+  //   return str;
+  // }
+
+  // Inspect trigger setting
+  function inspectTrigger(item, tab=SP, lf=BR, ind=0) {
+    var str = tabs(ind, tab) + MSG.set_tri_title + lf
+      + tabs(ind + 1, tab) + 'Period: ' + item.params.trig_period + ' ' + item.params.trig_peri_unit + lf;
+    str += tabs(ind + 1, tab) + MSG.set_tri_cond + lf;
+    item.params.triggers.forEach(function(trig, i) {
+      str += tabs(ind + 2, tab);
+      if (i > 0) str += MSG[trig.and_or] + ' ';
+      str += trigParameter[trig.param] + ' ';
+      str += trigCondition[trig.cond] + ' ' + trig.value + trigParamUnit[trig.param] + lf;
+    })
+    if (item.params.trig_delay)
+      str += tabs(ind + 1, tab) + 'Dealy: ' + item.params.trig_delay_time + item.params.trig_delay_unit + lf;
+    str += tabs(ind + 1, tab) + 'Cancel: ' + item.params.trig_off + lf;
+    if (item.params.while_trig_on)
+      str += tabs(ind + 1, tab) + 'Interval: ' + item.params.while_trig_time + item.params.while_trig_unit + lf;
     return str;
   }
 

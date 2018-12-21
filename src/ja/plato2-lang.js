@@ -182,18 +182,37 @@ if (LANG == LANG_JA) {
       + tabs(ind + 1, tab) + 'アナログPIN: ' + item.params.pin + lf;
   }
 
-  // Inspect interval setting
-  function inspectInterval(item, tab=SP, lf=BR, ind=0) {
-    var str = tabs(ind, tab) + '周期指定' + lf
-      + tabs(ind + 1, tab) + '周期: '
-      + item.params.interval_time
-      + item.params.interval_time_unit + lf;
-    if (item.params.interval_start) {
-      str += tabs(ind + 1, tab) + '開始時刻: ' + item.params.interval_start + lf;
-    }
-    if (item.params.interval_end) {
-      str += tabs(ind + 1, tab) + '終了時刻: ' + item.params.interval_end + lf;
-    }
+  // // Inspect interval setting
+  // function inspectInterval(item, tab=SP, lf=BR, ind=0) {
+  //   var str = tabs(ind, tab) + '周期指定' + lf
+  //     + tabs(ind + 1, tab) + '周期: '
+  //     + item.params.interval_time
+  //     + item.params.interval_time_unit + lf;
+  //   if (item.params.interval_start) {
+  //     str += tabs(ind + 1, tab) + '開始時刻: ' + item.params.interval_start + lf;
+  //   }
+  //   if (item.params.interval_end) {
+  //     str += tabs(ind + 1, tab) + '終了時刻: ' + item.params.interval_end + lf;
+  //   }
+  //   return str;
+  // }
+
+  // Inspect trigger setting
+  function inspectTrigger(item, tab=SP, lf=BR, ind=0) {
+    var str = tabs(ind, tab) + MSG.set_tri_title + lf
+      + tabs(ind + 1, tab) + '判定周期: ' + item.params.trig_period + ' ' + item.params.trig_peri_unit + lf;
+    str += tabs(ind + 1, tab) + MSG.set_tri_cond + lf;
+    item.params.triggers.forEach(function(trig, i) {
+      str += tabs(ind + 2, tab);
+      if (i > 0) str += MSG[trig.and_or] + ' ';
+      str += trigParameter[trig.param] + ' ' + MSG.set_tri_is + ' ';
+      str += trig.value + trigParamUnit[trig.param] + ' ' + trigCondition[trig.cond] + lf;
+    })
+    if (item.params.trig_delay)
+      str += tabs(ind + 1, tab) + '遅延判定: ' + item.params.trig_delay_time + item.params.trig_delay_unit + lf;
+    str += tabs(ind + 1, tab) + '取消: ' + item.params.trig_off + lf;
+    if (item.params.while_trig_on)
+      str += tabs(ind + 1, tab) + '継続間隔: ' + item.params.while_trig_time + item.params.while_trig_unit + lf;
     return str;
   }
 

@@ -146,6 +146,11 @@ var settingPath = platoRoot + '/settings';
 // global functions
 //
 
+
+//------------------------------
+// Drawing
+//------------------------------
+
 // Connect job items.
 function connectItems() {
   var cvs = document.getElementById("mycanvas");
@@ -199,13 +204,36 @@ const flgHint         = 0x0004;
 
 const flgDefaultIcon  = (flgDeleteIcon | flgSettingIcon | flgHint);
 
+//------------------------------
+// IoT Job utilities
+//------------------------------
+
+// Inspect interval setting
+function inspectInterval(item, tab=SP, lf=BR, ind=0) {
+  var str = tabs(ind, tab) + MSG.set_int_title + lf
+    + tabs(ind + 1, tab) + MSG.set_int_period + ' '
+    + item.params.interval_time
+    + item.params.interval_time_unit + lf;
+  if (item.params.interval_start) {
+    str += tabs(ind + 1, tab) + MSG.set_int_start + ' ' + item.params.interval_start + lf;
+  }
+  if (item.params.interval_end) {
+    str += tabs(ind + 1, tab) + MSG.set_int_end + ' ' + item.params.interval_end + lf;
+  }
+  return str;
+}
+
 // Inspect job items
 function inspectJobItem(item) {
   var str = '';
   switch (item.type) {
+    // Sensors
     case 'digital_in':  str = inspectDigitalIn(item); break;
     case 'analog_in':   str = inspectAnalogIn(item);  break;
+    // Timings
     case 'interval':    str = inspectInterval(item);  break;
+    case 'trigger':     str = inspectTrigger(item);   break;
+    // Actions
     case 'bluetooth':   str = inspectBluetooth(item); break;
   }
   return str;
@@ -360,6 +388,10 @@ function setSetting(setting) {
   setProject(project);
 }
 
+//------------------------------
+// Utilities
+//------------------------------
+
 // input Hex value
 //  elem: input element (e.g. textbox)
 function inputHex(elem) {
@@ -404,10 +436,6 @@ function inputUUID(elem, temp) {
   prev.value = elem.value = val.toUpperCase();
 }
 
-function inProgress() {
-  alert("WORK IN PROGRESS !\nComing soon...");
-}
-
 // tab
 function tabs(n, tab=TAB) {
   txt = '';
@@ -420,6 +448,18 @@ function spaces(n, spc=SP) {
   for (var i=0; i<n; i++) txt += spc;
   return txt;
 }
+
+//------------------------------
+// Test and Debug
+//------------------------------
+
+function inProgress() {
+  alert("WORK IN PROGRESS !\nComing soon...");
+}
+
+//------------------------------
+// File operations
+//------------------------------
 
 // loda group setting file
 function loadSettingFile(name) {
@@ -494,6 +534,10 @@ function mkdir(path) {
   }
 }
 
+//------------------------------
+// Process utilities
+//------------------------------
+
 // launch native application
 function launchApplication(cmd) {
   try {
@@ -517,9 +561,9 @@ function launchApplication(cmd) {
   }
 }
 
-//
+//------------------------------
 // Initialize process
-//
+//------------------------------
 
 // Initialize language
 if (!sessionStorage.lang) {
