@@ -68,6 +68,7 @@ const LF = "\n";
 const CR = "\r";
 const BR = "<br />";
 const SP = "&emsp;"
+const TAB = "    ";
 
 // trigger parameters (sensors)
 const trigParameter = {};
@@ -208,6 +209,18 @@ const flgDefaultIcon  = (flgDeleteIcon | flgSettingIcon | flgHint);
 // IoT Job utilities
 //------------------------------
 
+// Inspect digital_in setting
+function inspectDigitalIn(item, tab=SP, lf=BR, ind=0) {
+  return tabs(ind, tab) + MSG.sen_din + lf
+    + tabs(ind + 1, tab) + MSG.set_din_pin + ' ' + item.params.pin + lf;
+}
+
+// Inspect analog_in setting
+function inspectAnalogIn(item, tab=SP, lf=BR, ind=0) {
+  return tabs(ind, tab) + MSG.sen_ain + lf
+    + tabs(ind + 1, tab) + MSG.set_ain_pin + ' ' + item.params.pin + lf;
+}
+
 // Inspect interval setting
 function inspectInterval(item, tab=SP, lf=BR, ind=0) {
   var str = tabs(ind, tab) + MSG.set_int_title + lf
@@ -223,18 +236,35 @@ function inspectInterval(item, tab=SP, lf=BR, ind=0) {
   return str;
 }
 
+// Inspect Bluetooth setting
+function inspectBluetooth(item, tab, lf, ind) {
+  var cnt = 0;
+  var str = tabs(ind, tab) + MSG.set_bt_title + lf
+    + tabs(ind + 1, tab) + MSG.set_bt_data + lf;
+  for (key in item.params) {
+    if (item.params[key]) {
+      str += tabs(ind + 2, tab) + trigParameter[key] + lf;
+      cnt++;
+    }
+  }
+  if (cnt == 0) {
+    str += tabs(ind + 2, tab) + MSG.none + lf;
+  }
+  return str;
+}
+
 // Inspect job items
-function inspectJobItem(item) {
+function inspectJobItem(item, tab=SP, lf=BR, ind=0) {
   var str = '';
   switch (item.type) {
     // Sensors
-    case 'digital_in':  str = inspectDigitalIn(item); break;
-    case 'analog_in':   str = inspectAnalogIn(item);  break;
+    case 'digital_in':  str = inspectDigitalIn(item, tab, lf, ind); break;
+    case 'analog_in':   str = inspectAnalogIn(item, tab, lf, ind);  break;
     // Timings
-    case 'interval':    str = inspectInterval(item);  break;
-    case 'trigger':     str = inspectTrigger(item);   break;
+    case 'interval':    str = inspectInterval(item, tab, lf, ind);  break;
+    case 'trigger':     str = inspectTrigger(item, tab, lf, ind);   break;
     // Actions
-    case 'bluetooth':   str = inspectBluetooth(item); break;
+    case 'bluetooth':   str = inspectBluetooth(item, tab, lf, ind); break;
   }
   return str;
 }

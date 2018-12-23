@@ -7,6 +7,7 @@ if (LANG == LANG_JA) {
   MSG.browse        = '参照...';
   MSG.save_setting  = '設定保存';
   MSG.register      = '登録';
+  MSG.none          = 'なし';
 
   // plato2.html
   MSG.new_app       = '新規アプリケーションの作成';
@@ -170,31 +171,16 @@ if (LANG == LANG_JA) {
     }
   }
 
-  // Inspect digital_in setting
-  function inspectDigitalIn(item, tab=SP, lf=BR, ind=0) {
-    return tabs(ind, tab) + 'ディジタル入力' + lf
-      + tabs(ind + 1, tab) + 'ディジタルPIN: ' + item.params.pin + lf;
-  }
+  // // Inspect digital_in setting
+  // function inspectDigitalIn(item, tab=SP, lf=BR, ind=0) {
+  //   return tabs(ind, tab) + 'ディジタル入力' + lf
+  //     + tabs(ind + 1, tab) + 'ディジタルPIN: ' + item.params.pin + lf;
+  // }
 
-  // Inspect analog_in setting
-  function inspectAnalogIn(item, tab=SP, lf=BR, ind=0) {
-    return tabs(ind, tab) + 'アナログ入力' + lf
-      + tabs(ind + 1, tab) + 'アナログPIN: ' + item.params.pin + lf;
-  }
-
-  // // Inspect interval setting
-  // function inspectInterval(item, tab=SP, lf=BR, ind=0) {
-  //   var str = tabs(ind, tab) + '周期指定' + lf
-  //     + tabs(ind + 1, tab) + '周期: '
-  //     + item.params.interval_time
-  //     + item.params.interval_time_unit + lf;
-  //   if (item.params.interval_start) {
-  //     str += tabs(ind + 1, tab) + '開始時刻: ' + item.params.interval_start + lf;
-  //   }
-  //   if (item.params.interval_end) {
-  //     str += tabs(ind + 1, tab) + '終了時刻: ' + item.params.interval_end + lf;
-  //   }
-  //   return str;
+  // // Inspect analog_in setting
+  // function inspectAnalogIn(item, tab=SP, lf=BR, ind=0) {
+  //   return tabs(ind, tab) + 'アナログ入力' + lf
+  //     + tabs(ind + 1, tab) + 'アナログPIN: ' + item.params.pin + lf;
   // }
 
   // Inspect trigger setting
@@ -204,7 +190,7 @@ if (LANG == LANG_JA) {
     str += tabs(ind + 1, tab) + MSG.set_tri_cond + lf;
     item.params.triggers.forEach(function(trig, i) {
       str += tabs(ind + 2, tab);
-      if (i > 0) str += MSG[trig.and_or] + ' ';
+      if (i > 0) str += andOr[trig.and_or] + ' ';
       str += trigParameter[trig.param] + ' ' + MSG.set_tri_is + ' ';
       str += trig.value + trigParamUnit[trig.param] + ' ' + trigCondition[trig.cond] + lf;
     })
@@ -216,20 +202,20 @@ if (LANG == LANG_JA) {
     return str;
   }
 
-  // Inspect Bluetooth setting
-  function inspectBluetooth(item) {
-    var cnt = 0;
-    var str = 'Bluetooth送信設定' + BR
-      + SP + SP + '送信データ:' + BR;
-    for (key in item.params) {
-      if (item.params[key]) {
-        str += SP + SP + SP + SP + trigParameter[key] + BR;
-        cnt++;
-      }
-    }
-    if (cnt == 0) {
-      str += SP + SP + SP + SP + 'なし';
-    }
-    return str;
-  }
+  // // Inspect Bluetooth setting
+  // function inspectBluetooth(item) {
+  //   var cnt = 0;
+  //   var str = 'Bluetooth送信設定' + BR
+  //     + SP + SP + '送信データ:' + BR;
+  //   for (key in item.params) {
+  //     if (item.params[key]) {
+  //       str += SP + SP + SP + SP + trigParameter[key] + BR;
+  //       cnt++;
+  //     }
+  //   }
+  //   if (cnt == 0) {
+  //     str += SP + SP + SP + SP + 'なし';
+  //   }
+  //   return str;
+  // }
 }

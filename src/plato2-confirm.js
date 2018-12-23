@@ -9,7 +9,7 @@ MSGS = [
   'confirm_create',
 ]
 
-const TAB = "    ";
+// const TAB = "    ";
 
 // functions
 
@@ -29,7 +29,8 @@ function makeApplication() {
 function formatSensors(sensors) {
   txt = '';
   sensors.forEach(function(sensor, i) {
-    txt += TAB + TAB + TAB + trigParameter[sensor.type] + LF;
+    // txt += TAB + TAB + TAB + trigParameter[sensor.type] + LF;
+    txt += inspectJobItem(sensor, TAB, LF, 3);
   })
   return txt;
 }
@@ -40,17 +41,29 @@ function formatTimings(timings) {
   timings.forEach(function(timing, i) {
     var params = timing.params
     switch (timing.type) {
-    case 'interval':
-      txt += inspectInterval(timing, TAB, LF, 3);
-      break;
     case 'ontime':
       txt += tabs(3) + MSG.tim_time + ':' + LF;
       break;
     case 'part_time':
       txt += tabs(3) + MSG.tim_part + ':' + LF;
       break;
+    case 'interval':
     case 'trigger':
-      txt += inspectTrigger(timing, TAB, LF, 3);
+      txt += inspectJobItem(timing, TAB, LF, 3);
+      break;
+    }
+  })
+  return txt;
+}
+
+// format action information
+function formatActions(actions) {
+  txt = '';
+  actions.forEach(function(action, i) {
+    var params = action.params;
+    switch (action.type) {
+    case 'bluetooth':
+      txt += inspectJobItem(action, TAB, LF, 3);
       break;
     }
   })
@@ -83,7 +96,7 @@ window.addEventListener("load", function() {
     txt += formatTimings(job.timing);
     // action
     txt += tabs(2) + MSG.tab_action + ':' + LF;
-    txt += LF;
+    txt += formatActions(job.action);
   });
 
   txt += LF;

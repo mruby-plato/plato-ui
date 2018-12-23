@@ -7,6 +7,7 @@ if (LANG == LANG_EN) {
   MSG.browse        = 'Browse...';
   MSG.save_setting  = 'Save settings';
   MSG.register      = 'Register';
+  MSG.none          = 'none';
 
   // plato2.html
   MSG.new_app       = 'Create application';
@@ -170,31 +171,16 @@ if (LANG == LANG_EN) {
     }
   }
 
-  // Inspect digital_in setting
-  function inspectDigitalIn(item, tab=SP, lf=BR, ind=0) {
-    return tabs(ind, tab) + 'Digital in' + lf
-      + tabs(ind + 1, tab) + 'Digital PIN: ' + item.params.pin + lf;
-  }
+  // // Inspect digital_in setting
+  // function inspectDigitalIn(item, tab=SP, lf=BR, ind=0) {
+  //   return tabs(ind, tab) + 'Digital in' + lf
+  //     + tabs(ind + 1, tab) + 'Digital PIN: ' + item.params.pin + lf;
+  // }
 
-  // Inspect analog_in setting
-  function inspectAnalogIn(item, tab=SP, lf=BR, ind=0) {
-    return tabs(ind, tab) + 'Analog in' + lf
-      + tabs(ind + 1, tab) + 'Analog PIN: ' + item.params.pin + lf;
-  }
-
-  // // Inspect interval setting
-  // function inspectInterval(item, tab=SP, lf=BR, ind=0) {
-  //   var str = tabs(ind, tab) + 'Interval settings' + lf
-  //     + tabs(ind + 1, tab) + 'Period: '
-  //     + item.params.interval_time
-  //     + item.params.interval_time_unit + lf;
-  //   if (item.params.interval_start) {
-  //     str += tabs(ind + 1, tab) + 'Start time: ' + item.params.interval_start + lf;
-  //   }
-  //   if (item.params.interval_end) {
-  //     str += tabs(ind + 1, tab) + 'End time: ' + item.params.interval_end + lf;
-  //   }
-  //   return str;
+  // // Inspect analog_in setting
+  // function inspectAnalogIn(item, tab=SP, lf=BR, ind=0) {
+  //   return tabs(ind, tab) + 'Analog in' + lf
+  //     + tabs(ind + 1, tab) + 'Analog PIN: ' + item.params.pin + lf;
   // }
 
   // Inspect trigger setting
@@ -204,7 +190,7 @@ if (LANG == LANG_EN) {
     str += tabs(ind + 1, tab) + MSG.set_tri_cond + lf;
     item.params.triggers.forEach(function(trig, i) {
       str += tabs(ind + 2, tab);
-      if (i > 0) str += MSG[trig.and_or] + ' ';
+      if (i > 0) str += andOr[trig.and_or] + ' ';
       str += trigParameter[trig.param] + ' ';
       str += trigCondition[trig.cond] + ' ' + trig.value + trigParamUnit[trig.param] + lf;
     })
@@ -216,20 +202,20 @@ if (LANG == LANG_EN) {
     return str;
   }
 
-  // Inspect Bluetooth setting
-  function inspectBluetooth(item) {
-    var cnt = 0;
-    var str = 'Bluetooth settings' + BR
-      + SP + SP + 'Send data:' + BR;
-    for (key in item.params) {
-      if (item.params[key]) {
-        str += SP + SP + SP + SP + trigParameter[key] + BR;
-        cnt++;
-      }
-    }
-    if (cnt == 0) {
-      str += SP + SP + SP + SP + 'none';
-    }
-    return str;
-  }
+  // // Inspect Bluetooth setting
+  // function inspectBluetooth(item) {
+  //   var cnt = 0;
+  //   var str = 'Bluetooth settings' + BR
+  //     + SP + SP + 'Send data:' + BR;
+  //   for (key in item.params) {
+  //     if (item.params[key]) {
+  //       str += SP + SP + SP + SP + trigParameter[key] + BR;
+  //       cnt++;
+  //     }
+  //   }
+  //   if (cnt == 0) {
+  //     str += SP + SP + SP + SP + 'none';
+  //   }
+  //   return str;
+  // }
 }
