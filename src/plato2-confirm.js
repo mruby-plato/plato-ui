@@ -70,6 +70,31 @@ function formatActions(actions) {
   return txt;
 }
 
+// format network setting
+function formatNetworkSettings(setting) {
+  txt = '';
+  txt += MSG.conf_app_bridge + LF;
+  txt += tabs(1) + MSG.bt_setting + LF;
+  txt += tabs(2) + MSG.bt_id + ' ' + setting.bt_setting.grpid + LF;
+  txt += tabs(2) + MSG.bt_dev_id + ' ' + digits(setting.bt_setting.devid, 6);
+  if (setting.bt_setting.devcnt > 0) {
+    txt += ' .. ' + getEndDevId(setting.bt_setting.devid, setting.bt_setting.devcnt);
+  }
+  txt += LF;
+  txt += tabs(2) + MSG.bt_dev_cnt + ' ' + setting.bt_setting.devcnt + LF;
+  txt += LF;
+  txt += tabs(1) + MSG.lora_setting + LF;
+  if (setting.lora_setting.custom) {
+    txt += tabs(2) + "DevEUI: " + setting.lora_setting.deveui + LF;
+    txt += tabs(2) + "AppEUI: " + setting.lora_setting.appeui + LF;
+    txt += tabs(2) + "AppKey: " + setting.lora_setting.appkey + LF;
+  }
+  else {
+    txt += tabs(2) + MSG.default;
+  }
+  return txt;
+}
+
 // onload event handler
 window.addEventListener("load", function() {
   /* Get joblist from sessionStorage */
@@ -100,16 +125,8 @@ window.addEventListener("load", function() {
   });
 
   txt += LF;
-  txt += MSG.conf_app_bridge + LF;
-  txt += tabs(1) + MSG.bt_setting + LF;
-  txt += tabs(2) + MSG.bt_id + LF;
-  txt += tabs(2) + MSG.bt_dev_cnt + LF;
-  txt += tabs(2) + MSG.bt_dev_id + LF;
-  txt += LF;
-  txt += tabs(1) + MSG.lora_setting + LF;
-  txt += tabs(2) + "DevEUI: " + LF;
-  txt += tabs(2) + "AppEUI: " + LF;
-  txt += tabs(2) + "AppKey: " + LF;
+  // Build up network settings
+  txt += formatNetworkSettings(project.setting);
 
   conf.innerText = txt;
 

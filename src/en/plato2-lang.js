@@ -34,6 +34,7 @@ if (LANG == LANG_EN) {
   MSG.user_eui      = 'Set DevEUI, AppEUI and AppKey';
   MSG.save_confirm  = 'Save the group setting.';
   // MSG.overwrite_confirm = '`Overwrite the group setting "${setting.name}."`';
+  MSG.default       = 'Default';
 
   // plato2-joblist.html
   MSG.list_title    = 'Plato2 - List of IoT jobs';

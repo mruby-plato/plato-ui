@@ -28,9 +28,7 @@ function showDeviceID() {
 
   if (sid.value.length > 0) {
     document.getElementById('start_deviceid').value = sid.value.toUpperCase();
-    var hex = (parseInt(sid.value, 16) + Number(num.value) - 1).toString(16).toUpperCase();
-    if (hex.length > 6) hex = hex.slice(-6);
-    eid.value = hex;
+    eid.value = getEndDevId(sid.value, Number(num.value));
   }
   else {
     eid.value = '';

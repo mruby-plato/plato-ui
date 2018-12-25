@@ -34,6 +34,7 @@ if (LANG == LANG_JA) {
   MSG.user_eui      = 'DevEUI / AppEUI / AppKey を設定する';
   MSG.save_confirm  = 'グループ設定を保存します。';
   // MSG.overwrite_confirm = '`グループ設定 ${setting.name} を上書きします。`';
+  MSG.default       = 'デフォルト';
 
   // plato2-joblist.html
   MSG.list_title    = 'Plato2 - IoTジョブ一覧';

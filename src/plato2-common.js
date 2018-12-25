@@ -479,6 +479,22 @@ function inputUUID(elem, temp) {
   prev.value = elem.value = val.toUpperCase();
 }
 
+// get N digits string
+//  val:  value
+//  cnt:  digits
+function digits(val, cnt) {
+  dig = '';
+  for (i=0; i<cnt-1; i++) dig += '0';
+  return (dig + val).slice(-cnt);
+}
+
+// get end of device id (6 digits in hexadicimal)
+//  sid: start of device ID (Hex string)
+//  cnt: number of device IDs (Dec string)
+function getEndDevId(sid, cnt) {
+  return digits((parseInt(sid, 16) + parseInt(cnt, 10) - 1).toString(16).toUpperCase(), 6);
+}
+
 // tab
 function tabs(n, tab=TAB) {
   txt = '';
