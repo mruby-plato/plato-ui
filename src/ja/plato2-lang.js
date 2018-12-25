@@ -131,6 +131,7 @@ if (LANG == LANG_JA) {
   MSG.confirm_create  = 'アプリ生成';
   MSG.conf_app_device = '端末アプリケーション';
   MSG.conf_app_bridge = 'Bluetooth-LoRaWANブリッジアプリケーション';
+  MSG.conf_done       = 'アプリケーションを生成しました。';
 
   // trigger parameters
   trigParameter['temperature']  = '温度';

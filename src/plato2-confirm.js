@@ -17,14 +17,6 @@ MSGS = [
 
 // generate application JSON
 function makeApplication() {
-  // var output = new Blob([sessionStorage.project], {type: "text/plain"});
-  // project = getProject();
-  // var a = document.createElement('a');
-  // a.href = URL.createObjectURL(output);
-  // a.download = project.name.trim().replace(/[- ]/g, '_') + '.json';
-  // a.target = '_blank';
-  // a.href = URL.createObjectURL(output);
-  // a.click();
   var project = getProject();
   var appRoot = getAppPath();
   mkdir(appRoot);
@@ -33,7 +25,8 @@ function makeApplication() {
   var cmd = 'ruby ' + getToolPath() + '/prjmaker.rb ' + appRoot;
   launchApplication(cmd);
 
-  alert('Application generated.');
+  alert(MSG.conf_done);
+  app.quit();
 }
 
 // format sensor information
