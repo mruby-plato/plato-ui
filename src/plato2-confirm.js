@@ -81,7 +81,7 @@ function formatNetworkSettings(setting) {
   txt += tabs(1) + MSG.bt_setting + LF;
   txt += tabs(2) + MSG.bt_id + ' ' + setting.bt_setting.grpid + LF;
   txt += tabs(2) + MSG.bt_dev_id + ' ' + digits(setting.bt_setting.devid, 6);
-  if (setting.bt_setting.devcnt > 0) {
+  if (setting.bt_setting.devcnt > 1) {
     txt += ' .. ' + getEndDevId(setting.bt_setting.devid, setting.bt_setting.devcnt);
   }
   txt += LF;
