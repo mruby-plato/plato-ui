@@ -10,7 +10,13 @@
 const app = require('electron').remote.app;
 const mainWindow = require('electron').remote;
 const prompt = require('electron-prompt');
+const os = require('os');
 const fs = require('fs');
+
+// platforms
+const OS_WINDOWS  = 'Windows';
+const OS_MAC      = 'Darwin';
+const OS_LINUX    = 'Linux';
 
 // languages
 const MSG = {};
@@ -100,10 +106,10 @@ var project = {
 var jobList = [];
 var targetJob = {name:"", sensor:[], timing:[], action:[]};
 
-// paths
-var platoRoot = app.getPath('home') + '/plato2';
-// var uiPath = platoRoot + '/ui';
-var settingPath = platoRoot + '/settings';
+// // paths
+// var platoRoot = app.getPath('home') + '/plato2';
+// // var uiPath = platoRoot + '/ui';
+// var settingPath = platoRoot + '/settings';
 
 // // setting information
 // var setting = {
@@ -147,6 +153,27 @@ var settingPath = platoRoot + '/settings';
 // global functions
 //
 
+
+//------------------------------
+// Platform
+//------------------------------
+
+// get OS type
+function getOS() {
+  var osTypeName = os.type().toString();
+  var os_type = 'Unknown';
+  [OS_WINDOWS, OS_MAC, OS_LINUX].forEach(function(ele, idx, target) {
+    if (osTypeName.match(ele)) os_type = ele;
+  });
+  return os_type;
+}
+
+// get install path
+function getInstPath() {
+  // TODO: refer ~/.plato/plato2.cfg
+  var home = (getOS() === OS_WINDOWS) ? 'c:/' : app.getPath('home');
+  return home + '/plato2';
+}
 
 //------------------------------
 // Drawing
@@ -629,3 +656,7 @@ if (!sessionStorage.lang) {
   sessionStorage.lang = 'ja';
 }
 LANG = sessionStorage.lang == 'ja' ? LANG_JA : LANG_EN;
+
+// paths
+const platoRoot = getInstPath();
+const settingPath = platoRoot + '/settings';
