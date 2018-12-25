@@ -32,7 +32,7 @@ if (LANG == LANG_JA) {
   MSG.bt_dev_cnt    = '端末数:';
   MSG.lora_setting  = 'LoRaWAN設定';
   MSG.user_eui      = 'DevEUI / AppEUI / AppKey を設定する';
-  MSG.save_confirm  = 'グループ設定を保存します。';
+  MSG.save_confirm  = 'グループ設定を登録します。';
   // MSG.overwrite_confirm = '`グループ設定 ${setting.name} を上書きします。`';
   MSG.default       = 'デフォルト';
 
@@ -169,7 +169,7 @@ if (LANG == LANG_JA) {
   function getMessage(id, param) {
     switch (id) {
     case 'open_app_file': return `'${param}' を開く`;
-    case 'overwrite_confirm': return `グループ設定 "${param}" を上書きします。`;
+    case 'overwrite_confirm': return `グループ設定 "${param}" を更新します。`;
     }
   }
 

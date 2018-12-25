@@ -8,7 +8,7 @@ MSGS = [
   'lora_setting',
   'user_eui',
   'cancel',
-  'save_setting',
+  // 'save_setting',
 ]
 
 // enable LoRaWAN settings (DevEUI/AppEUI/AppKey)
@@ -56,30 +56,44 @@ function getSettingFromUI() {
   return setting;
 }
 
-// save setting
-function saveSetting() {
-  // update setting from UI
-  var setting = getSettingFromUI();
+// // save setting
+// function saveSetting() {
+//   // update setting from UI
+//   var setting = getSettingFromUI();
 
-  // confirm save
-  var setting_name = getSettingPath() + '/' + setting.name + '.json';
-  if (isFileExist(setting_name)) {
-    if (!window.confirm(getMessage('overwrite_confirm', setting.name))) return;
-  }
-  else {
-    if (!window.confirm(MSG.save_confirm)) return;
-  }
-  // save group setting
-  saveFile(setting_name, JSON.stringify(setting));
-}
+//   // confirm save
+//   var setting_name = getSettingPath() + '/' + setting.name + '.json';
+//   if (isFileExist(setting_name)) {
+//     if (!window.confirm(getMessage('overwrite_confirm', setting.name))) return;
+//   }
+//   else {
+//     if (!window.confirm(MSG.save_confirm)) return;
+//   }
+//   // save group setting
+//   saveFile(setting_name, JSON.stringify(setting));
+// }
 
 // update job
 function updateSetting() {
   // update setting from UI
   var setting = getSettingFromUI();
 
-  // Update setting
-  setSetting(setting);
+  // check update
+  if (JSON.stringify(setting) !== JSON.stringify(getSetting())) {
+    var setting_name = getSettingPath() + '/' + setting.name + '.json';
+    if (isFileExist(setting_name)) {
+      if (!window.confirm(getMessage('overwrite_confirm', setting.name))) return;
+    }
+    else {
+      if (!window.confirm(MSG.save_confirm)) return;
+    }
+
+    // save group setting
+    saveFile(setting_name, JSON.stringify(setting));
+
+    // Update setting
+    setSetting(setting);
+  }
 
   // return to main page
   location.replace(mainPage);

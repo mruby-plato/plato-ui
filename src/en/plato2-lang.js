@@ -32,7 +32,7 @@ if (LANG == LANG_EN) {
   MSG.bt_dev_cnt    = 'Number of devices:';
   MSG.lora_setting  = 'LoRaWAN settings';
   MSG.user_eui      = 'Set DevEUI, AppEUI and AppKey';
-  MSG.save_confirm  = 'Save the group setting.';
+  MSG.save_confirm  = 'Register the group setting.';
   // MSG.overwrite_confirm = '`Overwrite the group setting "${setting.name}."`';
   MSG.default       = 'Default';
 
@@ -169,7 +169,7 @@ if (LANG == LANG_EN) {
   function getMessage(id, param) {
     switch (id) {
     case 'open_app_file': return `open '${param}'`;
-    case 'overwrite_confirm': return `Overwrite the group setting "${param}."`;
+    case 'overwrite_confirm': return `Update the group setting "${param}."`;
     }
   }
 
