@@ -33,8 +33,19 @@ function openSettingPage(index) {
 
 // on Group setting change
 function onGroupChange() {
-  if (document.getElementById('grp_list').selectedIndex == 0) {
+  var sel = document.getElementById('grp_list');
+  switch (sel.selectedIndex) {
+  case 0:   /* New setting */
     openSettingPage(0);
+    break;
+  case 1:   /* Clear setting */
+    initSetting();
+    break;
+  default:  /* Load setting */
+    var setting = sel.children[sel.selectedIndex].text;
+    var setting_name = getSettingPath() + '/' + setting + '.json';
+    loadSettingFile(setting_name);
+    break;
   }
 }
 
