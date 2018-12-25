@@ -209,6 +209,11 @@ const flgDefaultIcon  = (flgDeleteIcon | flgSettingIcon | flgHint);
 // IoT Job utilities
 //------------------------------
 
+// Inspect sensor
+function inspectSensor(sensor, tab=SP, lf=BR, ind=0) {
+  return tabs(ind, tab) + sensor + lf;
+}
+
 // Inspect digital_in setting
 function inspectDigitalIn(item, tab=SP, lf=BR, ind=0) {
   return tabs(ind, tab) + MSG.sen_din + lf
@@ -258,13 +263,21 @@ function inspectJobItem(item, tab=SP, lf=BR, ind=0) {
   var str = '';
   switch (item.type) {
     // Sensors
-    case 'digital_in':  str = inspectDigitalIn(item, tab, lf, ind); break;
-    case 'analog_in':   str = inspectAnalogIn(item, tab, lf, ind);  break;
+    case 'digital_in':    str = inspectDigitalIn(item, tab, lf, ind); break;
+    case 'analog_in':     str = inspectAnalogIn(item, tab, lf, ind);  break;
+    case 'temperature':   str = inspectSensor(MSG.sen_temp, tab, lf, ind);  break;
+    case 'humidity':      str = inspectSensor(MSG.sen_humi, tab, lf, ind);  break;
+    case 'air_pressure':  str = inspectSensor(MSG.sen_pres, tab, lf, ind);  break;
+    // case 'vibration':     str = inspectSensor(MSG.sen_vibr, tab, lf, ind);  break;
+    case 'angle':         str = inspectSensor(MSG.sen_angl, tab, lf, ind);  break;
+    case 'distance':      str = inspectSensor(MSG.sen_loca, tab, lf, ind);  break;
+    case 'velocity':      str = inspectSensor(MSG.sen_velo, tab, lf, ind);  break;
+    case 'battery':       str = inspectSensor(MSG.sen_batt, tab, lf, ind);  break;
     // Timings
-    case 'interval':    str = inspectInterval(item, tab, lf, ind);  break;
-    case 'trigger':     str = inspectTrigger(item, tab, lf, ind);   break;
+    case 'interval':      str = inspectInterval(item, tab, lf, ind);  break;
+    case 'trigger':       str = inspectTrigger(item, tab, lf, ind);   break;
     // Actions
-    case 'bluetooth':   str = inspectBluetooth(item, tab, lf, ind); break;
+    case 'bluetooth':     str = inspectBluetooth(item, tab, lf, ind); break;
   }
   return str;
 }
