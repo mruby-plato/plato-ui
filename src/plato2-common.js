@@ -285,6 +285,29 @@ function inspectBluetooth(item, tab, lf, ind) {
   return str;
 }
 
+function getJobByID(jobid) {
+  var job = {name:''};
+  jobs = getProject().jobList;
+  jobs.forEach(function(_job, i) {
+    if (_job.id == jobid) job = _job;
+  })
+  return job;
+}
+
+// Inspect On/Off setting
+function inspectOnOff(item, tab=SP, lf=BR, ind=0) {
+  var str = tabs(ind, tab) + MSG.act_swi + lf;
+  str += tabs(ind + 1, tab) + MSG.set_job_job + ' ';
+  if (getJobByID(item.params.jobid).name === '') {
+    str += MSG.set_job_notsel + lf;
+  }
+  else {
+    str += getJobByID(item.params.jobid).name + lf;
+    str += tabs(ind + 1, tab) + MSG.set_job_ctrl + ' ' + MSG[(item.params.onoff == 0) ? 'on' : 'off'] + lf;
+  }
+  return str;
+}
+
 // Inspect job items
 function inspectJobItem(item, tab=SP, lf=BR, ind=0) {
   var str = '';
@@ -305,6 +328,7 @@ function inspectJobItem(item, tab=SP, lf=BR, ind=0) {
     case 'trigger':       str = inspectTrigger(item, tab, lf, ind);   break;
     // Actions
     case 'bluetooth':     str = inspectBluetooth(item, tab, lf, ind); break;
+    case 'onoff':         str = inspectOnOff(item, tab, lf, ind); break;
   }
   return str;
 }

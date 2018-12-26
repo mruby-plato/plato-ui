@@ -8,6 +8,8 @@ if (LANG == LANG_EN) {
   MSG.save_setting  = 'Save settings';
   MSG.register      = 'Register';
   MSG.none          = 'none';
+  MSG.on            = 'ON';
+  MSG.off           = 'OFF';
 
   // plato2.html
   MSG.new_app       = 'Create application';
@@ -108,9 +110,12 @@ if (LANG == LANG_EN) {
   MSG.set_bt_title  = 'Bluetooth settings';
   MSG.set_bt_data   = 'Send data:';
 
-  MSG.set_job_title = 'IoT job control settings';
-  MSG.set_job_start = 'Start';
-  MSG.set_job_stop  = 'Stop';
+  MSG.set_job_title   = 'IoT job control settings';
+  MSG.set_job_start   = 'Start';
+  MSG.set_job_stop    = 'Stop';
+  MSG.set_job_job     = 'Job:';
+  MSG.set_job_ctrl    = 'On/Off:';
+  MSG.set_job_notsel  = 'Not selected';
 
   MSG.set_gpio_title  = 'GPIO settings';
   MSG.set_gpio_pin    = 'Port:';

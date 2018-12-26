@@ -396,7 +396,7 @@ function updateOnOffParams(idx) {
   targetJob.action[idx].params = params;
 
   var elem = document.getElementById('_' + 'onoff' + idx);
-  // elem.innerHTML = inspectOnOff(targetJob.action[idx]);
+  elem.innerHTML = inspectOnOff(targetJob.action[idx]);
 }
 
 function changeTriggerParameter(val) {
