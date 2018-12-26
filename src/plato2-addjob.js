@@ -489,7 +489,7 @@ window.addEventListener("load", function() {
   /* Get project information from sessionStorage */
   project = getProject();
   jobList = project.jobList;
-  targetJob = {name:"", sensor:[], timing:[], action:[]};
+  targetJob = {id:0, name:"", sensor:[], timing:[], action:[]};
 
   /* initialize words */
   document.title = MSG.addjob_title;
@@ -520,7 +520,9 @@ window.addEventListener("load", function() {
     targetJob = JSON.parse(JSON.stringify(jobList[targetIndex])); // deep copy
   }
   else {
-    targetJob.name = 'Job #' + (Number(getProject().maxJobCount) + 1);
+    // targetJob.name = 'Job #' + (Number(getProject().maxJobCount) + 1);
+    targetJob.id = Number(getProject().maxJobCount) + 1;
+    targetJob.name = 'Job #' + targetJob.id;
   }
   document.getElementById('job_name').innerText = targetJob.name;
 

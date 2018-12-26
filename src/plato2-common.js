@@ -104,7 +104,7 @@ var project = {
   setting: {}
 };
 var jobList = [];
-var targetJob = {name:"", sensor:[], timing:[], action:[]};
+var targetJob = {id:0, name:"", sensor:[], timing:[], action:[]};
 
 // // paths
 // var platoRoot = app.getPath('home') + '/plato2';
