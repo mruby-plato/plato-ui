@@ -124,6 +124,7 @@ function handleSetIconClick(e) {
   case 'trigger':   initTriggerParams(items[2]);    break;
 
   case 'bluetooth': initBluetoothParams(items[2]);  break;
+  case 'onoff':     initOnOffParams(items[2]);      break;
   default: break;
   }
 }
@@ -140,6 +141,7 @@ function onSettingOK() {
   case 'trigger':   updateTriggerParams(idx);   break;
 
   case 'bluetooth': updateBluetoothParams(idx); break;
+  case 'onoff':     updateOnOffParams(idx);     break;
   default:
     break;
   }
@@ -350,6 +352,51 @@ function updateBluetoothParams(idx) {
 
   var elem = document.getElementById('_' + 'bluetooth' + idx);
   elem.innerHTML = inspectBluetooth(targetJob.action[idx]);
+}
+
+//
+// init/update on/off parameters
+//
+function initOnOffParams(idx) {
+  var params = {onoff:0};
+  if (targetJob.action[idx].params) {
+    params = targetJob.action[idx].params;
+  }
+  // initialize job list
+  var sel = document.getElementById('set_onoff_job_list');
+  // clear job list
+  while (sel.children.length > 0) {
+    sel.removeChild(sel.lastChild);
+  }
+  // add jobs
+  var jobs = getProject().jobList;
+  jobs.forEach(function(job, i) {
+    var op = document.createElement("option");
+    op.value  = job.id;
+    op.text   = job.name;
+    sel.appendChild(op);
+    // restore selected job (if selected)
+    if (job.id == params.jobid) {
+      sel.selectedIndex = i;
+    }
+  });
+  // initialize job control
+  sel = document.getElementById('set_onoff_job_ctrl');
+  sel.selectedIndex = params.onoff;
+}
+function updateOnOffParams(idx) {
+  var params = {};
+  // get selected job
+  var sel = document.getElementById('set_onoff_job_list');
+  params.jobid = sel.children[sel.selectedIndex].value;
+  // get selected operation (on/off)
+  sel = document.getElementById('set_onoff_job_ctrl');
+  params.onoff = sel.selectedIndex;
+  // update action parameter
+  targetJob.action[idx].params = params;
+
+  var elem = document.getElementById('_' + 'onoff' + idx);
+  // elem.innerHTML = inspectOnOff(targetJob.action[idx]);
 }
 
 function changeTriggerParameter(val) {
