@@ -66,6 +66,7 @@ const defaultParams = {
   'interval': { 'interval_time': 1, 'interval_time_unit': 'hour' },
   // actions
   'bluetooth': {},
+  'onoff': {},
 };
 
 // characters
@@ -297,7 +298,7 @@ function getJobByID(jobid) {
 // Inspect On/Off setting
 function inspectOnOff(item, tab=SP, lf=BR, ind=0) {
   var str = tabs(ind, tab) + MSG.act_swi + lf;
-  str += tabs(ind + 1, tab) + MSG.set_job_job + ' ';
+  str += tabs(ind + 1, tab) + MSG.set_job_name + ' ';
   if (getJobByID(item.params.jobid).name === '') {
     str += MSG.set_job_notsel + lf;
   }

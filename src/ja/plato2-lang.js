@@ -111,9 +111,9 @@ if (LANG == LANG_JA) {
   MSG.set_bt_data   = '送信データ:';
 
   MSG.set_job_title   = 'IoTジョブ制御設定';
-  MSG.set_job_start   = '開始する';
-  MSG.set_job_stop    = '停止する';
-  MSG.set_job_job     = 'ジョブ:';
+  MSG.set_job_on      = 'ON';
+  MSG.set_job_off     = 'OFF';
+  MSG.set_job_name    = 'ジョブ:';
   MSG.set_job_ctrl    = 'On/Off:';
   MSG.set_job_notsel  = '未選択';
 

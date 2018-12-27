@@ -340,18 +340,23 @@
 
       <div class="settings" id="set-onoff" style="display: none;">
         <h2 id="set_job_title">IoTジョブ制御設定</h2>
-        <table width="60%">
+        <table width="30%">
           <tr>
-            <td align="center">
-              <select id="set_onoff_job_ctrl">
-                <option id="set_job_start" value="1" selected>開始する</option>
-                <option id="set_job_stop" value="0">停止する</option>
-              </select>
-              <!-- the -->
+            <td id="set_job_name">ジョブ:</td>
+            <td>
               <select id="set_onoff_job_list">
                 <option value="1" selected>IoT job #1</option>
                 <option value="2">IoT job #2</option>
                 <option value="3">IoT job #3</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td id="set_job_ctrl">ON/OFF:</td>
+            <td>
+              <select id="set_onoff_job_ctrl">
+                <option id="set_job_on" value="1" selected>ON</option>
+                <option id="set_job_off" value="0">OFF</option>
               </select>
             </td>
           </tr>

@@ -69,8 +69,10 @@ MSGS = [
   'set_bt_title',     // Bluetooth settings
     'set_bt_data',
   'set_job_title',    // IoT job settings
-    'set_job_start',
-    'set_job_stop',
+    'set_job_name',
+    'set_job_ctrl',
+    'set_job_on',
+    'set_job_off',
   'set_gpio_title',   // GPIO settings
     'set_gpio_pin',
     'set_gpio_mode',
