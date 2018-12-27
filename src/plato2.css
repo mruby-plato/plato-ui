@@ -129,6 +129,7 @@ td .icon img:hover { opacity: 1; }
 
 /* Hint of items */
 .item .hint {
+  font-size:12px;
   position: absolute;
   top: 48px;
   left: 16px;
@@ -137,7 +138,7 @@ td .icon img:hover { opacity: 1; }
   text-align: left;
   display: flex;
   flex-direction: row;
-  width: 150px;
+  width: 170px;
   color: #eee;
 }
 
