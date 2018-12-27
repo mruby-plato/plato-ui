@@ -64,6 +64,10 @@ const defaultParams = {
   'analog_in': { 'pin': 1 },
   // timings
   'interval': { 'interval_time': 1, 'interval_time_unit': 'hour' },
+  'trigger': { trig_period: 30, trig_peri_unit: 'minute',
+    triggers: [], trig_off: true,
+    trig_delay: false, trig_delay_time: 30, trig_delay_unit: 'minute',
+    while_trig_on: false, while_trig_time: 1, while_trig_unit: 'hour'},
   // actions
   'bluetooth': {},
   'onoff': {},

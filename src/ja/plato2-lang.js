@@ -91,6 +91,7 @@ if (LANG == LANG_JA) {
   MSG.set_par_end   = '終了時刻:';
 
   MSG.set_tri_title   = 'トリガ指定';
+  MSG.set_tri_none    = '未設定';
   MSG.set_tri_period  = 'トリガ判定周期:';
   MSG.set_tri_per_h   = '時間毎';
   MSG.set_tri_per_m   = '分毎';
@@ -198,8 +199,12 @@ if (LANG == LANG_JA) {
 
   // Inspect trigger setting
   function inspectTrigger(item, tab=SP, lf=BR, ind=0) {
-    var str = tabs(ind, tab) + MSG.set_tri_title + lf
-      + tabs(ind + 1, tab) + '判定周期: ' + item.params.trig_period + ' ' + item.params.trig_peri_unit + lf;
+    var str = tabs(ind, tab) + MSG.set_tri_title + lf;
+    if (item.params.triggers.length == 0) {
+      str += tabs(ind + 1, tab) + MSG.set_tri_none + lf;
+      return str;
+    }
+    str += tabs(ind + 1, tab) + '判定周期: ' + item.params.trig_period + ' ' + item.params.trig_peri_unit + lf;
     str += tabs(ind + 1, tab) + MSG.set_tri_cond + lf;
     item.params.triggers.forEach(function(trig, i) {
       str += tabs(ind + 2, tab);

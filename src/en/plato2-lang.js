@@ -91,6 +91,7 @@ if (LANG == LANG_EN) {
   MSG.set_par_end   = 'End time:';
 
   MSG.set_tri_title   = 'Trigger settings';
+  MSG.set_tri_none    = 'No trigger';
   MSG.set_tri_period  = 'Trigger determination period:';
   MSG.set_tri_per_h   = 'hours';
   MSG.set_tri_per_m   = 'minutes';
@@ -198,8 +199,12 @@ if (LANG == LANG_EN) {
 
   // Inspect trigger setting
   function inspectTrigger(item, tab=SP, lf=BR, ind=0) {
-    var str = tabs(ind, tab) + MSG.set_tri_title + lf
-      + tabs(ind + 1, tab) + 'Period: ' + item.params.trig_period + ' ' + item.params.trig_peri_unit + lf;
+    var str = tabs(ind, tab) + MSG.set_tri_title + lf;
+    if (item.params.triggers.length == 0) {
+      str += tabs(ind + 1, tab) + MSG.set_tri_none + lf;
+      return str;
+    }
+    str += tabs(ind + 1, tab) + 'Period: ' + item.params.trig_period + ' ' + item.params.trig_peri_unit + lf;
     str += tabs(ind + 1, tab) + MSG.set_tri_cond + lf;
     item.params.triggers.forEach(function(trig, i) {
       str += tabs(ind + 2, tab);
