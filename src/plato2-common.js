@@ -73,7 +73,7 @@ const defaultParams = {
   // timings
   'interval': { 'interval_time': 1, 'interval_time_unit': 'hour' },
   'ontime': {},
-  'part_time': {},
+  'part_time': { 'part_start': '9:00', 'part_end': '18:00' },
   'trigger': { trig_period: 30, trig_peri_unit: 'minute',
     triggers: [], trig_off: true,
     trig_delay: false, trig_delay_time: 30, trig_delay_unit: 'minute',
@@ -284,6 +284,14 @@ function inspectInterval(item, tab=SP, lf=BR, ind=0) {
   return str;
 }
 
+// Inspect part time setting
+function inspectPartTime(item, tab=SP, lf=BR, ind=0) {
+  var str = tabs(ind, tab) + MSG.set_par_title + lf;
+  str += tabs(ind + 1, tab) + MSG.set_par_start + ' ' + item.params.part_start + lf;
+  str += tabs(ind + 1, tab) + MSG.set_par_end + ' ' + item.params.part_end + lf;
+  return str;
+}
+
 // Inspect Bluetooth setting
 function inspectBluetooth(item, tab, lf, ind) {
   var cnt = 0;
@@ -341,6 +349,7 @@ function inspectJobItem(item, tab=SP, lf=BR, ind=0) {
     case 'battery':       str = inspectSensor(MSG.sen_batt, tab, lf, ind);  break;
     // Timings
     case 'interval':      str = inspectInterval(item, tab, lf, ind);  break;
+    case 'part_time':     str = inspectPartTime(item, tab, lf, ind);  break;
     case 'trigger':       str = inspectTrigger(item, tab, lf, ind);   break;
     // Actions
     case 'bluetooth':     str = inspectBluetooth(item, tab, lf, ind); break;

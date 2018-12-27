@@ -140,6 +140,7 @@ function onSettingOK() {
   case 'digital_in':updateDigitalInParams(idx); break;
 
   case 'interval':  updateIntervalParams(idx);  break;
+  case 'part_time': updatePartTimeParams(idx);  break;
   case 'trigger':   updateTriggerParams(idx);   break;
 
   case 'bluetooth': updateBluetoothParams(idx); break;
@@ -228,6 +229,33 @@ function updateIntervalParams(idx) {
 
   var elem = document.getElementById('_' + 'interval' + idx);
   elem.innerHTML = inspectInterval(targetJob.timing[idx]);
+}
+
+//
+// init/update part time parameters
+//
+function initPartTimeParams(idx) {
+  var params = {
+    part_start: '9:00',
+    part_end: '18:00'
+  };
+  if (targetJob.timing[idx].params) {
+    params = targetJob.timing[idx].params;
+  }
+  document.forms.setting.part_time_start.value  = params.part_start;
+  document.forms.setting.part_time_end.value    = params.part_end;
+}
+function updatePartTimeParams(idx) {
+  var part_start  = document.forms.setting.part_time_start.value;
+  var part_end    = document.forms.setting.part_time_end.value;
+  var params = {
+    part_start: part_start,
+    part_end: part_end
+  };
+  targetJob.timing[idx].params = params;
+
+  var elem = document.getElementById('_' + 'part_time' + idx);
+  elem.innerHTML = inspectPartTime(targetJob.timing[idx]);
 }
 
 //
