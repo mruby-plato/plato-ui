@@ -173,8 +173,9 @@ if (LANG == LANG_EN) {
   // get message string
   function getMessage(id, param) {
     switch (id) {
-    case 'open_app_file': return `open '${param}'`;
-    case 'overwrite_confirm': return `Update the group setting "${param}."`;
+    case 'open_app_file':     return `open '${param}'`;
+    case 'overwrite_confirm': return `Update the group setting "${param}".`;
+    case 'del_job_confirm':   return `Confirm delete job "${param}".`;
     }
   }
 

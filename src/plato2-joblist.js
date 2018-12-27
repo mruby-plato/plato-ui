@@ -30,7 +30,7 @@ function editJob(jobid) {
 // delete job icon click handler
 function deleteJob(jobid) {
   var idx = jobid.slice('job'.length);
-  if (window.confirm('"' + jobList[idx].name + '" を削除します。')) {
+  if (window.confirm(getMessage('del_job_confirm', jobList[idx].name))) {
     // delete job
     project.jobList.splice(idx, 1);
     // update project

@@ -173,8 +173,9 @@ if (LANG == LANG_JA) {
   // get message string
   function getMessage(id, param) {
     switch (id) {
-    case 'open_app_file': return `'${param}' を開く`;
+    case 'open_app_file':     return `'${param}' を開く`;
     case 'overwrite_confirm': return `グループ設定 "${param}" を更新します。`;
+    case 'del_job_confirm':   return `"${param}" を削除します。`;
     }
   }
 
