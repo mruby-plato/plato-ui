@@ -259,7 +259,7 @@ function inspectInterval(item, tab=SP, lf=BR, ind=0) {
   var str = tabs(ind, tab) + MSG.set_int_title + lf
     + tabs(ind + 1, tab) + MSG.set_int_period + ' '
     + item.params.interval_time
-    + item.params.interval_time_unit + lf;
+    + MSG[item.params.interval_time_unit] + lf;
   if (item.params.interval_start) {
     str += tabs(ind + 1, tab) + MSG.set_int_start + ' ' + item.params.interval_start + lf;
   }

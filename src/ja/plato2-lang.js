@@ -11,6 +11,11 @@ if (LANG == LANG_JA) {
   MSG.on            = 'ON';
   MSG.off           = 'OFF';
 
+  // units
+  MSG.hour          = '時間';
+  MSG.minute        = '時';
+  MSG.second        = '秒';
+
   // plato2.html
   MSG.new_app       = '新規アプリケーションの作成';
   MSG.open_app      = '既存アプリケーションの読み込み';

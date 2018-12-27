@@ -11,6 +11,11 @@ if (LANG == LANG_EN) {
   MSG.on            = 'ON';
   MSG.off           = 'OFF';
 
+  // units
+  MSG.hour          = 'hours';
+  MSG.minute        = 'minutes';
+  MSG.second        = 'seconds';
+
   // plato2.html
   MSG.new_app       = 'Create application';
   MSG.open_app      = 'Open application';
