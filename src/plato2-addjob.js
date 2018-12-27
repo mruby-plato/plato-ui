@@ -123,6 +123,7 @@ function handleSetIconClick(e) {
   case 'digital_in':initDigitalInParams(items[2]);  break;
 
   case 'interval':  initIntervalParams(items[2]);   break;
+  case 'part_time': initPartTimeParams(items[2]);   break;
   case 'trigger':   initTriggerParams(items[2]);    break;
 
   case 'bluetooth': initBluetoothParams(items[2]);  break;
