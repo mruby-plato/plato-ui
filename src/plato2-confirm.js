@@ -14,6 +14,9 @@ MSGS = [
 // generate application JSON
 function makeApplication() {
   let project = getProject();
+  // confirm generate application
+  if (!window.confirm(MSG.conf_conf_cre)) return;
+  // write plato2/<appdir>/app.json
   let appRoot = getAppPath();
   mkdir(appRoot);
   saveFile(appRoot + '/app.json', sessionStorage.project);

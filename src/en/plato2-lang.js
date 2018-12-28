@@ -142,7 +142,8 @@ if (LANG == LANG_EN) {
   MSG.confirm_create  = 'Create';
   MSG.conf_app_device = 'Application for edge device';
   MSG.conf_app_bridge = 'Application for Bluetooth-LoRaWAN bridge';
-  MSG.conf_done       = 'Application generated.';
+  MSG.conf_conf_cre   = 'Create an application.';
+  MSG.conf_done       = 'Application created.';
 
   // trigger parameters
   trigParameter['temperature']   = 'temperature';
