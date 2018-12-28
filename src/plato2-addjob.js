@@ -103,14 +103,14 @@ var targetTrig = [];      // target trigger list
 
 // Settings icon click event handler
 function handleSetIconClick(e) {
-  var item = this.parentElement.parentElement.attributes['name'].nodeValue;
-  var items = item.split('/');
+  let item = this.parentElement.parentElement.attributes['name'].nodeValue;
+  let items = item.split('/');
 
-  var overlay = document.getElementsByClassName('overlay')[0];
+  let overlay = document.getElementsByClassName('overlay')[0];
   overlay.classList.add('is-open');
 
-  var settings = document.getElementsByClassName('settings');
-  for (var i=0; i<settings.length; i++) {
+  let settings = document.getElementsByClassName('settings');
+  for (let i=0; i<settings.length; i++) {
     settings[i].style.display = (settings[i].id == 'set-' + items[1]) ? 'block' : 'none';
   }
 
@@ -134,8 +134,8 @@ function handleSetIconClick(e) {
 }
 
 function onSettingOK() {
-  var type = settingTarget[1];
-  var idx = settingTarget[2];
+  let type = settingTarget[1];
+  let idx = settingTarget[2];
   switch (type) {
   case 'analog_in': updateAnalogInParams(idx);  break;
   case 'digital_in':updateDigitalInParams(idx); break;
@@ -161,19 +161,19 @@ function onSettingCancel() {
 // init/update digital-in parameters
 //
 function initDigitalInParams(idx) {
-  var params = { pin: 1 };
+  let params = { pin: 1 };
   if (targetJob.sensor[idx].params) {
     params = targetJob.sensor[idx].params;
   }
   document.forms.setting.din_pin.value = params.pin;
 }
 function updateDigitalInParams(idx) {
-  var params = {
+  let params = {
     pin: document.forms.setting.din_pin.value
   };
   targetJob.sensor[idx].params = params;
 
-  var elem = document.getElementById('_' + 'digital_in' + idx);
+  let elem = document.getElementById('_' + 'digital_in' + idx);
   elem.innerHTML = inspectDigitalIn(targetJob.sensor[idx]);
 }
 
@@ -181,19 +181,19 @@ function updateDigitalInParams(idx) {
 // init/update analog-in parameters
 //
 function initAnalogInParams(idx) {
-  var params = { pin: 1 };
+  let params = { pin: 1 };
   if (targetJob.sensor[idx].params) {
     params = targetJob.sensor[idx].params;
   }
   document.forms.setting.ain_pin.value = params.pin;
 }
 function updateAnalogInParams(idx) {
-  var params = {
+  let params = {
     pin: document.forms.setting.ain_pin.value
   };
   targetJob.sensor[idx].params = params;
 
-  var elem = document.getElementById('_' + 'analog_in' + idx);
+  let elem = document.getElementById('_' + 'analog_in' + idx);
   elem.innerHTML = inspectAnalogIn(targetJob.sensor[idx]);
 }
 
@@ -201,7 +201,7 @@ function updateAnalogInParams(idx) {
 // init/update interval parameters
 //
 function initIntervalParams(idx) {
-  var params = {
+  let params = {
     interval_time: 1,
     interval_time_unit: 'hour',
     interval_start: "",
@@ -216,12 +216,12 @@ function initIntervalParams(idx) {
   document.forms.setting.interval_end.value       = params.interval_end;
 }
 function updateIntervalParams(idx) {
-  var time = Number(document.forms.setting.interval_time.value);
-  var unit = document.forms.setting.interval_time_unit.value;
-  var start = document.forms.setting.interval_start.value;
-  var end = document.forms.setting.interval_end.value;
+  let time = Number(document.forms.setting.interval_time.value);
+  let unit = document.forms.setting.interval_time_unit.value;
+  let start = document.forms.setting.interval_start.value;
+  let end = document.forms.setting.interval_end.value;
   // TODO: validate
-  var params = {
+  let params = {
     interval_time: time,
     interval_time_unit: unit,
     interval_start: start,
@@ -229,7 +229,7 @@ function updateIntervalParams(idx) {
   };
   targetJob.timing[idx].params = params;
 
-  var elem = document.getElementById('_' + 'interval' + idx);
+  let elem = document.getElementById('_' + 'interval' + idx);
   elem.innerHTML = inspectInterval(targetJob.timing[idx]);
 }
 
@@ -237,22 +237,22 @@ function updateIntervalParams(idx) {
 // init/update on time parameters
 //
 function initOnTimeParams(idx) {
-  var params = {
+  let params = {
     times: []
   };
   if (targetJob.timing[idx].params) {
     params = targetJob.timing[idx].params;
   }
-  var times = document.getElementsByName('on_time');
+  let times = document.getElementsByName('on_time');
   params.times.forEach(function(time, i) {
     times[i].value = time;
   });
 }
 function updateOnTimeParams(idx) {
-  var params = {
+  let params = {
     times: []
   }
-  var times = document.getElementsByName('on_time');
+  let times = document.getElementsByName('on_time');
   times.forEach(function(time, i) {
     if (time.value !== '') {
       params.times.push(time.value);
@@ -260,7 +260,7 @@ function updateOnTimeParams(idx) {
   });
   targetJob.timing[idx].params = params;
 
-  var elem = document.getElementById('_' + 'ontime' + idx);
+  let elem = document.getElementById('_' + 'ontime' + idx);
   elem.innerHTML = inspectOnTime(targetJob.timing[idx]);
 }
 
@@ -268,7 +268,7 @@ function updateOnTimeParams(idx) {
 // init/update part time parameters
 //
 function initPartTimeParams(idx) {
-  var params = {
+  let params = {
     part_start: '9:00',
     part_end: '18:00'
   };
@@ -279,15 +279,15 @@ function initPartTimeParams(idx) {
   document.forms.setting.part_time_end.value    = params.part_end;
 }
 function updatePartTimeParams(idx) {
-  var part_start  = document.forms.setting.part_time_start.value;
-  var part_end    = document.forms.setting.part_time_end.value;
-  var params = {
+  let part_start  = document.forms.setting.part_time_start.value;
+  let part_end    = document.forms.setting.part_time_end.value;
+  let params = {
     part_start: part_start,
     part_end: part_end
   };
   targetJob.timing[idx].params = params;
 
-  var elem = document.getElementById('_' + 'part_time' + idx);
+  let elem = document.getElementById('_' + 'part_time' + idx);
   elem.innerHTML = inspectPartTime(targetJob.timing[idx]);
 }
 
@@ -295,7 +295,7 @@ function updatePartTimeParams(idx) {
 // init/update trigger parameters
 //
 function initTriggerParams(idx) {
-  var params = {
+  let params = {
     trig_period: 30,
     trig_peri_unit: 'minute',
     triggers: [],
@@ -313,15 +313,15 @@ function initTriggerParams(idx) {
   targetTrig = params.triggers;
 
   // init trigger parameters
-  var item;
-  var sel = document.getElementById('trig_params');
+  let item;
+  let sel = document.getElementById('trig_params');
   while(sel.lastChild) {
     sel.removeChild(sel.lastChild);
   }
   targetJob.sensor.forEach(function (sen, i, ary) {
     item = trigParameter[sen.type];
     if (item) {
-      var op = document.createElement("option");
+      let op = document.createElement("option");
       op.value = sen.type;
       op.text = item;
       sel.appendChild(op);
@@ -341,24 +341,24 @@ function initTriggerParams(idx) {
   document.forms.setting.while_trigger_on.checked = params.while_trig_on;
   document.forms.setting.while_trigger_time.value = params.while_trig_time;
   document.forms.setting.while_trigger_unit.value = params.while_trig_unit;
-  var list = document.getElementById('trig_list');
+  let list = document.getElementById('trig_list');
   while (list.length > 0) list.remove(0);
-  for (var i = 0; i< params.triggers.length; i++) {
+  for (let i = 0; i< params.triggers.length; i++) {
     addTriggerList(params.triggers[i]);
   }
 }
 function updateTriggerParams(idx) {
-  var period = Number(document.forms.setting.trig_period.value);
-  var peri_unit = document.forms.setting.trig_peri_unit.value;
-  var delay = document.forms.setting.trigger_on_status.checked;
-  var delay_time = document.forms.setting.trig_delay_time.value;
-  var delay_unit = document.forms.setting.trig_delay_unit.value;
-  var trig_off = document.forms.setting.trigger_off.checked;
-  var while_on = document.forms.setting.while_trigger_on.checked;
-  var while_on_time = document.forms.setting.while_trigger_time.value;
-  var while_on_unit = document.forms.setting.while_trigger_unit.value;
+  let period = Number(document.forms.setting.trig_period.value);
+  let peri_unit = document.forms.setting.trig_peri_unit.value;
+  let delay = document.forms.setting.trigger_on_status.checked;
+  let delay_time = document.forms.setting.trig_delay_time.value;
+  let delay_unit = document.forms.setting.trig_delay_unit.value;
+  let trig_off = document.forms.setting.trigger_off.checked;
+  let while_on = document.forms.setting.while_trigger_on.checked;
+  let while_on_time = document.forms.setting.while_trigger_time.value;
+  let while_on_unit = document.forms.setting.while_trigger_unit.value;
   // TODO: validate
-  var params = {
+  let params = {
     trig_period: period,
     trig_peri_unit: peri_unit,
     triggers: targetTrig,
@@ -377,19 +377,19 @@ function updateTriggerParams(idx) {
 // init/update bluetooth parameters
 //
 function initBluetoothParams(idx) {
-  var params = {};
+  let params = {};
   if (targetJob.action[idx].params) {
     params = targetJob.action[idx].params;
   }
   // initialize sensor list
-  var list = document.getElementById('set_bt_data_list');
+  let list = document.getElementById('set_bt_data_list');
   // clear sensor list
   while (list.rows.length > 1) list.deleteRow(1);
   // add sensors
   targetJob.sensor.forEach(function(sen, idx, ary) {
-    var rows = list.insertRow(-1);
-    var id = sen.type + '##' + idx;
-    var html = '<tr><td><input type="checkbox" id="' + id + '"';
+    let rows = list.insertRow(-1);
+    let id = sen.type + '##' + idx;
+    let html = '<tr><td><input type="checkbox" id="' + id + '"';
     if (params[sen.type] === undefined) params[sen.type] = true;
     if (params[sen.type]) html += ' checked';
     html += '><label for="' + id + '">';
@@ -404,16 +404,16 @@ function initBluetoothParams(idx) {
   });
 }
 function updateBluetoothParams(idx) {
-  var params = {};
-  var list = document.getElementById('set_bt_data_list');
-  for (var i = 1; i < list.rows.length; i++) {
-    var check = list.rows[i].cells[0].children[0];
-    var type = check.id.split('##')[0];
+  let params = {};
+  let list = document.getElementById('set_bt_data_list');
+  for (let i = 1; i < list.rows.length; i++) {
+    let check = list.rows[i].cells[0].children[0];
+    let type = check.id.split('##')[0];
     params[type] = check.checked;
   }
   targetJob.action[idx].params = params;
 
-  var elem = document.getElementById('_' + 'bluetooth' + idx);
+  let elem = document.getElementById('_' + 'bluetooth' + idx);
   elem.innerHTML = inspectBluetooth(targetJob.action[idx]);
 }
 
@@ -421,20 +421,20 @@ function updateBluetoothParams(idx) {
 // init/update on/off parameters
 //
 function initOnOffParams(idx) {
-  var params = {onoff:0};
+  let params = {onoff:0};
   if (targetJob.action[idx].params) {
     params = targetJob.action[idx].params;
   }
   // initialize job list
-  var sel = document.getElementById('set_onoff_job_list');
+  let sel = document.getElementById('set_onoff_job_list');
   // clear job list
   while (sel.children.length > 0) {
     sel.removeChild(sel.lastChild);
   }
   // add jobs
-  var jobs = getProject().jobList;
+  let jobs = getProject().jobList;
   jobs.forEach(function(job, i) {
-    var op = document.createElement("option");
+    let op = document.createElement("option");
     op.value  = job.id;
     op.text   = job.name;
     sel.appendChild(op);
@@ -448,9 +448,9 @@ function initOnOffParams(idx) {
   sel.selectedIndex = params.onoff;
 }
 function updateOnOffParams(idx) {
-  var params = {};
+  let params = {};
   // get selected job
-  var sel = document.getElementById('set_onoff_job_list');
+  let sel = document.getElementById('set_onoff_job_list');
   params.jobid = sel.children[sel.selectedIndex].value;
   // get selected operation (on/off)
   sel = document.getElementById('set_onoff_job_ctrl');
@@ -458,7 +458,7 @@ function updateOnOffParams(idx) {
   // update action parameter
   targetJob.action[idx].params = params;
 
-  var elem = document.getElementById('_' + 'onoff' + idx);
+  let elem = document.getElementById('_' + 'onoff' + idx);
   elem.innerHTML = inspectOnOff(targetJob.action[idx]);
 }
 
@@ -468,7 +468,7 @@ function changeTriggerParameter(val) {
 
 // add trigger list
 function addTriggerList(trig) {
-  var trig_str = '';
+  let trig_str = '';
 
   // add to trigger list
   if (trig.and_or) {
@@ -494,7 +494,7 @@ function addTriggerList(trig) {
     trig_str += trigCondition[trig.cond];
   }
   // add trigger to list
-  var op = document.createElement("option");
+  let op = document.createElement("option");
   op.text = trig_str;
   document.getElementById('trig_list').appendChild(op);
   // show and/or
@@ -503,10 +503,9 @@ function addTriggerList(trig) {
 
 // add trigger parameter
 function addTrigger() {
-  // var trig_str = '';
-  var trig_obj = {};
+  let trig_obj = {};
   // validate parameters
-  var trig_val = document.getElementById('trig_value').value;
+  let trig_val = document.getElementById('trig_value').value;
   document.getElementById('trig_value').value = ''; // clear trigger value
   if (trig_val == '' || isNaN(trig_val)) return;
 
@@ -526,13 +525,13 @@ function addTrigger() {
 
 // detele trigger parameter
 function deleteTrigger() {
-  var sel = document.getElementById('trig_list');
-  var idx = sel.selectedIndex;
+  let sel = document.getElementById('trig_list');
+  let idx = sel.selectedIndex;
   if (idx >= 0) {
     sel.remove(idx);
     targetTrig.splice(idx, 1);
     if (idx == 0 && sel.length > 0) {
-      var txt = sel.options[0].text;
+      let txt = sel.options[0].text;
       sel.options[0].text = txt.replace(/^(または|かつ|or|and)\s/, '');
       targetTrig[0].and_or = null;
     }
@@ -544,15 +543,15 @@ function deleteTrigger() {
 }
 
 function hideOverlay() {
-  var overlay = document.getElementsByClassName('overlay');
+  let overlay = document.getElementsByClassName('overlay');
   overlay[0].classList.remove('is-open');
 }
 
 // Delete icon click event handler
 function handleDelIconClick(e) {
-  var item = this.parentElement.parentElement.attributes['name'].nodeValue;
-  var items = item.split('/');
-  var targs = document.getElementsByName(items[0] + 's'); /* [jobtype]/xxx/n */
+  let item = this.parentElement.parentElement.attributes['name'].nodeValue;
+  let items = item.split('/');
+  let targs = document.getElementsByName(items[0] + 's'); /* [jobtype]/xxx/n */
 
   // TODO: modify bluetooth parameters
   if (items[0] === 'sensor') {
@@ -564,7 +563,7 @@ function handleDelIconClick(e) {
   targs[0].innerHTML = htmlJobItems(targetJob, items[0]);
 
   // add del_icon handler (refresh)
-  var icons = document.getElementsByName("del_icon");
+  let icons = document.getElementsByName("del_icon");
   [].forEach.call(icons, function(icon) {
     icon.addEventListener('click', handleDelIconClick, false);
   })
@@ -584,7 +583,7 @@ function updateJob() {
 
   // Count up job number
   if (targetIndex >= jobList.length) {
-    var prj = getProject();
+    let prj = getProject();
     prj.maxJobCount = Number(prj.maxJobCount) + 1;
     setProject(prj);
   }
@@ -604,12 +603,12 @@ window.addEventListener("load", function() {
   /* initialize words */
   document.title = MSG.addjob_title;
   MSGS.forEach(function(id, _idx, _ary) {
-    var item = document.getElementById(id);
+    let item = document.getElementById(id);
     if (item) {
       item.innerText = MSG[id];
     }
     else {
-      var items = document.getElementsByName(id);
+      let items = document.getElementsByName(id);
       items.forEach(function(elem, key, parent) {
         elem.innerText = MSG[id];
       });
@@ -617,10 +616,10 @@ window.addEventListener("load", function() {
   })
   
   /* get parameters */
-  var params = [];
-  var pair = location.search.substring(1).split('&');
-  for(var i=0; pair[i]; i++) {
-    var kv = pair[i].split('=');
+  let params = [];
+  let pair = location.search.substring(1).split('&');
+  for(let i=0; pair[i]; i++) {
+    let kv = pair[i].split('=');
     params[kv[0]] = kv[1];
   }
 
@@ -687,7 +686,7 @@ window.addEventListener("load", function() {
   }
 
   // Add DnD event handler on Sensor/Timing/Action tab
-  var items = document.querySelectorAll('.tab_panel .item');
+  let items = document.querySelectorAll('.tab_panel .item');
   // alert(items.length);
   [].forEach.call(items, function(item) {
     item.addEventListener('dragstart', handleDragStart, false);
@@ -703,8 +702,8 @@ window.addEventListener("load", function() {
   //              action: bluetooth, gpio, ...
   function addJobItem(name) {
     if (name) {
-      names = name.split('/');
-      var item = {type: names[1]};
+      let names = name.split('/');
+      let item = {type: names[1]};
       item.params = defaultParams[names[1]];
       targetJob[names[0]].push(item);
 
@@ -719,7 +718,7 @@ window.addEventListener("load", function() {
             if (act.params[names[1]] === undefined) {
               act.params[names[1]] = true;
             }
-            var elem = document.getElementById('_bluetooth' + idx);
+            let elem = document.getElementById('_bluetooth' + idx);
             elem.innerHTML = inspectBluetooth(targetJob.action[idx]);
           }
         });
@@ -736,7 +735,7 @@ window.addEventListener("load", function() {
   }
 
   // Add DnD event handler on target job area
-  var jobs = document.getElementsByTagName("fieldset");
+  let jobs = document.getElementsByTagName("fieldset");
   [].forEach.call(jobs, function(job) {
     job.addEventListener('dragenter', handleDragEnter, false);
     job.addEventListener('dragover', handleDragOver, false);
@@ -748,12 +747,12 @@ window.addEventListener("load", function() {
     addJobItem(this.parentElement.attributes['name'].nodeValue);
   }
 
-  var icons = document.getElementsByName("add_icon");
+  let icons = document.getElementsByName("add_icon");
   [].forEach.call(icons, function(icon) {
     icon.addEventListener('click', handleAddIconClick, false);
   })
 
-  var icons = document.getElementsByName("del_icon");
+  icons = document.getElementsByName("del_icon");
   [].forEach.call(icons, function(icon) {
     icon.addEventListener('click', handleDelIconClick, false);
   })

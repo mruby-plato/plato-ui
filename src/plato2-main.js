@@ -13,7 +13,7 @@ GROUP_HEADER_LINES = 2;
 
 function nextPage() {
   // TODO: check project name
-  var prj = getProject();
+  let prj = getProject();
   prj.name = document.getElementById('prjname').value;
   setProject(prj);
 
@@ -23,9 +23,9 @@ function nextPage() {
 function openSettingPage(index) {
   initSetting();
   if (index > 1) {
-    var sel = document.getElementById('grp_list');
-    var setting = sel.children[index].text;
-    var setting_name = getSettingPath() + '/' + setting + '.json';
+    let sel = document.getElementById('grp_list');
+    let setting = sel.children[index].text;
+    let setting_name = getSettingPath() + '/' + setting + '.json';
     loadSettingFile(setting_name);
   }
   window.location.replace(networkPage);

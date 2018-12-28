@@ -13,12 +13,12 @@ MSGS = [
 
 // generate application JSON
 function makeApplication() {
-  var project = getProject();
-  var appRoot = getAppPath();
+  let project = getProject();
+  let appRoot = getAppPath();
   mkdir(appRoot);
   saveFile(appRoot + '/app.json', sessionStorage.project);
   // launch `projmaker.rb`
-  var cmd = 'ruby ' + getToolPath() + '/prjmaker.rb ' + appRoot;
+  let cmd = 'ruby ' + getToolPath() + '/prjmaker.rb ' + appRoot;
   launchApplication(cmd);
 
   alert(MSG.conf_done);
@@ -27,7 +27,7 @@ function makeApplication() {
 
 // format sensor information
 function formatSensors(sensors) {
-  txt = '';
+  let txt = '';
   sensors.forEach(function(sensor, i) {
     // txt += TAB + TAB + TAB + trigParameter[sensor.type] + LF;
     txt += inspectJobItem(sensor, TAB, LF, 3);
@@ -37,9 +37,9 @@ function formatSensors(sensors) {
 
 // format timing information
 function formatTimings(timings) {
-  txt = '';
+  let txt = '';
   timings.forEach(function(timing, i) {
-    var params = timing.params
+    let params = timing.params
     switch (timing.type) {
     case 'ontime':
       txt += tabs(3) + MSG.tim_time + ':' + LF;
@@ -58,9 +58,9 @@ function formatTimings(timings) {
 
 // format action information
 function formatActions(actions) {
-  txt = '';
+  let txt = '';
   actions.forEach(function(action, i) {
-    var params = action.params;
+    let params = action.params;
     switch (action.type) {
     case 'bluetooth':
       txt += inspectJobItem(action, TAB, LF, 3);
@@ -72,7 +72,7 @@ function formatActions(actions) {
 
 // format network setting
 function formatNetworkSettings(setting) {
-  txt = '';
+  let txt = '';
   txt += MSG.conf_app_bridge + LF;
   txt += tabs(1) + MSG.bt_setting + LF;
   txt += tabs(2) + MSG.bt_id + ' ' + setting.bt_setting.grpid + LF;
@@ -98,8 +98,8 @@ function formatNetworkSettings(setting) {
 // onload event handler
 window.addEventListener("load", function() {
   /* Get joblist from sessionStorage */
-  project = getProject();
-  jobList = project.jobList;
+  let project = getProject();
+  let jobList = project.jobList;
 
   /* initialize words */
   document.title = MSG.confirm_title;
@@ -108,8 +108,8 @@ window.addEventListener("load", function() {
   })
   
   // build up application settings
-  var conf = document.getElementById('conf_app');
-  var txt = MSG.conf_app_device + LF;
+  let conf = document.getElementById('conf_app');
+  let txt = MSG.conf_app_device + LF;
   jobList.forEach(function(job, i) {
     // job名
     txt += tabs(1) + job.name + LF;

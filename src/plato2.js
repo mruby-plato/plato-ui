@@ -8,8 +8,8 @@ MSGS = [
 function openMain() {
   // window.open(mainPage, 'Plato2', 'width=680,height=900,scrollbars=yes');
   window.location.replace(mainPage);
-  var sh = window.parent.screen.height;
-  var win = mainWindow.getCurrentWindow();
+  let sh = window.parent.screen.height;
+  let win = mainWindow.getCurrentWindow();
   win.setResizable(true);
   win.setMinimumSize(680, 330);
   win.setMaximumSize(680, Math.min(sh, 900));
@@ -19,12 +19,12 @@ function openMain() {
 
 // select exist project
 function openJob() {
-  var selFile = document.getElementById('sel_file');
+  let selFile = document.getElementById('sel_file');
   selFile.click();
 }
 
 function changeLang(lang) {
-  var prev = sessionStorage.lang;
+  let prev = sessionStorage.lang;
   sessionStorage.lang = lang;
   if (lang == 'ja') {
     LANG = LANG_JA;
@@ -54,10 +54,10 @@ window.addEventListener("load", function() {
   })
 
   /* add file open dialog handler */
-  var selFile = document.getElementById('sel_file');
+  let selFile = document.getElementById('sel_file');
   selFile.onchange = function (e) {
     if (selFile.files.length > 0) {
-      var reader = new FileReader();
+      let reader = new FileReader();
       reader.onload = function(e) {
         try {
           // TODO: check project

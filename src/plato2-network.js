@@ -20,9 +20,9 @@ function enableLoRaParams(checked) {
 
 // show Bluetooth decvice IDs
 function showDeviceID() {
-  var sid = document.getElementById('start_deviceid');  // start decvice ID
-  var eid = document.getElementById('end_deviceid');    // end device ID
-  var num = document.getElementById('device_count');    // number of device
+  let sid = document.getElementById('start_deviceid');  // start decvice ID
+  let eid = document.getElementById('end_deviceid');    // end device ID
+  let num = document.getElementById('device_count');    // number of device
 
   inputHex(sid);
 
@@ -37,7 +37,7 @@ function showDeviceID() {
 
 // update setting from UI
 function getSettingFromUI() {
-  var setting = getSetting();
+  let setting = getSetting();
 
   // TODO: check settings
 
@@ -59,11 +59,11 @@ function getSettingFromUI() {
 // update job
 function updateSetting() {
   // update setting from UI
-  var setting = getSettingFromUI();
+  let setting = getSettingFromUI();
 
   // check update
   if (JSON.stringify(setting) !== JSON.stringify(getSetting())) {
-    var setting_name = getSettingPath() + '/' + setting.name + '.json';
+    let setting_name = getSettingPath() + '/' + setting.name + '.json';
     if (isFileExist(setting_name)) {
       if (!window.confirm(getMessage('overwrite_confirm', setting.name))) return;
     }

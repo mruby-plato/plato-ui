@@ -133,8 +133,8 @@ var targetJob = {id:0, name:"", sensor:[], timing:[], action:[]};
 
 // get OS type
 function getOS() {
-  var osTypeName = os.type().toString();
-  var os_type = 'Unknown';
+  let osTypeName = os.type().toString();
+  let os_type = 'Unknown';
   [OS_WINDOWS, OS_MAC, OS_LINUX].forEach(function(ele, idx, target) {
     if (osTypeName.match(ele)) os_type = ele;
   });
@@ -144,7 +144,7 @@ function getOS() {
 // get install path
 function getInstPath() {
   // TODO: refer ~/.plato/plato2.cfg
-  var home = (getOS() === OS_WINDOWS) ? 'c:/' : app.getPath('home');
+  let home = (getOS() === OS_WINDOWS) ? 'c:/' : app.getPath('home');
   return home + '/plato2';
 }
 
@@ -154,28 +154,27 @@ function getInstPath() {
 
 // Connect job items.
 function connectItems() {
-  var cvs = document.getElementById("mycanvas");
+  let cvs = document.getElementById("mycanvas");
   if (!cvs || !cvs.getContext) { return false; }
-  var cvsrect = cvs.getBoundingClientRect();
+  let cvsrect = cvs.getBoundingClientRect();
 
-  var ctx = cvs.getContext("2d");
+  let ctx = cvs.getContext("2d");
   ctx.clearRect(0, 0, cvs.width, cvs.height);
   ctx.beginPath();
   ctx.strokeStyle = "rgb(255, 192, 192)";
   ctx.lineWidth = 5;
 
-  var jobcnt = document.getElementsByName("sensors").length;
-  for (var job=0; job<jobcnt; job++) {
+  let jobcnt = document.getElementsByName("sensors").length;
+  for (let job=0; job<jobcnt; job++) {
     // Get sensors, timings and actions
-    var sensors = document.getElementsByName("sensors")[job].children;
-    var timings = document.getElementsByName("timings")[job].children;
-    var actions = document.getElementsByName("actions")[job].children;
+    let sensors = document.getElementsByName("sensors")[job].children;
+    let timings = document.getElementsByName("timings")[job].children;
+    let actions = document.getElementsByName("actions")[job].children;
 
     // connect sensor to timing
-    var ss, tt, aa;
-    var srect, trect, arect;
-    for (ss=0; ss<sensors.length; ss++) {
-      srect = sensors[ss].getBoundingClientRect();
+    let trect;
+    for (let ss=0; ss<sensors.length; ss++) {
+      let srect = sensors[ss].getBoundingClientRect();
       for (tt=0; tt<timings.length; tt++) {
         trect = timings[tt].getBoundingClientRect();
         ctx.moveTo(srect.left + srect.width / 2 - cvsrect.left,
@@ -185,10 +184,10 @@ function connectItems() {
       }
     }
     // connect timing to action
-    for (tt=0; tt<timings.length; tt++) {
+    for (let tt=0; tt<timings.length; tt++) {
       trect = timings[tt].getBoundingClientRect();
-      for (aa=0; aa<actions.length; aa++) {
-        arect = actions[aa].getBoundingClientRect();
+      for (let aa=0; aa<actions.length; aa++) {
+        let arect = actions[aa].getBoundingClientRect();
         ctx.moveTo(trect.left + trect.width / 2 - cvsrect.left,
                   trect.top + trect.height / 2 - cvsrect.top);
         ctx.lineTo(arect.left + arect.width / 2 - cvsrect.left,
@@ -228,7 +227,7 @@ function inspectAnalogIn(item, tab=SP, lf=BR, ind=0) {
 
 // Inspect interval setting
 function inspectInterval(item, tab=SP, lf=BR, ind=0) {
-  var str = tabs(ind, tab) + MSG.set_int_title + lf
+  let str = tabs(ind, tab) + MSG.set_int_title + lf
     + tabs(ind + 1, tab) + MSG.set_int_period + ' '
     + item.params.interval_time
     + MSG[item.params.interval_time_unit] + lf;
@@ -243,7 +242,7 @@ function inspectInterval(item, tab=SP, lf=BR, ind=0) {
 
 // Inspect on time setting
 function inspectOnTime(item, tab=SP, lf=BR, ind=0) {
-  var str = tabs(ind, tab) + MSG.set_tim_title + lf;
+  let str = tabs(ind, tab) + MSG.set_tim_title + lf;
   str += tabs(ind + 1, tab) + MSG.set_tim_time + lf;
   if (item.params.times.length == 0) {
     str += tabs(ind + 2, tab) + MSG.set_tim_none + lf;
@@ -257,7 +256,7 @@ function inspectOnTime(item, tab=SP, lf=BR, ind=0) {
 
 // Inspect part time setting
 function inspectPartTime(item, tab=SP, lf=BR, ind=0) {
-  var str = tabs(ind, tab) + MSG.set_par_title + lf;
+  let str = tabs(ind, tab) + MSG.set_par_title + lf;
   str += tabs(ind + 1, tab) + MSG.set_par_start + ' ' + item.params.part_start + lf;
   str += tabs(ind + 1, tab) + MSG.set_par_end + ' ' + item.params.part_end + lf;
   return str;
@@ -265,8 +264,8 @@ function inspectPartTime(item, tab=SP, lf=BR, ind=0) {
 
 // Inspect Bluetooth setting
 function inspectBluetooth(item, tab, lf, ind) {
-  var cnt = 0;
-  var str = tabs(ind, tab) + MSG.set_bt_title + lf
+  let cnt = 0;
+  let str = tabs(ind, tab) + MSG.set_bt_title + lf
     + tabs(ind + 1, tab) + MSG.set_bt_data + lf;
   for (key in item.params) {
     if (item.params[key]) {
@@ -281,7 +280,7 @@ function inspectBluetooth(item, tab, lf, ind) {
 }
 
 function getJobByID(jobid) {
-  var job = {name:''};
+  let job = {name:''};
   jobs = getProject().jobList;
   jobs.forEach(function(_job, i) {
     if (_job.id == jobid) job = _job;
@@ -291,7 +290,7 @@ function getJobByID(jobid) {
 
 // Inspect On/Off setting
 function inspectOnOff(item, tab=SP, lf=BR, ind=0) {
-  var str = tabs(ind, tab) + MSG.act_swi + lf;
+  let str = tabs(ind, tab) + MSG.act_swi + lf;
   str += tabs(ind + 1, tab) + MSG.set_job_name + ' ';
   if (getJobByID(item.params.jobid).name === '') {
     str += MSG.set_job_notsel + lf;
@@ -305,7 +304,7 @@ function inspectOnOff(item, tab=SP, lf=BR, ind=0) {
 
 // Inspect job items
 function inspectJobItem(item, tab=SP, lf=BR, ind=0) {
-  var str = '';
+  let str = '';
   switch (item.type) {
     // Sensors
     case 'digital_in':    str = inspectDigitalIn(item, tab, lf, ind); break;
@@ -337,10 +336,9 @@ function inspectJobItem(item, tab=SP, lf=BR, ind=0) {
 //    flgDeleteIcon:  Delete (left-top)
 //    flgSettingIcon: Settings (right-top)
 function htmlJobItems(job, type, dispIcon=flgDefaultIcon) {
-  var items = job[type];
-  var html = "";
-  var i;
-  for (i=0; i<items.length; i++) {
+  let items = job[type];
+  let html = "";
+  for (let i=0; i<items.length; i++) {
     html += '<div class="item" name="' + type + '/' + items[i]['type'] + '/' + i + '">';
     html += '<img src="' + jobItems[items[i]['type']]['img'] + '" width="100" height="100">';
     html += '<div class="icon">'
@@ -371,13 +369,13 @@ function showJobItem(job, idx, type) {
   if (jobTypes.indexOf(type) < 0) return;
 
   // get target job type
-  var targs = document.getElementsByName(type + 's');
+  let targs = document.getElementsByName(type + 's');
 
   // make html
   targs[idx].innerHTML = htmlJobItems(job, type);
 
   // add del_icon handler
-  var icons = document.getElementsByName("del_icon");
+  let icons = document.getElementsByName("del_icon");
   [].forEach.call(icons, function(icon) {
     icon.addEventListener('click', handleDelIconClick, false);
   })
@@ -410,8 +408,8 @@ function setProject(project) {
 }
 
 function setJob(idx, job) {
-  var prj = getProject();
-  var jobs = prj.jobList;
+  let prj = getProject();
+  let jobs = prj.jobList;
   if (idx < jobs.length) {
     jobs[idx] = job;
   }
@@ -423,7 +421,7 @@ function setJob(idx, job) {
 
 // Initialize setting
 function initSetting(name) {
-  var setting = {
+  let setting = {
     bt_setting: {},
     lora_setting: {}
   };
@@ -465,7 +463,7 @@ function setSetting(setting) {
 // input Hex value
 //  elem: input element (e.g. textbox)
 function inputHex(elem) {
-  var val = elem.value;
+  let val = elem.value;
   if (val.length > 0) {
     if (isNaN('0x' + val[val.length - 1])) {
       elem.value = val.substring(0, val.length - 1);
@@ -479,9 +477,9 @@ function inputHex(elem) {
 //  elem: input element (e.g. textbox)
 //  temp: previous data (hidden field)
 function inputUUID(elem, temp) {
-  var prev = document.getElementById(temp);
-  var val = elem.value;
-  var add = false;
+  let prev = document.getElementById(temp);
+  let val = elem.value;
+  let add = false;
   if (val.length > prev.value.length) {
     // add hex digit
     // hex check
@@ -524,14 +522,14 @@ function getEndDevId(sid, cnt) {
 
 // tab
 function tabs(n, tab=TAB) {
-  txt = '';
-  for (var i=0; i<n; i++) txt += tab;
+  let txt = '';
+  for (let i=0; i<n; i++) txt += tab;
   return txt;
 }
 
 function spaces(n, spc=SP) {
-  txt = '';
-  for (var i=0; i<n; i++) txt += spc;
+  let txt = '';
+  for (let i=0; i<n; i++) txt += spc;
   return txt;
 }
 
@@ -550,8 +548,8 @@ function inProgress() {
 // loda group setting file
 function loadSettingFile(name) {
   try {
-    var rawSetting = fs.readFileSync(name);
-    var setting = JSON.parse(rawSetting);
+    let rawSetting = fs.readFileSync(name);
+    let setting = JSON.parse(rawSetting);
     setSetting(setting);
   }
   catch(e) {
@@ -582,8 +580,8 @@ function isFileExist(name) {
 
 // get group setting list
 function enumGroupSettings() {
-  var files = fs.readdirSync(settingPath);
-  var settings = [];
+  let files = fs.readdirSync(settingPath);
+  let settings = [];
   files.filter(function(file) {
     return fs.statSync(getSettingPath() + '/' + file).isFile && /.*\.json$/.test(file);
   }).forEach(function(file) {
@@ -627,7 +625,7 @@ function mkdir(path) {
 // launch native application
 function launchApplication(cmd) {
   try {
-    var exec = require('child_process').exec;
+    let exec = require('child_process').exec;
     execApp = function() {
       return exec(cmd, {},
         function(error, stdout, stderr) {

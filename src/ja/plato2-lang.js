@@ -187,7 +187,7 @@ if (LANG == LANG_JA) {
 
   // Inspect trigger setting
   function inspectTrigger(item, tab=SP, lf=BR, ind=0) {
-    var str = tabs(ind, tab) + MSG.set_tri_title + lf;
+    let str = tabs(ind, tab) + MSG.set_tri_title + lf;
     if (item.params.triggers.length == 0) {
       str += tabs(ind + 1, tab) + MSG.set_tri_none + lf;
       return str;

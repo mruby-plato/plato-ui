@@ -17,7 +17,7 @@ function handleSetIconClick(e) {
 
 // edit job icon click handler
 function editJob(jobid) {
-  var idx;
+  let idx;
   if (typeof jobid === 'undefined')
     idx = jobList.length;             /* add new job */
   else
@@ -29,7 +29,7 @@ function editJob(jobid) {
 
 // delete job icon click handler
 function deleteJob(jobid) {
-  var idx = jobid.slice('job'.length);
+  let idx = jobid.slice('job'.length);
   if (window.confirm(getMessage('del_job_confirm', jobList[idx].name))) {
     // delete job
     project.jobList.splice(idx, 1);
@@ -53,8 +53,8 @@ window.addEventListener("load", function() {
   })
   
   // Initialize job list
-  var outer = document.getElementsByClassName('outer')[0];
-  var html = "";
+  let outer = document.getElementsByClassName('outer')[0];
+  let html = "";
   jobList.forEach(function(job, i) {
     html += '<fieldset class="iot_job" id="itemfield" align="left" href="#" name="job' + i + '" ondblclick="editJob(name)">';
     html += ('<legend>' + job.name + '</legend>');
