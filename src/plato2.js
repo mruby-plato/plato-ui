@@ -11,10 +11,10 @@ function openMain() {
   let sh = window.parent.screen.height;
   let win = mainWindow.getCurrentWindow();
   win.setResizable(true);
-  win.setMinimumSize(680, 330);
-  win.setMaximumSize(680, Math.min(sh, 900));
+  win.setMinimumSize(720, 340);
+  win.setMaximumSize(720, Math.min(sh, 900));
   win.maximize();
-  win.setMaximumSize(680, sh);  // reset maximize size
+  win.setMaximumSize(720, sh);  // reset maximize size
 }
 
 // select exist project

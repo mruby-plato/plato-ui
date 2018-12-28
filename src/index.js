@@ -1,7 +1,8 @@
 const { app, BrowserWindow, Menu } = require("electron");
 let mainWindow;
 function createWindow() {
-  mainWindow = new BrowserWindow({ width: 680, height: 330});
+
+  mainWindow = new BrowserWindow({ width: 700, height: 340});
   // mainWindow.setResizable(false);
   mainWindow.loadURL(`file://${__dirname}/index.html`);
   mainWindow.on("closed", () => { mainWindow = null; });
