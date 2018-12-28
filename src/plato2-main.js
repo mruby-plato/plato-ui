@@ -33,7 +33,7 @@ function openSettingPage(index) {
 
 // on Group setting change
 function onGroupChange() {
-  var sel = document.getElementById('grp_list');
+  let sel = document.getElementById('grp_list');
   switch (sel.selectedIndex) {
   case 0:   /* New setting */
     openSettingPage(0);
@@ -42,8 +42,8 @@ function onGroupChange() {
     initSetting();
     break;
   default:  /* Load setting */
-    var setting = sel.children[sel.selectedIndex].text;
-    var setting_name = getSettingPath() + '/' + setting + '.json';
+    let setting = sel.children[sel.selectedIndex].text;
+    let setting_name = getSettingPath() + '/' + setting + '.json';
     loadSettingFile(setting_name);
     break;
   }
@@ -51,7 +51,7 @@ function onGroupChange() {
 
 // onload event handler
 window.addEventListener("load", function() {
-  var prjname = document.getElementById('prjname');
+  let prjname = document.getElementById('prjname');
   prjname.value = getProject().name;
 
   /* initialize words */
@@ -61,14 +61,14 @@ window.addEventListener("load", function() {
   })
 
   /* initialize group setting list */
-  var setting = getSetting();
-  var settings = enumGroupSettings();
-  var sel = document.getElementById('grp_list');
+  let setting = getSetting();
+  let settings = enumGroupSettings();
+  let sel = document.getElementById('grp_list');
   while(sel.children.length > GROUP_HEADER_LINES) {
     sel.removeChild(sel.lastChild);
   }
   settings.forEach(function (set, i, ary) {
-    var op = document.createElement("option");
+    let op = document.createElement("option");
     op.value  = set;
     op.text   = set;
     sel.appendChild(op);
