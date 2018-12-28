@@ -40,7 +40,6 @@ if (LANG == LANG_EN) {
   MSG.lora_setting  = 'LoRaWAN settings';
   MSG.user_eui      = 'Set DevEUI, AppEUI and AppKey';
   MSG.save_confirm  = 'Register the group setting.';
-  // MSG.overwrite_confirm = '`Overwrite the group setting "${setting.name}."`';
   MSG.default       = 'Default';
 
   // plato2-joblist.html
@@ -186,18 +185,6 @@ if (LANG == LANG_EN) {
     }
   }
 
-  // // Inspect digital_in setting
-  // function inspectDigitalIn(item, tab=SP, lf=BR, ind=0) {
-  //   return tabs(ind, tab) + 'Digital in' + lf
-  //     + tabs(ind + 1, tab) + 'Digital PIN: ' + item.params.pin + lf;
-  // }
-
-  // // Inspect analog_in setting
-  // function inspectAnalogIn(item, tab=SP, lf=BR, ind=0) {
-  //   return tabs(ind, tab) + 'Analog in' + lf
-  //     + tabs(ind + 1, tab) + 'Analog PIN: ' + item.params.pin + lf;
-  // }
-
   // Inspect trigger setting
   function inspectTrigger(item, tab=SP, lf=BR, ind=0) {
     var str = tabs(ind, tab) + MSG.set_tri_title + lf;
@@ -220,21 +207,4 @@ if (LANG == LANG_EN) {
       str += tabs(ind + 1, tab) + 'Interval: ' + item.params.while_trig_time + item.params.while_trig_unit + lf;
     return str;
   }
-
-  // // Inspect Bluetooth setting
-  // function inspectBluetooth(item) {
-  //   var cnt = 0;
-  //   var str = 'Bluetooth settings' + BR
-  //     + SP + SP + 'Send data:' + BR;
-  //   for (key in item.params) {
-  //     if (item.params[key]) {
-  //       str += SP + SP + SP + SP + trigParameter[key] + BR;
-  //       cnt++;
-  //     }
-  //   }
-  //   if (cnt == 0) {
-  //     str += SP + SP + SP + SP + 'none';
-  //   }
-  //   return str;
-  // }
 }

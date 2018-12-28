@@ -40,7 +40,6 @@ if (LANG == LANG_JA) {
   MSG.lora_setting  = 'LoRaWAN設定';
   MSG.user_eui      = 'DevEUI / AppEUI / AppKey を設定する';
   MSG.save_confirm  = 'グループ設定を登録します。';
-  // MSG.overwrite_confirm = '`グループ設定 ${setting.name} を上書きします。`';
   MSG.default       = 'デフォルト';
 
   // plato2-joblist.html
@@ -186,18 +185,6 @@ if (LANG == LANG_JA) {
     }
   }
 
-  // // Inspect digital_in setting
-  // function inspectDigitalIn(item, tab=SP, lf=BR, ind=0) {
-  //   return tabs(ind, tab) + 'ディジタル入力' + lf
-  //     + tabs(ind + 1, tab) + 'ディジタルPIN: ' + item.params.pin + lf;
-  // }
-
-  // // Inspect analog_in setting
-  // function inspectAnalogIn(item, tab=SP, lf=BR, ind=0) {
-  //   return tabs(ind, tab) + 'アナログ入力' + lf
-  //     + tabs(ind + 1, tab) + 'アナログPIN: ' + item.params.pin + lf;
-  // }
-
   // Inspect trigger setting
   function inspectTrigger(item, tab=SP, lf=BR, ind=0) {
     var str = tabs(ind, tab) + MSG.set_tri_title + lf;
@@ -220,21 +207,4 @@ if (LANG == LANG_JA) {
       str += tabs(ind + 1, tab) + '継続間隔: ' + item.params.while_trig_time + item.params.while_trig_unit + lf;
     return str;
   }
-
-  // // Inspect Bluetooth setting
-  // function inspectBluetooth(item) {
-  //   var cnt = 0;
-  //   var str = 'Bluetooth送信設定' + BR
-  //     + SP + SP + '送信データ:' + BR;
-  //   for (key in item.params) {
-  //     if (item.params[key]) {
-  //       str += SP + SP + SP + SP + trigParameter[key] + BR;
-  //       cnt++;
-  //     }
-  //   }
-  //   if (cnt == 0) {
-  //     str += SP + SP + SP + SP + 'なし';
-  //   }
-  //   return str;
-  // }
 }
