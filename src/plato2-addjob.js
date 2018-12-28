@@ -123,6 +123,7 @@ function handleSetIconClick(e) {
   case 'digital_in':initDigitalInParams(items[2]);  break;
 
   case 'interval':  initIntervalParams(items[2]);   break;
+  case 'ontime':    initOnTimeParams(items[2]);     break;
   case 'part_time': initPartTimeParams(items[2]);   break;
   case 'trigger':   initTriggerParams(items[2]);    break;
 
@@ -141,6 +142,7 @@ function onSettingOK() {
   case 'digital_in':updateDigitalInParams(idx); break;
 
   case 'interval':  updateIntervalParams(idx);  break;
+  case 'ontime':    updateOnTimeParams(idx);    break;
   case 'part_time': updatePartTimeParams(idx);  break;
   case 'trigger':   updateTriggerParams(idx);   break;
 
@@ -230,6 +232,37 @@ function updateIntervalParams(idx) {
 
   var elem = document.getElementById('_' + 'interval' + idx);
   elem.innerHTML = inspectInterval(targetJob.timing[idx]);
+}
+
+//
+// init/update on time parameters
+//
+function initOnTimeParams(idx) {
+  var params = {
+    times: []
+  };
+  if (targetJob.timing[idx].params) {
+    params = targetJob.timing[idx].params;
+  }
+  var times = document.getElementsByName('on_time');
+  params.times.forEach(function(time, i) {
+    times[i].value = time;
+  });
+}
+function updateOnTimeParams(idx) {
+  var params = {
+    times: []
+  }
+  var times = document.getElementsByName('on_time');
+  times.forEach(function(time, i) {
+    if (time.value !== '') {
+      params.times.push(time.value);
+    }
+  });
+  targetJob.timing[idx].params = params;
+
+  var elem = document.getElementById('_' + 'ontime' + idx);
+  elem.innerHTML = inspectOnTime(targetJob.timing[idx]);
 }
 
 //

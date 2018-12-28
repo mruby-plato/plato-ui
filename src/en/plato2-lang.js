@@ -84,7 +84,8 @@ if (LANG == LANG_EN) {
   MSG.set_int_end     = 'End time:';
 
   MSG.set_tim_title = 'Time specification settings';
-  MSG.set_tim_time  = 'Time to action';
+  MSG.set_tim_time  = 'Time to action:';
+  MSG.set_tim_none  = 'Not specified';
 
   MSG.set_par_title = 'Part time settings';
   MSG.set_par_start = 'Start Time:';

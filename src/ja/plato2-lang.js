@@ -84,7 +84,8 @@ if (LANG == LANG_JA) {
   MSG.set_int_end     = '終了時刻:';
 
   MSG.set_tim_title = '時刻指定';
-  MSG.set_tim_time  = '動作時刻';
+  MSG.set_tim_time  = '動作時刻:';
+  MSG.set_tim_none  = '未設定';
 
   MSG.set_par_title = '時間帯指定';
   MSG.set_par_start = '開始時刻:';

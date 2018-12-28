@@ -72,7 +72,7 @@ const defaultParams = {
   'vibration': {},
   // timings
   'interval': { 'interval_time': 1, 'interval_time_unit': 'hour' },
-  'ontime': {},
+  'ontime': { 'times': [] },
   'part_time': { 'part_start': '9:00', 'part_end': '18:00' },
   'trigger': { trig_period: 30, trig_peri_unit: 'minute',
     triggers: [], trig_off: true,
@@ -284,6 +284,20 @@ function inspectInterval(item, tab=SP, lf=BR, ind=0) {
   return str;
 }
 
+// Inspect on time setting
+function inspectOnTime(item, tab=SP, lf=BR, ind=0) {
+  var str = tabs(ind, tab) + MSG.set_tim_title + lf;
+  str += tabs(ind + 1, tab) + MSG.set_tim_time + lf;
+  if (item.params.times.length == 0) {
+    str += tabs(ind + 2, tab) + MSG.set_tim_none + lf;
+    return str;
+  }
+  item.params.times.forEach(function(time, i) {
+    str += tabs(ind + 2, tab) + time + lf;
+  });
+  return str;
+}
+
 // Inspect part time setting
 function inspectPartTime(item, tab=SP, lf=BR, ind=0) {
   var str = tabs(ind, tab) + MSG.set_par_title + lf;
@@ -349,6 +363,7 @@ function inspectJobItem(item, tab=SP, lf=BR, ind=0) {
     case 'battery':       str = inspectSensor(MSG.sen_batt, tab, lf, ind);  break;
     // Timings
     case 'interval':      str = inspectInterval(item, tab, lf, ind);  break;
+    case 'ontime':        str = inspectOnTime(item, tab, lf, ind);    break;
     case 'part_time':     str = inspectPartTime(item, tab, lf, ind);  break;
     case 'trigger':       str = inspectTrigger(item, tab, lf, ind);   break;
     // Actions
