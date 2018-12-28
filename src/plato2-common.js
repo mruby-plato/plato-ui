@@ -122,53 +122,10 @@ var project = {
 var jobList = [];
 var targetJob = {id:0, name:"", sensor:[], timing:[], action:[]};
 
-// // paths
-// var platoRoot = app.getPath('home') + '/plato2';
-// // var uiPath = platoRoot + '/ui';
-// var settingPath = platoRoot + '/settings';
-
-// // setting information
-// var setting = {
-//   name: "",
-//   bt_setting: {
-//     grpid: "FFFFFFFF-FFFF-FFFF-FFFF-FFFFFFFFFFFF",
-//     devid: "000000",
-//     devcnt: 1
-//   },
-//   lora_setting: {
-//     custom: false,
-//     deveui: "",
-//     appeui: "",
-//     appkey: ""
-//   }
-// };
-
-// max job count (for job number)
-// var maxJobCount = 0;
-
-// // for test
-// jobList.push({
-//   sensor:[{type:'temperature'}, {type:'humidity'}],
-//   timing:[{type:'interval'}],
-//   action:[{type:'bluetooth'}]
-// });
-// jobList.push({
-//   sensor:[{type:'distance'}],
-//   timing:[{type:'ontime'}],
-//   action:[{type:'bluetooth'}]
-// });
-// jobList.push({
-//   sensor:[{type:'vibration'}],
-//   timing:[{type:'trigger'}],
-//   action:[{type:'onoff'}]
-// });
-
-// targetJob = JSON.parse(JSON.stringify(jobList[0])); // deep copy
 
 //
 // global functions
 //
-
 
 //------------------------------
 // Platform
@@ -436,31 +393,10 @@ function showJobItem(job, idx, type) {
 
 // Initialize project
 function initProject() {
-  // for test
-  // var jobList = [];
-  // jobList.push({
-  //   sensor:[{type:'temperature'}, {type:'humidity'}],
-  //   timing:[{type:'interval'}],
-  //   action:[{type:'bluetooth'}]
-  // });
-  // jobList.push({
-  //   sensor:[{type:'distance'}],
-  //   timing:[{type:'ontime'}],
-  //   action:[{type:'bluetooth'}]
-  // });
-  // jobList.push({
-  //   sensor:[{type:'vibration'}],
-  //   timing:[{type:'trigger'}],
-  //   action:[{type:'onoff'}]
-  // });
-
   // initialize project information
   project.name = "My application";
   project.jobList = jobList;
   sessionStorage.project = JSON.stringify(project);
-
-  // initialize job counter
-  // sessionStorage.maxJobCount = 0;
 }
 
 // Get project information from sessionStorage

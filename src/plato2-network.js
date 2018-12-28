@@ -56,23 +56,6 @@ function getSettingFromUI() {
   return setting;
 }
 
-// // save setting
-// function saveSetting() {
-//   // update setting from UI
-//   var setting = getSettingFromUI();
-
-//   // confirm save
-//   var setting_name = getSettingPath() + '/' + setting.name + '.json';
-//   if (isFileExist(setting_name)) {
-//     if (!window.confirm(getMessage('overwrite_confirm', setting.name))) return;
-//   }
-//   else {
-//     if (!window.confirm(MSG.save_confirm)) return;
-//   }
-//   // save group setting
-//   saveFile(setting_name, JSON.stringify(setting));
-// }
-
 // update job
 function updateSetting() {
   // update setting from UI

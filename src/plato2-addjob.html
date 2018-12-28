@@ -257,20 +257,9 @@
           </tr>
           <tr>
             <td colspan="2">
-              <select id="trig_params" onchange="javascript:changeTriggerParameter(this.value);">
-                <!-- <option value="temperature">温度</option>
-                <option value="humidity">湿度</option>
-                <option value="air_pressure">気圧</option>
-                <option value="vibration">振動回数</option>
-                <option value="angle">傾斜角度</option>
-                <option value="distance">移動距離</option>
-                <option value="velocity">速度</option>
-                <option value="battery">電池残量</option>
-                <option value="analog_in">アナログ</option>
-                <option value="digital_in">ディジタル</option> -->
-              </select>
+              <select id="trig_params" onchange="javascript:changeTriggerParameter(this.value);"></select>
               <label id="set_tri_is">が</label>
-              <input type="text" id="trig_value" size="8"> <!--placeholder="値を入力"-->
+              <input type="text" id="trig_value" size="8">
               <label id="trig_val_unit">℃</label>
               <select id="trig_cond">
                 <option id="set_tri_gt" value="gt">より大きい</option>
@@ -287,9 +276,7 @@
           </tr>
           <tr>
             <td colspan="2">
-              <select class="trig_list" id="trig_list" size="4">
-                <!-- <option>温度 が 30℃ 以上</option> -->
-              </select>
+              <select class="trig_list" id="trig_list" size="4"></select>
             </td>
             <td valign="top">
               <div class="icon">
@@ -336,8 +323,6 @@
         <h2 id="set_bt_title">Bluetooth送信設定</h2>
         <table id="set_bt_data_list">
           <tr><td id="set_bt_data">送信データ:</td></tr>
-          <!-- <tr><td><input type="checkbox" checked>温度 [℃]</td></tr> -->
-          <!-- <tr><td><input type="checkbox" checked>湿度 [%]</td></tr> -->
         </table>
       </div>  <!-- set-bluetooth -->
 

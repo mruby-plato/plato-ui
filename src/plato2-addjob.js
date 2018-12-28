@@ -136,7 +136,6 @@ function handleSetIconClick(e) {
 function onSettingOK() {
   var type = settingTarget[1];
   var idx = settingTarget[2];
-  // var params = document.getElementById('set-' + type);
   switch (type) {
   case 'analog_in': updateAnalogInParams(idx);  break;
   case 'digital_in':updateDigitalInParams(idx); break;
@@ -175,7 +174,7 @@ function updateDigitalInParams(idx) {
   targetJob.sensor[idx].params = params;
 
   var elem = document.getElementById('_' + 'digital_in' + idx);
-  // elem.innerHTML = inspectDigitalIn(targetJob.sensor[idx]);
+  elem.innerHTML = inspectDigitalIn(targetJob.sensor[idx]);
 }
 
 //

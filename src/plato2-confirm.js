@@ -1,5 +1,3 @@
-// import { mkdir } from "fs";
-
 //
 //  plato2-confirm.js
 //
@@ -10,8 +8,6 @@ MSGS = [
   'prev',
   'confirm_create',
 ]
-
-// const TAB = "    ";
 
 // functions
 
