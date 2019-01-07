@@ -61,6 +61,7 @@ if (LANG == LANG_JA) {
   MSG.sen_batt      = 'バッテリレベル';
   MSG.sen_din       = 'ディジタル入力';
   MSG.sen_ain       = 'アナログ入力';
+  MSG.sen_illu      = '照度';
   MSG.tim_intr      = '周期指定';
   MSG.tim_time      = '時刻指定';
   MSG.tim_part      = '時間帯指定';
@@ -156,6 +157,7 @@ if (LANG == LANG_JA) {
   trigParameter['battery']      = '電池残量';
   trigParameter['analog_in']    = 'アナログ値';
   trigParameter['digital_in']   = 'ディジタル値';
+  trigParameter['illuminance']  = '照度';
   // trigger parameter unit
   trigParamUnit['temperature']  = '℃';
   trigParamUnit['humidity']     = '%';
@@ -167,6 +169,7 @@ if (LANG == LANG_JA) {
   trigParamUnit['battery']      = '%';
   trigParamUnit['analog_in']    = '';
   trigParamUnit['digital_in']   = '';
+  trigParamUnit['illuminance']  = 'lx';
   // trigger conditions
   trigCondition['gt'] = 'より大きい';
   trigCondition['ge'] = '以上';

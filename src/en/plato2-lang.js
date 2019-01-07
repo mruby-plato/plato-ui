@@ -61,6 +61,7 @@ if (LANG == LANG_EN) {
   MSG.sen_batt      = 'Battery level';
   MSG.sen_din       = 'Digital-in';
   MSG.sen_ain       = 'Analog-in';
+  MSG.sen_illu      = 'Illuminance';
   MSG.tim_intr      = 'Interval';
   MSG.tim_time      = 'on time';
   MSG.tim_part      = 'part time';
@@ -146,16 +147,17 @@ if (LANG == LANG_EN) {
   MSG.conf_done       = 'Application created.';
 
   // trigger parameters
-  trigParameter['temperature']   = 'temperature';
-  trigParameter['humidity']      = 'humidity';
-  trigParameter['air_pressure']  = 'air pressure';
-  trigParameter['vibration']     = 'count of vibration';
-  trigParameter['angle']         = 'angle';
-  trigParameter['distance']      = 'distance';
-  trigParameter['velocity']      = 'velocity';
-  trigParameter['battery']       = 'battery power';
-  trigParameter['analog_in']     = 'analog value';
-  trigParameter['digital_in']    = 'digital value';
+  trigParameter['temperature']  = 'temperature';
+  trigParameter['humidity']     = 'humidity';
+  trigParameter['air_pressure'] = 'air pressure';
+  trigParameter['vibration']    = 'count of vibration';
+  trigParameter['angle']        = 'angle';
+  trigParameter['distance']     = 'distance';
+  trigParameter['velocity']     = 'velocity';
+  trigParameter['battery']      = 'battery power';
+  trigParameter['analog_in']    = 'analog value';
+  trigParameter['digital_in']   = 'digital value';
+  trigParameter['illuminance']  = 'illuminance';
   // trigger parameter unit
   trigParamUnit['temperature']  = '℃';
   trigParamUnit['humidity']     = '%';
@@ -167,6 +169,7 @@ if (LANG == LANG_EN) {
   trigParamUnit['battery']      = '%';
   trigParamUnit['analog_in']    = '';
   trigParamUnit['digital_in']   = '';
+  trigParamUnit['illuminance']  = 'lx';
   // trigger conditions
   trigCondition['gt'] = 'larger than';
   trigCondition['ge'] = 'or more';

@@ -46,6 +46,7 @@ const jobItems = {
   'distance':     {'img': 'img/gps-location.png'},
   'temperature':  {'img': 'img/temperature.png'},
   'vibration':    {'img': 'img/vibration.png'},
+  'illuminance':  {'img': 'img/illuminance.png'},
   // timings
   'interval':     {'img': 'img/interval.png', 'setting': true},
   'ontime':       {'img': 'img/ontime.png', 'setting': true},
@@ -70,6 +71,7 @@ const defaultParams = {
   'digital_in': { 'pin': 1 },
   'analog_in': { 'pin': 1 },
   'vibration': {},
+  'illuminance':{},
   // timings
   'interval': { 'interval_time': 1, 'interval_time_unit': 'hour' },
   'ontime': { 'times': [] },
@@ -317,6 +319,7 @@ function inspectJobItem(item, tab=SP, lf=BR, ind=0) {
     case 'distance':      str = inspectSensor(MSG.sen_loca, tab, lf, ind);  break;
     case 'velocity':      str = inspectSensor(MSG.sen_velo, tab, lf, ind);  break;
     case 'battery':       str = inspectSensor(MSG.sen_batt, tab, lf, ind);  break;
+    case 'illuminance':   str = inspectSensor(MSG.sen_illu, tab, lf, ind);  break;
     // Timings
     case 'interval':      str = inspectInterval(item, tab, lf, ind);  break;
     case 'ontime':        str = inspectOnTime(item, tab, lf, ind);    break;
