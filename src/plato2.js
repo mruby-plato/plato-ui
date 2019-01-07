@@ -63,9 +63,7 @@ window.addEventListener("load", function() {
           // TODO: check project
           sessionStorage.project = e.target.result;
           project = getProject();
-
-          document.getElementById('open_app_file').innerText = getMessage('open_app_file', project.name);
-          document.getElementById('show_open').style.display = 'block';
+          openMain();
         }
         catch(e) {
           alert(MSG.open_app_err);
