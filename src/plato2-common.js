@@ -562,11 +562,12 @@ function loadSettingFile(name) {
 
 // save file
 function saveFile(name, data) {
-  fs.writeFile(name, data, 'utf8', function(err) {
-    if (err) {
-      alert(err);
-    }
-  });
+  try {
+    fs.writeFileSync(name, data, 'utf8');
+  }
+  catch(e) {
+    alert(err);
+  }
 }
 
 // check file exists
