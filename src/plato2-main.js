@@ -17,7 +17,12 @@ function nextPage() {
   prj.name = document.getElementById('prjname').value;
   setProject(prj);
 
-  window.location.replace(listPage);
+  if (prj.jobList.length > 0) {
+    window.location.replace(listPage);
+  }
+  else {
+    window.location.replace(editPage);
+  }
 }
 
 function openSettingPage(index) {
