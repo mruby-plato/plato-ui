@@ -40,6 +40,14 @@ function deleteJob(jobid) {
   }
 }
 
+// Switch on/off job click handler
+function onoffJob(swiid) {
+  let idx = swiid.slice('jobswi'.length);
+  project.jobList[idx].onoff = (project.jobList[idx].onoff !== 'off') ? 'off' : 'on';
+  document.getElementsByName(swiid)[0].src = 'img/' + project.jobList[idx].onoff + '.png';
+  setProject(project);
+}
+
 // onload event handler
 window.addEventListener("load", function() {
   /* Get joblist from sessionStorage */
@@ -58,6 +66,10 @@ window.addEventListener("load", function() {
   jobList.forEach(function(job, i) {
     html += '<fieldset class="iot_job" id="itemfield" align="left" href="#" name="job' + i + '" ondblclick="editJob(name)">';
     html += ('<legend>' + job.name + '</legend>');
+
+    html += '<div class="switch">';
+    html += '<img src="img/' + job.onoff + '.png" width="63" height="35" name="jobswi' + i + '" onclick="onoffJob(name)">';
+    html += '</div>';
 
     html += '<table class="icon_table" align="center" height="36"><tbody><tr>';
 

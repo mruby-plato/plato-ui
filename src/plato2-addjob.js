@@ -578,6 +578,12 @@ function handleDelIconClick(e) {
   connectItems();
 }
 
+// Switch on/off job click handler
+function onoffJob() {
+  targetJob.onoff = (targetJob.onoff !== 'off') ? 'off' : 'on';
+  document.getElementById('jobswi').src = 'img/' + targetJob.onoff + '.png';
+}
+
 // update job
 function updateJob() {
   // TODO: check target job
@@ -599,7 +605,7 @@ window.addEventListener("load", function() {
   /* Get project information from sessionStorage */
   project = getProject();
   jobList = project.jobList;
-  targetJob = {id:0, name:"", sensor:[], timing:[], action:[]};
+  targetJob = {id:0, name:"", sensor:[], timing:[], action:[], onoff:'on'};
 
   /* initialize words */
   document.title = MSG.addjob_title;
@@ -635,6 +641,7 @@ window.addEventListener("load", function() {
     targetJob.name = 'Job #' + targetJob.id;
   }
   document.getElementById('job_name').innerText = targetJob.name;
+  document.getElementById('jobswi').src = 'img/' + targetJob.onoff + '.png';
 
   function handleDragStart(e) {
     this.style.opacity = '0.4';  // this / e.target is the source node.

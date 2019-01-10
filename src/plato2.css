@@ -30,11 +30,21 @@ fieldset {
 }
 fieldset legend {
   cursor: pointer;
+  margin-left: 60px;
+}
+
+/* job on/off switch */
+.switch {
+  position: absolute;
+  top: -6px;
+  left: -10px;
+  z-index: 1;
 }
 
 /* iot_job (fieldset) */
 .iot_job {
   position: relative;
+  margin-bottom: 10px;
 }
 .iot_job .icon {
   width: 32px;
@@ -149,7 +159,7 @@ td {
 }
 .icon_table {
   position: absolute;
-  top: 0px;
+  top: 16px;
   z-index: 1;
   width: 620px;
   height: 20px;

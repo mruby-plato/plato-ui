@@ -122,7 +122,7 @@ var project = {
   setting: {}
 };
 var jobList = [];
-var targetJob = {id:0, name:"", sensor:[], timing:[], action:[]};
+var targetJob = {id:0, name:"", sensor:[], timing:[], action:[], onoff:'on'};
 
 
 //

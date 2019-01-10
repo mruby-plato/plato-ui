@@ -14,8 +14,11 @@
 
   <canvas id="mycanvas" class="myCanvas" width="650" height="900"></canvas>
   <div class="outer" align="center">
-    <fieldset id="itemfield" align="left">
+    <fieldset id="itemfield" class="iot_job_target" align="left">
       <legend id="job_name" onclick="changeJobName();"></legend>
+      <div class="switch">
+        <img src="img/on.png" width="63" height="35" id="jobswi" onclick="onoffJob()">
+      </div>
       <table align="center" height="150">
         <tr>
           <td name="sensors"></td>
