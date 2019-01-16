@@ -6,6 +6,7 @@
 
 Install following tools.
 
+- [MinGW (latest version)](http://www.mingw.org/) (Windows only)
 - [Git (latest version)](https://git-scm.com)
 - [Node.js (v10.2.0)](https://nodejs.org/download/release/v10.2.0/) with npm
 - [Ruby (2.0 or later)](https://www.ruby-lang.org/)
