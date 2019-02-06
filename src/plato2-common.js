@@ -29,6 +29,7 @@ const networkPage = 'plato2-network.html';
 const listPage = 'plato2-joblist.html';
 const editPage = 'plato2-addjob.html';
 const confirmPage = 'plato2-confirm.html';
+const deployPage = 'plato2-deploy.html';
 
 // job types
 const jobTypes = ['sensor', 'timing', 'action'];

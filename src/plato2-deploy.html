@@ -1,0 +1,98 @@
+<html>
+<head>
+  <meta charset='UTF-8'>
+  <title>Plato2 - アプリケーション転送</title>
+  <link rel="stylesheet" href="plato2.css">
+  <script src="plato2-common.js"></script>
+  <script src="en/plato2-lang.js"></script>
+  <script src="ja/plato2-lang.js"></script>
+  <script src="plato2-deploy.js"></script>
+  <script>
+  </script>
+</head>
+<body>
+  <h2 id="deploy_top">端末にアプリケーションを書き込みます</h2>
+
+  <div class="outer" align="center">
+
+
+    <div>
+      <table align="center">
+        <tr>
+          <td>
+            <!-- デバイス一覧:
+            <br />
+            <select size="10" multiple="true">
+              <option>BTEdge - 05:2B:4F:11:04:82</option>
+              <option>iPhone - xx:xx:xx:xx:xx:xx</option>
+              <option>BTEdge - yy:yy:yy:yy:yy:yy</option>
+              <option>BTBridge - zz:zz:zz:zz:zz:zz</option>
+            </select> -->
+            <div class="dev_list_area">
+              <table class="dev_list_title">
+                <col style="width: 40%;" />
+                <col style="width: 30%;" />
+                <col style="width: 30%;" />
+                <tr>
+                  <th>デバイス名</th>
+                  <th>アドレス</th>
+                  <th class="r_none">転送状態</th>
+                </tr>
+              </table>
+              <div class="dev_list_box">
+                <div class="y_hidden">
+                  <table class="dev_data">
+                    <col style="width: 40%;" />
+                    <col style="width: 30%;" />
+                    <col style="width: 30%;" />
+                    <tr>
+                      <td><input type="checkbox" id="BTDEV01"><label for="BTDEV01">BTEdge</label></td>
+                      <td><label for="BTDEV01">05:2B:4F:11:04:82</label></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td><input type="checkbox" id="BTDEV02"><label for="BTDEV02">iPhone</label></td>
+                      <td><label for="BTDEV02">xx:xx:xx:xx:xx:xx</label></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td><input type="checkbox" id="BTDEV03"><label for="BTDEV03">BTEdge</label></td>
+                      <td><label for="BTDEV03">yy:yy:yy:yy:yy:yy</label></td>
+                      <td></td>
+                    </tr>
+                    <tr>
+                      <td><input type="checkbox" id="BTDEV04"><label for="BTDEV04">BTBridge</label></td>
+                      <td><label for="BTDEV04">zz:zz:zz:zz:zz:zz</label></td>
+                      <td></td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </td>
+          <td><a class="plt_btn mini" id="deploy_search" href="javascript:searxhDevice();">検索</a></td>
+        </tr>
+      </table>
+      <br />
+      <table align="center">
+        <tr>
+          <td><a class="plt_btn" id="deploy_edge" href="javascript:deployEdge();">アプリ転送<br />（エッジ端末）</a></td>
+        </tr>
+      </table>
+      <table align="center">
+        <tr>
+          <td><a class="plt_btn" id="deploy_bridge" href="javascript:deployEdge();">アプリ転送<br />（ブリッジ）</a></td>
+        </tr>
+      </table>
+      <br />
+      <table align="center">
+        <tr>
+          <td><a class="plt_btn" id="prev" href="javascript:location.replace(confirmPage);">前へ</a></td>
+          <td><a class="plt_btn" id="deploy_close" href="javascript:app.quit();">閉じる</a></td>
+        </tr>
+      </table>
+    </div>
+
+  </div>
+</body>
+</html>

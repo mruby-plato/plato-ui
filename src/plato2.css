@@ -316,3 +316,64 @@ select {
 .trig_list {
   width: 500px;
 }
+
+/* Bluetooth device list */
+/* frame */
+div.dev_list_area {
+  width: 500px;
+  border-right: 1px solid #CCC;
+  border-bottom: 1px solid #CCC;
+  border-left: 1px solid #CCC;
+}
+/* title */
+table.dev_list_title {
+  width: 500px;
+  table-layout: fixed;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+table.dev_list_title th {
+  border-top: 1px solid #CCC;
+  background: #EEF1F4;
+}
+table.dev_list_title th,
+table.dev_list_title td {
+  padding: 2px;
+  border-right: 1px solid #CCC;
+  border-bottom: 1px solid #CCC;
+}
+table.dev_list_title th.r_none,
+table.dev_list_title td.r_none {
+  border-right: none;
+}
+div.dev_list_box {
+  width: 500px;
+  max-height: 300px;
+  height: auto !important;
+  height: 300px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+div.y_hidden {
+  overflow: hidden;
+  padding: 0 0 10px;
+}
+table.dev_data {
+  width: 500px;
+  border-collapse: separate;
+  border-spacing: 0;
+  table-layout: fixed;
+}
+table.dev_data th,
+table.dev_data td {
+  padding: 2px;
+  border-right: 1px solid #CCC;
+  border-bottom: 1px solid #CCC;
+}
+table.dev_data td {
+  overflow: hidden;
+  white-space: nowrap;
+}
+table.dev_data td p {
+  margin: 0;
+}

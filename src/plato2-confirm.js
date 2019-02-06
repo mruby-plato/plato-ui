@@ -24,8 +24,11 @@ function makeApplication() {
   let cmd = 'ruby ' + getToolPath() + '/prjmaker.rb ' + appRoot;
   launchApplication(cmd);
 
-  alert(MSG.conf_done);
-  app.quit();
+  // alert(MSG.conf_done);
+  // app.quit();
+
+  // forward to deploy page.
+  document.location.replace(deployPage);
 }
 
 // format sensor information
