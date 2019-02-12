@@ -21,7 +21,7 @@ function nextPage() {
     window.location.replace(listPage);
   }
   else {
-    window.location.replace(editPage);
+    window.location.replace(editPage + '?index=0');
   }
 }
 
