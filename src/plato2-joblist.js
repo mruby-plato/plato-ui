@@ -48,6 +48,17 @@ function onoffJob(swiid) {
   setProject(project);
 }
 
+// Show power simulation page
+function handlePowerSimulation() {
+  let overlay = document.getElementById('setting');
+  overlay.classList.add('is-open');
+}
+
+function onCloseOverlay() {
+  let overlay = document.getElementById('setting');
+  overlay.classList.remove('is-open');
+}
+
 // onload event handler
 window.addEventListener("load", function() {
   /* Get joblist from sessionStorage */
