@@ -1,7 +1,7 @@
 <html>
 <head>
   <meta charset='UTF-8'>
-  <title>Plato2 - アプリケーション転送</title>
+  <title id='dep_title'>Plato2 - アプリケーション転送</title>
   <link rel="stylesheet" href="plato2.css">
   <script src="plato2-common.js"></script>
   <script src="en/plato2-lang.js"></script>
@@ -11,25 +11,24 @@
   </script>
 </head>
 <body>
-  <h2 id="deploy_top">端末にアプリケーションを書き込みます</h2>
+  <h2 id="dep_top">端末にアプリケーションを書き込みます</h2>
 
   <div class="outer" align="center">
-
 
     <div>
       <table align="center">
         <tr>
           <td>
-            デバイス一覧
+            <lable id="dep_dev_list">デバイス一覧</lable>
             <div class="dev_list_area">
               <table class="dev_list_title">
                 <col style="width: 40%;" />
                 <col style="width: 35%;" />
                 <col style="width: 25%;" />
                 <tr>
-                  <th>デバイス名</th>
-                  <th>アドレス</th>
-                  <th class="r_none">転送状態</th>
+                  <th id="dep_dev_name">デバイス名</th>
+                  <th id="dep_dev_addr">アドレス</th>
+                  <th class="r_none" id="dep_trn_sts">転送状態</th>
                 </tr>
               </table>
               <div class="dev_list_box">
@@ -48,25 +47,25 @@
               </div>
             </div>
           </td>
-          <td><a class="plt_btn mini" id="deploy_search" href="javascript:updateDeviceList();">検索</a></td>
+          <td><a class="plt_btn mini" id="dep_dev_search" href="javascript:updateDeviceList();">検索</a></td>
         </tr>
       </table>
       <br />
       <table align="center">
         <tr>
-          <td><a class="plt_btn" id="deploy_edge" href="javascript:deployEdge();">アプリ転送<br />（エッジ端末）</a></td>
+          <td><a class="plt_btn" id="dep_edge" href="javascript:deployEdge();">アプリ転送<br />（エッジ端末）</a></td>
         </tr>
       </table>
       <table align="center">
         <tr>
-          <td><a class="plt_btn" id="deploy_bridge" href="javascript:deployEdge();">アプリ転送<br />（ブリッジ）</a></td>
+          <td><a class="plt_btn" id="dep_bridge" href="javascript:deployEdge();">アプリ転送<br />（ブリッジ）</a></td>
         </tr>
       </table>
       <br />
       <table align="center">
         <tr>
           <td><a class="plt_btn" id="prev" href="javascript:location.replace(confirmPage);">前へ</a></td>
-          <td><a class="plt_btn" id="deploy_close" href="javascript:app.quit();">閉じる</a></td>
+          <td><a class="plt_btn" id="dep_close" href="javascript:app.quit();">閉じる</a></td>
         </tr>
       </table>
     </div>

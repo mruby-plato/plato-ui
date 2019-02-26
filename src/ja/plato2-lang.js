@@ -146,6 +146,18 @@ if (LANG == LANG_JA) {
   MSG.conf_conf_cre   = 'アプリケーションを生成します。';
   MSG.conf_done       = 'アプリケーションを生成しました。';
 
+  // plato2-deploy.html
+  MSG.dep_title       = 'Plato2 - アプリケーション転送';
+  MSG.dep_top         = '端末にアプリケーションを書き込みます';
+  MSG.dep_dev_list    = 'デバイス一覧';
+  MSG.dep_dev_name    = 'デバイス名';
+  MSG.dep_dev_addr    = 'アドレス';
+  MSG.dep_trn_sts     = '転送状態';
+  MSG.dep_dev_search  = '検索';
+  MSG.dep_edge        = 'アプリ転送\n（エッジ端末）'
+  MSG.dep_bridge      = 'アプリ転送\n（ブリッジ）';
+  MSG.dep_close       = '閉じる';
+
   // trigger parameters
   trigParameter['temperature']  = '温度';
   trigParameter['humidity']     = '湿度';

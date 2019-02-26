@@ -4,15 +4,16 @@
 
 // constants
 MSGS = [
-  'deploy_top',
-]
-
-// for test
-BTDEVS = [
-  {"name":'BTDev', "addr":'01:23:45:67:89:AB'},
-  {"name":'BTDev', "addr":'12:34:56:78:9A:BC'},
-  {"name":'iPhone', "addr":'00:00:00:00:00:00'},
-  {"name":'BTBridge', "addr":'FE:DC:BA:98:76:54'},
+  'dep_top',
+  'dep_dev_list',
+  'dep_dev_name',
+  'dep_dev_addr',
+  'dep_trn_sts',
+  'dep_dev_search',
+  'dep_edge',
+  'dep_bridge',
+  'prev',
+  'dep_close',
 ]
 
 // add Bluetooth device to device list
@@ -59,6 +60,12 @@ function updateDeviceList() {
 
 // onload event handler
 window.addEventListener("load", function() {
-  // initialize BT device list
+  /* initialize words */
+  document.title = MSG.dep_title;
+  MSGS.forEach(function(id, _idx, _ary) {
+    document.getElementById(id).innerText = MSG[id];
+  })
+
+  /* initialize BT device list */
   updateDeviceList();
 }, false);

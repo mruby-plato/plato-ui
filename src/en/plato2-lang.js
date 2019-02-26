@@ -146,6 +146,18 @@ if (LANG == LANG_EN) {
   MSG.conf_conf_cre   = 'Create an application.';
   MSG.conf_done       = 'Application created.';
 
+  // plato2-deploy.html
+  MSG.dep_title       = 'Plato2 - Deploy application';
+  MSG.dep_top         = 'Write application to devices.';
+  MSG.dep_dev_list    = 'List of devices';
+  MSG.dep_dev_name    = 'Device name';
+  MSG.dep_dev_addr    = 'Address';
+  MSG.dep_trn_sts     = 'Status';
+  MSG.dep_dev_search  = 'Search';
+  MSG.dep_edge        = 'Deploy application\n(Edge device)'
+  MSG.dep_bridge      = 'Deploy application\n(Bridge)';
+  MSG.dep_close       = 'Close';
+
   // trigger parameters
   trigParameter['temperature']  = 'temperature';
   trigParameter['humidity']     = 'humidity';
