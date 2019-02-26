@@ -305,6 +305,13 @@ function inspectOnOff(item, tab=SP, lf=BR, ind=0) {
   return str;
 }
 
+// Inspect GPIO setting
+function inspectGPIO(item, tab=SP, lf=BR, ind=0) {
+  let str = tabs(ind, tab) + MSG.act_gpio + lf;
+  // str += tabs(ind + 1, tab) + MSG.set_gpio + ' ';
+  return str;
+}
+
 // Inspect job items
 function inspectJobItem(item, tab=SP, lf=BR, ind=0) {
   let str = '';
@@ -328,7 +335,8 @@ function inspectJobItem(item, tab=SP, lf=BR, ind=0) {
     case 'trigger':       str = inspectTrigger(item, tab, lf, ind);   break;
     // Actions
     case 'bluetooth':     str = inspectBluetooth(item, tab, lf, ind); break;
-    case 'onoff':         str = inspectOnOff(item, tab, lf, ind); break;
+    case 'onoff':         str = inspectOnOff(item, tab, lf, ind);     break;
+    case 'gpio':          str = inspectGPIO(item, tab, lf, ind);      break;
   }
   return str;
 }

@@ -69,6 +69,8 @@ function formatActions(actions) {
     let params = action.params;
     switch (action.type) {
     case 'bluetooth':
+    case 'onoff':
+    case 'gpio':
       txt += inspectJobItem(action, TAB, LF, 3);
       break;
     }
