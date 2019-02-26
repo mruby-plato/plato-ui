@@ -628,22 +628,24 @@ function mkdir(path) {
 //------------------------------
 
 // launch native application
-function launchApplication(cmd) {
+function launchApplication(cmd, termFunc=function(error, stdout, stderr) {
+  console.log('stdout: '+(stdout||'none'));
+  console.log('stderr: '+(stderr||'none'));
+  if(error !== null) {
+    console.log('exec error: '+error);
+  }
+}) {
   try {
     let exec = require('child_process').exec;
+    callback = function(error, stdout, stderr) {
+      termFunc(error, stdout, stderr);
+      document.body.style.cursor = 'auto';
+    }
     execApp = function() {
-      return exec(cmd, {},
-        function(error, stdout, stderr) {
-          console.log('stdout: '+(stdout||'none'));
-          console.log('stderr: '+(stderr||'none'));
-          if(error !== null) {
-            console.log('exec error: '+error);
-          }
-        }
-      )
+      return exec(cmd, {}, callback);
     };
+    document.body.style.cursor = 'wait';
     execApp();
-
   } catch(e) {
     console.log(e.message);
     alert(e.message);
