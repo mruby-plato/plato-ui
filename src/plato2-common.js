@@ -300,7 +300,7 @@ function inspectOnOff(item, tab=SP, lf=BR, ind=0) {
   }
   else {
     str += getJobByID(item.params.jobid).name + lf;
-    str += tabs(ind + 1, tab) + MSG.set_job_ctrl + ' ' + MSG[(item.params.onoff == 0) ? 'on' : 'off'] + lf;
+    str += tabs(ind + 1, tab) + MSG.set_job_ctrl + ' ' + MSG[(item.params.onoff == 1) ? 'on' : 'off'] + lf;
   }
   return str;
 }

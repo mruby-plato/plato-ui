@@ -422,7 +422,7 @@ function updateBluetoothParams(idx) {
 // init/update on/off parameters
 //
 function initOnOffParams(idx) {
-  let params = {onoff:0};
+  let params = {onoff:1}; // default: ON
   if (targetJob.action[idx].params) {
     params = targetJob.action[idx].params;
   }
@@ -455,7 +455,7 @@ function updateOnOffParams(idx) {
   params.jobid = sel.children[sel.selectedIndex].value;
   // get selected operation (on/off)
   sel = document.getElementById('set_onoff_job_ctrl');
-  params.onoff = sel.selectedIndex;
+  params.onoff = sel.value;
   // update action parameter
   targetJob.action[idx].params = params;
 
