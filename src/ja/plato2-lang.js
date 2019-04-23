@@ -62,6 +62,7 @@ if (LANG == LANG_JA) {
   MSG.sen_din       = 'ディジタル入力';
   MSG.sen_ain       = 'アナログ入力';
   MSG.sen_illu      = '照度';
+  MSG.sen_vibr      = '振動';
   MSG.tim_intr      = '周期指定';
   MSG.tim_time      = '時刻指定';
   MSG.tim_part      = '時間帯指定';

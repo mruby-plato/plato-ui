@@ -48,6 +48,7 @@ const jobItems = {
   'temperature':  {'img': 'img/temperature.png'},
   'vibration':    {'img': 'img/vibration.png'},
   'illuminance':  {'img': 'img/illuminance.png'},
+  'vibration':    {'img': 'img/vibration.png'},
   // timings
   'interval':     {'img': 'img/interval.png', 'setting': true},
   'ontime':       {'img': 'img/ontime.png', 'setting': true},
@@ -73,6 +74,7 @@ const defaultParams = {
   'analog_in': { 'pin': 1 },
   'vibration': {},
   'illuminance':{},
+  'vibration':{},
   // timings
   'interval': { 'interval_time': 1, 'interval_time_unit': 'hour' },
   'ontime': { 'times': [] },
@@ -322,7 +324,7 @@ function inspectJobItem(item, tab=SP, lf=BR, ind=0) {
     case 'temperature':   str = inspectSensor(MSG.sen_temp, tab, lf, ind);  break;
     case 'humidity':      str = inspectSensor(MSG.sen_humi, tab, lf, ind);  break;
     case 'air_pressure':  str = inspectSensor(MSG.sen_pres, tab, lf, ind);  break;
-    // case 'vibration':     str = inspectSensor(MSG.sen_vibr, tab, lf, ind);  break;
+    case 'vibration':     str = inspectSensor(MSG.sen_vibr, tab, lf, ind);  break;
     case 'angle':         str = inspectSensor(MSG.sen_angl, tab, lf, ind);  break;
     case 'distance':      str = inspectSensor(MSG.sen_loca, tab, lf, ind);  break;
     case 'velocity':      str = inspectSensor(MSG.sen_velo, tab, lf, ind);  break;

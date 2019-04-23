@@ -62,6 +62,7 @@ if (LANG == LANG_EN) {
   MSG.sen_din       = 'Digital-in';
   MSG.sen_ain       = 'Analog-in';
   MSG.sen_illu      = 'Illuminance';
+  MSG.sen_vibr      = 'Vibration';
   MSG.tim_intr      = 'Interval';
   MSG.tim_time      = 'on time';
   MSG.tim_part      = 'part time';
