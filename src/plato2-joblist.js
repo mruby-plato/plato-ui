@@ -7,6 +7,14 @@ MSGS = [
   'list_top',
   'prev',
   'next',
+  'pow_sim_title',
+  'pow_sim_accel',
+  'pow_sim_tmhu',
+  'pow_sim_illum',
+  'pow_sim_press',
+  'pow_sim_total',
+  'pow_sim_capa',
+  'close',
 ]
 
 function handleDelIconClick(e) {
@@ -50,6 +58,8 @@ function onoffJob(swiid) {
 
 // Show power simulation page
 function handlePowerSimulation() {
+  let batlife = document.getElementById('pow_sim_life');
+  batlife.innerText = getMessage('pow_sim_life', 213.4);
   let overlay = document.getElementById('setting');
   overlay.classList.add('is-open');
 }

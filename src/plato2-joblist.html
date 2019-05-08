@@ -39,22 +39,24 @@
 
     <form class="overlay" id="setting">
       <div class="settings" id="set-part_time">
-        <h2 id="power_simulation">電源シミュレーション</h2>
-        <h1>予想電池寿命  280.2日</h1>
-        <table width="40%">
+        <h2 id="pow_sim_title">電源シミュレーション</h2>
+        <h1 id="pow_sim_life">予想電池寿命 280.2 日</h1>
+        <table width="55%">
           <tr><td>Bluetooth</td><td align="right">21.00μAh</td></tr>
           <tr><td>GPS</td><td align="right">835.33μAh</td></tr>
-          <tr><td>加速度センサ</td><td align="right">4.07μAh</td></tr>
-          <tr><td>温湿度センサ</td><td align="right">0.01μAh</td></tr>
+          <tr><td id="pow_sim_accel">加速度センサ</td><td align="right">4.07μAh</td></tr>
+          <tr><td id="pow_sim_tmhu">温湿度センサ</td><td align="right">0.01μAh</td></tr>
+          <tr><td id="pow_sim_illum">照度センサ</td><td align="right">0.15μAh</td></tr>
+          <tr><td id="pow_sim_press">気圧センサ</td><td align="right">0.00μAh</td></tr>
         </table>
-        <table width="40%">
-          <tr><td>総平均電流</td><td align="right">860.41μAh</td></tr>
-          <tr><td>電池容量</td><td align="right">348.75mAh</td></tr>
+        <table width="55%">
+          <tr><td id="pow_sim_total">総平均電流</td><td align="right">860.56μAh</td></tr>
+          <tr><td id="pow_sim_capa">電池容量</td><td align="right">348.75mAh</td></tr>
         </table>
-        </div>
+      </div>
       <table align="center">
         <tr>
-          <td><a class="plt_btn" name="close" onclick="onCloseOverlay();">閉じる</a></td>
+          <td><a class="plt_btn" id="close" onclick="onCloseOverlay();">閉じる</a></td>
         </tr>
       </table>
     </form>

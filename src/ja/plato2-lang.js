@@ -4,6 +4,7 @@ if (LANG == LANG_JA) {
   MSG.next          = '次へ';
   MSG.ok            = 'OK';
   MSG.cancel        = 'キャンセル';
+  MSG.close         = '閉じる';
   MSG.browse        = '参照...';
   MSG.save_setting  = '設定保存';
   MSG.register      = '登録';
@@ -45,6 +46,13 @@ if (LANG == LANG_JA) {
   // plato2-joblist.html
   MSG.list_title    = 'Plato2 - IoTジョブ一覧';
   MSG.list_top      = 'IoTジョブ一覧';
+  MSG.pow_sim_title = '電源シミュレーション';
+  MSG.pow_sim_accel = '加速度センサ';
+  MSG.pow_sim_tmhu  = '温湿度センサ';
+  MSG.pow_sim_illum = '照度センサ';
+  MSG.pow_sim_press = '気圧センサ';
+  MSG.pow_sim_total = '総平均電流';
+  MSG.pow_sim_capa  = '電池容量';
 
   // plato2-addjob.html
   MSG.addjob_title  = 'Plato2 - IoTジョブ登録';
@@ -157,7 +165,6 @@ if (LANG == LANG_JA) {
   MSG.dep_dev_search  = '検索';
   MSG.dep_edge        = 'アプリ転送\n（エッジ端末）'
   MSG.dep_bridge      = 'アプリ転送\n（ブリッジ）';
-  MSG.dep_close       = '閉じる';
 
   // trigger parameters
   trigParameter['temperature']  = '温度';
@@ -199,6 +206,7 @@ if (LANG == LANG_JA) {
     case 'open_app_file':     return `'${param}' を開く`;
     case 'overwrite_confirm': return `グループ設定 "${param}" を更新します。`;
     case 'del_job_confirm':   return `"${param}" を削除します。`;
+    case 'pow_sim_life':      return `予想電池寿命 ${param} 日`;
     }
   }
 

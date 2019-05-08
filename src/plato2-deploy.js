@@ -13,7 +13,7 @@ MSGS = [
   'dep_edge',
   'dep_bridge',
   'prev',
-  'dep_close',
+  'close',
 ]
 
 // add Bluetooth device to device list

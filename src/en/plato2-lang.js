@@ -4,6 +4,7 @@ if (LANG == LANG_EN) {
   MSG.next          = 'Next';
   MSG.ok            = 'OK';
   MSG.cancel        = 'Cancel';
+  MSG.close         = 'Close';
   MSG.browse        = 'Browse...';
   MSG.save_setting  = 'Save settings';
   MSG.register      = 'Register';
@@ -45,6 +46,13 @@ if (LANG == LANG_EN) {
   // plato2-joblist.html
   MSG.list_title    = 'Plato2 - List of IoT jobs';
   MSG.list_top      = 'List of IoT jobs.';
+  MSG.pow_sim_title = 'Power Simulation';
+  MSG.pow_sim_accel = 'Acceleration sensor';
+  MSG.pow_sim_tmhu  = 'Temp./Humi. sensor';
+  MSG.pow_sim_illum = 'Illuminance sensor';
+  MSG.pow_sim_press = 'Air-pressure sensor';
+  MSG.pow_sim_total = 'Total current';
+  MSG.pow_sim_capa  = 'Battery capacity';
 
   // plato2-addjob.html
   MSG.addjob_title  = 'Plato2 - Edit IoT job';
@@ -157,7 +165,6 @@ if (LANG == LANG_EN) {
   MSG.dep_dev_search  = 'Search';
   MSG.dep_edge        = 'Deploy application\n(Edge device)'
   MSG.dep_bridge      = 'Deploy application\n(Bridge)';
-  MSG.dep_close       = 'Close';
 
   // trigger parameters
   trigParameter['temperature']  = 'temperature';
@@ -199,6 +206,7 @@ if (LANG == LANG_EN) {
     case 'open_app_file':     return `open '${param}'`;
     case 'overwrite_confirm': return `Update the group setting "${param}".`;
     case 'del_job_confirm':   return `Confirm delete job "${param}".`;
+    case 'pow_sim_life':      return `Battery life: ${param} days`;
     }
   }
 
