@@ -58,6 +58,18 @@ function updateDeviceList() {
   });
 }
 
+// Deploy edge application
+function deployEdge() {
+  let appRoot = getAppPath();
+  let setting = getSetting();
+  let writer = getToolPath() + '/mrbwriter/MRBWriter.exe';
+  let uuid = setting.bt_setting.grpid.replace(/-/g, '');
+  let cmd = writer + ' ' + appRoot + '/' + APPBIN + ' -u' + uuid + ' -s';
+  // alert(cmd);
+
+  launchApplication(cmd);
+}
+
 // onload event handler
 window.addEventListener("load", function() {
   /* initialize words */
@@ -66,6 +78,6 @@ window.addEventListener("load", function() {
     document.getElementById(id).innerText = MSG[id];
   })
 
-  /* initialize BT device list */
-  updateDeviceList();
+  // /* initialize BT device list */
+  // updateDeviceList();
 }, false);
