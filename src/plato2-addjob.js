@@ -19,6 +19,7 @@ MSGS = [
     'sen_din',
     'sen_ain',
     'sen_illu',
+    'sen_vibr',
   'tab_timing',       // Timing tab
     'tim_intr',
     'tim_time',
