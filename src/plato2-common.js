@@ -108,9 +108,6 @@ const trigCondition = {};
 const andOr = {};
 
 //
-const APPBIN = 'mrbapp.bin';
-
-//
 // language
 //
 
