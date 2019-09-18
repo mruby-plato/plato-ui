@@ -7,6 +7,8 @@ MSGS = [
   'confirm_top',
   'prev',
   'confirm_create',
+  'conf_gen_title',
+  'conf_gen_wait',
 ]
 
 // functions
@@ -28,11 +30,9 @@ function makeApplication() {
   }
   launchApplication(cmd, termFunc);
 
-  // alert(MSG.conf_done);
-  // app.quit();
-
-  // // forward to deploy page.
-  // document.location.replace(deployPage);
+  // Show progress message
+  let overlay = document.getElementById('progress');
+  overlay.classList.add('is-open');
 }
 
 // format sensor information
