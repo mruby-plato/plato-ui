@@ -13,7 +13,7 @@ if (LANG == LANG_JA) {
 
   // units
   MSG.hour          = '時間';
-  MSG.minute        = '時';
+  MSG.minute        = '分';
   MSG.second        = '秒';
 
   // plato2.html
