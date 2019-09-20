@@ -58,6 +58,25 @@ function updateDeviceList() {
   });
 }
 
+// Deploy edge application
+function deployEdge() {
+  let appRoot = getAppPath();
+  let setting = getSetting();
+  let writer = getToolPath() + '/mrbwriter/MRBWriter.exe';
+  let uuid = setting.bt_setting.grpid.replace(/-/g, '');
+
+  var devid = parseInt(setting.bt_setting.devid, 16);
+  var devcnt = setting.bt_setting.devcnt;
+  var bins = '';
+  for (var dev=0; dev<devcnt; dev++) {
+    bins += (appRoot + '/bin/' + 'edge_' + ('00000' + (devid + dev).toString(16)).slice(-6).toUpperCase() + '.bin ');
+  }
+  let cmd = writer + ' ' + bins + '-u' + uuid + ' -s';
+  // alert(cmd);
+
+  launchApplication(cmd);
+}
+
 // onload event handler
 window.addEventListener("load", function() {
   /* initialize words */
@@ -66,6 +85,6 @@ window.addEventListener("load", function() {
     document.getElementById(id).innerText = MSG[id];
   })
 
-  /* initialize BT device list */
-  updateDeviceList();
+  // /* initialize BT device list */
+  // updateDeviceList();
 }, false);

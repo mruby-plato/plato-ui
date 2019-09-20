@@ -154,6 +154,8 @@ if (LANG == LANG_EN) {
   MSG.conf_app_bridge = 'Application for Bluetooth-LoRaWAN bridge';
   MSG.conf_conf_cre   = 'Create an application.';
   MSG.conf_done       = 'Application created.';
+  MSG.conf_gen_title  = 'Applications are automatically geneted.';
+  MSG.conf_gen_wait   = 'Wait a moment...';
 
   // plato2-deploy.html
   MSG.dep_title       = 'Plato2 - Deploy application';

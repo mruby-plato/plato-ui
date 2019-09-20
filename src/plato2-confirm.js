@@ -7,6 +7,8 @@ MSGS = [
   'confirm_top',
   'prev',
   'confirm_create',
+  'conf_gen_title',
+  'conf_gen_wait',
 ]
 
 // functions
@@ -22,13 +24,15 @@ function makeApplication() {
   saveFile(appRoot + '/app.json', sessionStorage.project);
   // launch `projmaker.rb`
   let cmd = 'ruby ' + getToolPath() + '/prjmaker.rb ' + appRoot;
-  launchApplication(cmd);
+  termFunc = function(error, stdout, stderr) {
+    // forward to deploy page.
+    document.location.replace(deployPage);
+  }
+  launchApplication(cmd, termFunc);
 
-  // alert(MSG.conf_done);
-  // app.quit();
-
-  // forward to deploy page.
-  document.location.replace(deployPage);
+  // Show progress message
+  let overlay = document.getElementById('progress');
+  overlay.classList.add('is-open');
 }
 
 // format sensor information

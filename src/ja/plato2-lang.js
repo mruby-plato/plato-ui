@@ -14,7 +14,7 @@ if (LANG == LANG_JA) {
 
   // units
   MSG.hour          = '時間';
-  MSG.minute        = '時';
+  MSG.minute        = '分';
   MSG.second        = '秒';
 
   // plato2.html
@@ -154,6 +154,8 @@ if (LANG == LANG_JA) {
   MSG.conf_app_bridge = 'Bluetooth-LoRaWANブリッジアプリケーション';
   MSG.conf_conf_cre   = 'アプリケーションを生成します。';
   MSG.conf_done       = 'アプリケーションを生成しました。';
+  MSG.conf_gen_title  = 'アプリケーションを自動生成しています。';
+  MSG.conf_gen_wait   = 'しばらくお待ち下さい。';
 
   // plato2-deploy.html
   MSG.dep_title       = 'Plato2 - アプリケーション転送';
