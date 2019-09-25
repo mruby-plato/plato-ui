@@ -83,7 +83,7 @@ function deployBridge() {
   let writer = getToolPath() + '/mrbwriter/MRBWriter.exe';
 
   bin = appRoot + '/bin/bridge.bin';
-  let cmd = writer + ' ' + bin + ' -s';
+  let cmd = writer + ' ' + bin + ' -s -b';
   // alert(cmd);
 
   launchApplication(cmd);
