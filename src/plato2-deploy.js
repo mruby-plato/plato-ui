@@ -77,6 +77,18 @@ function deployEdge() {
   launchApplication(cmd);
 }
 
+// Deploy bridge application
+function deployBridge() {
+  let appRoot = getAppPath();
+  let writer = getToolPath() + '/mrbwriter/MRBWriter.exe';
+
+  bin = appRoot + '/bin/bridge.bin';
+  let cmd = writer + ' ' + bin + ' -s -b';
+  // alert(cmd);
+
+  launchApplication(cmd);
+}
+
 // onload event handler
 window.addEventListener("load", function() {
   /* initialize words */
