@@ -51,13 +51,9 @@ function formatTimings(timings) {
   timings.forEach(function(timing, i) {
     let params = timing.params
     switch (timing.type) {
-    case 'ontime':
-      txt += tabs(3) + MSG.tim_time + ':' + LF;
-      break;
-    case 'part_time':
-      txt += tabs(3) + MSG.tim_part + ':' + LF;
-      break;
     case 'interval':
+    case 'ontime':
+    case 'part_time':
     case 'trigger':
       txt += inspectJobItem(timing, TAB, LF, 3);
       break;
