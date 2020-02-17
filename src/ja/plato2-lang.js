@@ -11,6 +11,8 @@ if (LANG == LANG_JA) {
   MSG.none          = 'なし';
   MSG.on            = 'ON';
   MSG.off           = 'OFF';
+  MSG.high          = 'HIGH';
+  MSG.low           = 'LOW';
 
   // units
   MSG.hour          = '時間';

@@ -131,6 +131,7 @@ function handleSetIconClick(e) {
 
   case 'bluetooth': initBluetoothParams(items[2]);  break;
   case 'onoff':     initOnOffParams(items[2]);      break;
+  case 'gpio':      initGPIOParams(items[2]);       break;
   default: break;
   }
 }
@@ -149,6 +150,7 @@ function onSettingOK() {
 
   case 'bluetooth': updateBluetoothParams(idx); break;
   case 'onoff':     updateOnOffParams(idx);     break;
+  case 'gpio':      updateGPIOParams(idx);      break;
   default:
     break;
   }
@@ -462,6 +464,34 @@ function updateOnOffParams(idx) {
 
   let elem = document.getElementById('_' + 'onoff' + idx);
   elem.innerHTML = inspectOnOff(targetJob.action[idx]);
+}
+
+//
+// init/update GPIO parameters
+//
+function initGPIOParams(idx) {
+  let params = {pin: '1', value: 'high'};
+  if (targetJob.action[idx].params) {
+    params = targetJob.action[idx].params;
+  }
+  // initialize GPIO
+  let sel = document.getElementById('set_gpio_pin_list');
+  sel.value = params.pin;
+  sel = document.getElementById('set_gpio_value_list');
+  sel.value = params.value;
+}
+function updateGPIOParams(idx) {
+  let params = {};
+  // get GPIO pin
+  let sel = document.getElementById('set_gpio_pin_list');
+  params.pin = sel.children[sel.selectedIndex].value;
+  // get GPIO output value
+  sel = document.getElementById('set_gpio_value_list');
+  params.value = sel.children[sel.selectedIndex].value;
+  targetJob.action[idx].params = params;
+
+  let elem = document.getElementById('_' + 'gpio' + idx);
+  elem.innerHTML = inspectGPIO(targetJob.action[idx]);
 }
 
 function changeTriggerParameter(val) {

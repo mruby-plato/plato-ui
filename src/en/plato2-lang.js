@@ -11,6 +11,8 @@ if (LANG == LANG_EN) {
   MSG.none          = 'none';
   MSG.on            = 'ON';
   MSG.off           = 'OFF';
+  MSG.high          = 'HIGH';
+  MSG.low           = 'LOW';
 
   // units
   MSG.hour          = 'hours';

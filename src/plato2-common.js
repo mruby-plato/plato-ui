@@ -85,7 +85,7 @@ const defaultParams = {
     while_trig_on: false, while_trig_time: 1, while_trig_unit: 'hour'},
   // actions
   'bluetooth': {},
-  'gpio': {},
+  'gpio': { 'pin': '1', 'value': 'high'},
   'onoff': {},
 };
 
@@ -310,7 +310,8 @@ function inspectOnOff(item, tab=SP, lf=BR, ind=0) {
 // Inspect GPIO setting
 function inspectGPIO(item, tab=SP, lf=BR, ind=0) {
   let str = tabs(ind, tab) + MSG.act_gpio + lf;
-  // str += tabs(ind + 1, tab) + MSG.set_gpio + ' ';
+  str += tabs(ind + 1, tab) + MSG.set_gpio_pin + ' ' + item.params.pin + lf;
+  str += tabs(ind + 1, tab) + MSG.set_gpio_value + ' ' + MSG[(item.params.value == 'low') ? 'low' : 'high'] + lf;
   return str;
 }
 
