@@ -44,7 +44,7 @@ const jobItems = {
   'digital_in':   {'img': 'img/digitalin.png', 'setting': true},
   'velocity':     {'img': 'img/gps-direction.png'},
   'humidity':     {'img': 'img/humidity.png'},
-  'distance':     {'img': 'img/gps-location.png'},
+  'location':     {'img': 'img/gps-location.png'},
   'temperature':  {'img': 'img/temperature.png'},
   'vibration':    {'img': 'img/vibration.png'},
   'illuminance':  {'img': 'img/illuminance.png'},
@@ -66,7 +66,7 @@ const defaultParams = {
   'temperature': {},
   'humidity': {},
   'air_pressure': {},
-  'distance': {},
+  'location': {},
   'velocity': {},
   'angle': {},
   'battery': {},
@@ -327,7 +327,7 @@ function inspectJobItem(item, tab=SP, lf=BR, ind=0) {
     case 'air_pressure':  str = inspectSensor(MSG.sen_pres, tab, lf, ind);  break;
     case 'vibration':     str = inspectSensor(MSG.sen_vibr, tab, lf, ind);  break;
     case 'angle':         str = inspectSensor(MSG.sen_angl, tab, lf, ind);  break;
-    case 'distance':      str = inspectSensor(MSG.sen_loca, tab, lf, ind);  break;
+    case 'location':      str = inspectSensor(MSG.sen_loca, tab, lf, ind);  break;
     case 'velocity':      str = inspectSensor(MSG.sen_velo, tab, lf, ind);  break;
     case 'battery':       str = inspectSensor(MSG.sen_batt, tab, lf, ind);  break;
     case 'illuminance':   str = inspectSensor(MSG.sen_illu, tab, lf, ind);  break;

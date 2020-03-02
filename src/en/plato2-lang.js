@@ -176,7 +176,7 @@ if (LANG == LANG_EN) {
   trigParameter['air_pressure'] = 'air pressure';
   trigParameter['vibration']    = 'count of vibration';
   trigParameter['angle']        = 'angle';
-  trigParameter['distance']     = 'distance';
+  trigParameter['location']     = 'distance';
   trigParameter['velocity']     = 'velocity';
   trigParameter['battery']      = 'battery power';
   trigParameter['analog_in']    = 'analog value';
@@ -188,7 +188,7 @@ if (LANG == LANG_EN) {
   trigParamUnit['air_pressure'] = 'hPa';
   trigParamUnit['vibration']    = 'times';
   trigParamUnit['angle']        = 'dig.';
-  trigParamUnit['distance']     = 'km';
+  trigParamUnit['location']     = 'km';
   trigParamUnit['velocity']     = 'km/h';
   trigParamUnit['battery']      = '%';
   trigParamUnit['analog_in']    = '';

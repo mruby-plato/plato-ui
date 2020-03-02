@@ -176,7 +176,7 @@ if (LANG == LANG_JA) {
   trigParameter['air_pressure'] = '気圧';
   trigParameter['vibration']    = '振動回数';
   trigParameter['angle']        = '傾斜角度';
-  trigParameter['distance']     = '移動距離';
+  trigParameter['location']     = '移動距離';
   trigParameter['velocity']     = '速度';
   trigParameter['battery']      = '電池残量';
   trigParameter['analog_in']    = 'アナログ値';
@@ -188,7 +188,7 @@ if (LANG == LANG_JA) {
   trigParamUnit['air_pressure'] = 'hPa';
   trigParamUnit['vibration']    = '回';
   trigParamUnit['angle']        = '度';
-  trigParamUnit['distance']     = 'km';
+  trigParamUnit['location']     = 'km';
   trigParamUnit['velocity']     = 'km/h';
   trigParamUnit['battery']      = '%';
   trigParamUnit['analog_in']    = '';
