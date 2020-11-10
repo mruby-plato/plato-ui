@@ -5,6 +5,7 @@
 // constants
 MSGS = [
   'dep_top',
+  'dep_path',
   'dep_dev_list',
   'dep_dev_name',
   'dep_dev_addr',
@@ -12,6 +13,7 @@ MSGS = [
   'dep_dev_search',
   'dep_edge',
   'dep_bridge',
+  'dep_copy',
   'prev',
   'close',
 ]
@@ -58,20 +60,55 @@ function updateDeviceList() {
   });
 }
 
+// Scan Bluetooth device
+var ble = new BlueJelly();
+const uuid_data_service = "24620200-1f7e-4adb-936a-ba3687e99b18";
+
+function scanDevice() {
+  mainWindow.webContents.on('selext-bluetooth-device', (event, deviceList, callback) => {
+    event.preventDefault();
+    console.log('Device list:', deviceList);
+    let result = deviceList[0];
+    if (!result) {
+      callback('');
+    }
+    else {
+      callback(result.deviceId);
+    }
+  });
+
+  ble.setUUID("DataService", uuid_data_service, '');
+  ble.scan("DataService");
+  // launchApplication('open file:///Users/mimaki/git/mimaki/wk/bluehelly/bj-plato.html');
+}
+
 // Deploy edge application
 function deployEdge() {
-  let appRoot = getAppPath();
-  let setting = getSetting();
-  let writer = getToolPath() + '/mrbwriter/MRBWriter.exe';
-  let uuid = setting.bt_setting.grpid.replace(/-/g, '');
+  // let appRoot = getAppPath();
+  // let setting = getSetting();
+  // let writer = getToolPath() + '/mrbwriter/MRBWriter.exe';
+  // let uuid = setting.bt_setting.grpid.replace(/-/g, '');
 
-  var devid = parseInt(setting.bt_setting.devid, 16);
-  var devcnt = setting.bt_setting.devcnt;
-  var bins = '';
-  for (var dev=0; dev<devcnt; dev++) {
-    bins += (appRoot + '/bin/' + 'edge_' + ('00000' + (devid + dev).toString(16)).slice(-6).toUpperCase() + '.bin ');
+  // var devid = parseInt(setting.bt_setting.devid, 16);
+  // var devcnt = setting.bt_setting.devcnt;
+  // var bins = '';
+  // for (var dev=0; dev<devcnt; dev++) {
+  //   bins += (appRoot + '/bin/' + 'edge_' + ('00000' + (devid + dev).toString(16)).slice(-6).toUpperCase() + '.bin ');
+  // }
+  // let cmd = writer + ' ' + bins + '-u' + uuid + ' -s';
+  let writer = getToolPath() + '/plato-web.html';
+  var cmd = '';
+  switch (getOS()) {
+    case OS_MAC:
+      cmd = 'open /Applications/Google\\ Chrome.app';
+      break;
+    case OS_WINDOWS:
+      cmd = '"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"';
+      break;
+    default:
+      break;
   }
-  let cmd = writer + ' ' + bins + '-u' + uuid + ' -s';
+  cmd += ' ' + writer;
   // alert(cmd);
 
   launchApplication(cmd);
@@ -89,6 +126,14 @@ function deployBridge() {
   launchApplication(cmd);
 }
 
+// Copy application path to clipboard
+function copyAppPath() {
+  var copyTarget = document.getElementById("app_path");
+  copyTarget.select();
+  document.execCommand("Copy");
+  alert("アプリケーションパスをコピーしました");
+}
+
 // onload event handler
 window.addEventListener("load", function() {
   /* initialize words */
@@ -99,4 +144,7 @@ window.addEventListener("load", function() {
 
   // /* initialize BT device list */
   // updateDeviceList();
+
+  // initialize application path
+  document.getElementById("app_path").value = getAppPath() + '/bin';
 }, false);

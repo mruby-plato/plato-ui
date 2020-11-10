@@ -377,3 +377,13 @@ table.dev_data td {
 table.dev_data td p {
   margin: 0;
 }
+
+.app_path {
+  width: 550px;
+}
+
+.dep_path {
+  text-align: left;
+  margin: 0 auto;
+  width: 600px;
+}

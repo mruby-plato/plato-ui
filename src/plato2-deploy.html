@@ -1,9 +1,10 @@
 <html>
 <head>
   <meta charset='UTF-8'>
-  <title id='dep_title'>Plato2 - アプリケーション転送</title>
+  <title id='dep_title'>Plato2 - アプリケーション生成</title>
   <link rel="stylesheet" href="plato2.css">
   <script src="plato2-common.js"></script>
+  <script src="bluejelly.js"></script>
   <script src="en/plato2-lang.js"></script>
   <script src="ja/plato2-lang.js"></script>
   <script src="plato2-deploy.js"></script>
@@ -11,9 +12,16 @@
   </script>
 </head>
 <body>
-  <h2 id="dep_top">端末にアプリケーションを書き込みます</h2>
+  <h2 id="dep_top">アプリケーションを生成しました</h2>
 
   <div class="outer" align="center">
+    <div class="dep_path">
+      <label id="dep_path"></label>
+    </div>
+    <div>
+      <input type="text" id="app_path" class="app_path" value="/Users/mimaki/plato2/My_application/bin" readonly>
+      <button id="dep_copy" onclick="copyAppPath()">Copy</button>
+    </div>
 
     <div>
       <table align="center" hidden>
@@ -57,7 +65,8 @@
               </div>
             </div>
           </td>
-          <td><a class="plt_btn mini" id="dep_dev_search" href="javascript:updateDeviceList();">検索</a></td>
+          <!-- <td><a class="plt_btn mini" id="dep_dev_search" href="javascript:updateDeviceList();">検索</a></td> -->
+          <td><a class="plt_btn mini" id="dep_dev_search" href="javascript:scanDevice();">検索</a></td>
         </tr>
       </table>
       <br />
