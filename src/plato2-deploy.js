@@ -60,27 +60,27 @@ function updateDeviceList() {
   });
 }
 
-// Scan Bluetooth device
-var ble = new BlueJelly();
-const uuid_data_service = "24620200-1f7e-4adb-936a-ba3687e99b18";
+// // Scan Bluetooth device
+// var ble = new BlueJelly();
+// const uuid_data_service = "24620200-1f7e-4adb-936a-ba3687e99b18";
 
-function scanDevice() {
-  mainWindow.webContents.on('selext-bluetooth-device', (event, deviceList, callback) => {
-    event.preventDefault();
-    console.log('Device list:', deviceList);
-    let result = deviceList[0];
-    if (!result) {
-      callback('');
-    }
-    else {
-      callback(result.deviceId);
-    }
-  });
+// function scanDevice() {
+//   mainWindow.webContents.on('selext-bluetooth-device', (event, deviceList, callback) => {
+//     event.preventDefault();
+//     console.log('Device list:', deviceList);
+//     let result = deviceList[0];
+//     if (!result) {
+//       callback('');
+//     }
+//     else {
+//       callback(result.deviceId);
+//     }
+//   });
 
-  ble.setUUID("DataService", uuid_data_service, '');
-  ble.scan("DataService");
-  // launchApplication('open file:///Users/mimaki/git/mimaki/wk/bluehelly/bj-plato.html');
-}
+//   ble.setUUID("DataService", uuid_data_service, '');
+//   ble.scan("DataService");
+//   // launchApplication('open file:///Users/mimaki/git/mimaki/wk/bluehelly/bj-plato.html');
+// }
 
 // Deploy edge application
 function deployEdge() {
