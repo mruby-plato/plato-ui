@@ -103,7 +103,7 @@ function deployEdge() {
       cmd = 'open /Applications/Google\\ Chrome.app';
       break;
     case OS_WINDOWS:
-      cmd = '"C:\Program Files (x86)\Google\Chrome\Application\chrome.exe"';
+      cmd = '"C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe"';
       break;
     default:
       break;
