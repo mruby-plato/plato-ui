@@ -177,7 +177,7 @@ if (LANG == LANG_JA) {
   trigParameter['humidity']     = '湿度';
   trigParameter['air_pressure'] = '気圧';
   trigParameter['vibration']    = '振動回数';
-  trigParameter['angle']        = '傾斜角度';
+  trigParameter['angle']        = ['X軸傾斜角度', 'Y軸傾斜角度', 'Z軸傾斜角度'];
   trigParameter['location']     = '移動距離';
   trigParameter['velocity']     = '速度';
   trigParameter['battery']      = '電池残量';
@@ -228,8 +228,18 @@ if (LANG == LANG_JA) {
     item.params.triggers.forEach(function(trig, i) {
       str += tabs(ind + 2, tab);
       if (i > 0) str += andOr[trig.and_or] + ' ';
-      str += trigParameter[trig.param] + ' ' + MSG.set_tri_is + ' ';
-      str += trig.value + trigParamUnit[trig.param] + ' ' + trigCondition[trig.cond] + lf;
+      // str += trigParameter[trig.param] + ' ' + MSG.set_tri_is + ' ';
+      let trigparams = trig.param.split('#');
+      if (trigparams.length == 1) {
+        str += trigParameter[trig.param];
+      }
+      else {
+        // e.g., 'angle#0'
+        str += trigParameter[trigparams[0]][trigparams[1]];
+      }
+      str += ' ' + MSG.set_tri_is + ' ';
+      // str += trig.value + trigParamUnit[trig.param] + ' ' + trigCondition[trig.cond] + lf;
+      str += trig.value + trigParamUnit[trigparams[0]] + ' ' + trigCondition[trig.cond] + lf;
     })
     if (item.params.trig_delay)
       str += tabs(ind + 1, tab) + '遅延判定: ' + item.params.trig_delay_time + item.params.trig_delay_unit + lf;

@@ -177,7 +177,7 @@ if (LANG == LANG_EN) {
   trigParameter['humidity']     = 'humidity';
   trigParameter['air_pressure'] = 'air pressure';
   trigParameter['vibration']    = 'count of vibration';
-  trigParameter['angle']        = 'angle';
+  trigParameter['angle']        = ['X-axis angle', 'Y-axis angle', 'Z-axis angle'];
   trigParameter['location']     = 'distance';
   trigParameter['velocity']     = 'velocity';
   trigParameter['battery']      = 'battery power';
@@ -226,10 +226,19 @@ if (LANG == LANG_EN) {
     str += tabs(ind + 1, tab) + 'Period: ' + item.params.trig_period + ' ' + item.params.trig_peri_unit + lf;
     str += tabs(ind + 1, tab) + MSG.set_tri_cond + lf;
     item.params.triggers.forEach(function(trig, i) {
+      let trigparams = trig.param.split('#'); // 'param#index' -> ['param', 'index]
       str += tabs(ind + 2, tab);
       if (i > 0) str += andOr[trig.and_or] + ' ';
-      str += trigParameter[trig.param] + ' ';
-      str += trigCondition[trig.cond] + ' ' + trig.value + trigParamUnit[trig.param] + lf;
+      // str += trigParameter[trig.param] + ' ';
+      if (trigparams.length == 1) {
+        str += trigParameter[trigsparam[0]] + ' ';
+      }
+      else {
+        // e.g., 'angle#0'
+        str += trigParameter[trigparams[0]][trigparams[1]] + ' ';
+      }
+      // str += trigCondition[trig.cond] + ' ' + trig.value + trigParamUnit[trig.param] + lf;
+      str += trigCondition[trig.cond] + ' ' + trig.value + trigParamUnit[trigparams[0]] + lf;
     })
     if (item.params.trig_delay)
       str += tabs(ind + 1, tab) + 'Dealy: ' + item.params.trig_delay_time + item.params.trig_delay_unit + lf;

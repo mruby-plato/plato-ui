@@ -323,12 +323,24 @@ function initTriggerParams(idx) {
     sel.removeChild(sel.lastChild);
   }
   targetJob.sensor.forEach(function (sen, i, ary) {
-    item = trigParameter[sen.type];
-    if (item) {
-      let op = document.createElement("option");
-      op.value = sen.type;
-      op.text = item;
-      sel.appendChild(op);
+    // item = trigParameter[sen.type];
+    // if (item) {
+    //   let op = document.createElement("option");
+    //   op.value = sen.type;
+    //   op.text = item;
+    //   sel.appendChild(op);
+    // }
+    items = trigParameter[sen.type];
+    if (items) {
+      if (!Array.isArray(items)) {
+        items = [items];
+      }
+      items.forEach(function(item, idx) {
+        let op = document.createElement("option");
+        op.value = sen.type + "#" + idx;
+        op.text = item;
+        sel.appendChild(op);
+      });
     }
   });
   if (targetJob.sensor.length > 0) {
@@ -399,8 +411,10 @@ function initBluetoothParams(idx) {
     html += '><label for="' + id + '">';
     html += trigParameter[sen.type];
     if (trigParamUnit[sen.type].length > 0) {
+      paramtype = trig.param.split('#')[0]; // 'type#index' -> 'type'
       html += ' [';
-      html += trigParamUnit[sen.type];
+      // html += trigParamUnit[sen.type];
+      html += trigParamUnit[paramtype];
       html += ']';
     }
     html += '</lable></td></tr>';
@@ -494,13 +508,23 @@ function updateGPIOParams(idx) {
   elem.innerHTML = inspectGPIO(targetJob.action[idx]);
 }
 
+// trigger type change handler
 function changeTriggerParameter(val) {
+  val = val.split('#')[0];
   document.getElementById('trig_val_unit').innerText = trigParamUnit[val];
 }
 
 // add trigger list
 function addTriggerList(trig) {
   let trig_str = '';
+  let types = trig.param.split('#');  // 'type#index' -> ['type', 'index']
+  let paramtype = types[0];
+  let paramidx = types[1];
+
+  let trigparam = trigParameter[paramtype];
+  if (Array.isArray(trigparam)) {
+    trigparam = trigparam[paramidx];
+  }
 
   // add to trigger list
   if (trig.and_or) {
@@ -508,7 +532,8 @@ function addTriggerList(trig) {
     trig_str += andOr[trig.and_or];
     trig_str += ' ';
   }
-  trig_str += trigParameter[trig.param];
+  // trig_str += trigParameter[trig.param];
+  trig_str += trigparam;
   if (LANG == LANG_JA) {
     trig_str += ' ' + MSG.set_tri_is;
   }
@@ -517,11 +542,13 @@ function addTriggerList(trig) {
     trig_str += trigCondition[trig.cond];
     trig_str += ' ';
     trig_str += trig.value;
-    trig_str += trigParamUnit[trig.param];
+    // trig_str += trigParamUnit[trig.param];
+    trig_str += trigParamUnit[paramtype];
   }
   else {  // ja
     trig_str += trig.value;
-    trig_str += trigParamUnit[trig.param];
+    // trig_str += trigParamUnit[trig.param];
+    trig_str += trigParamUnit[paramtype];
     trig_str += ' ';
     trig_str += trigCondition[trig.cond];
   }
