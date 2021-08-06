@@ -172,6 +172,19 @@ if (LANG == LANG_JA) {
   MSG.dep_bridge      = 'アプリ転送\n（ブリッジ）';
   MSG.dep_copy        = 'コピー';
 
+  // sensor data
+  sensorData['temperature']   = '温度';
+  sensorData['humidity']      = '湿度';
+  sensorData['air_pressure']  = '気圧';
+  sensorData['vibration']     = '振動回数';
+  sensorData['angle']         = '角度';
+  sensorData['location']      = '移動距離';
+  sensorData['velocity']      = '速度';
+  sensorData['battery']       = '電池残量';
+  sensorData['analog_in']     = 'アナログ値';
+  sensorData['digital_in']    = 'ディジタル値';
+  sensorData['illuminance']   = '照度';
+
   // trigger parameters
   trigParameter['temperature']  = '温度';
   trigParameter['humidity']     = '湿度';
@@ -229,12 +242,13 @@ if (LANG == LANG_JA) {
       str += tabs(ind + 2, tab);
       if (i > 0) str += andOr[trig.and_or] + ' ';
       // str += trigParameter[trig.param] + ' ' + MSG.set_tri_is + ' ';
-      let trigparams = trig.param.split('#');
+      let trigparams = trig.param.split('__');  // 'param__index' -> ['param', 'index]
       if (trigparams.length == 1) {
+        // single parameter
         str += trigParameter[trig.param];
       }
       else {
-        // e.g., 'angle#0'
+        // multipple parameters (e.g., 'angle__0')
         str += trigParameter[trigparams[0]][trigparams[1]];
       }
       str += ' ' + MSG.set_tri_is + ' ';

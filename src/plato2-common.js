@@ -97,6 +97,9 @@ const BR = "<br />";
 const SP = "&emsp;"
 const TAB = "    ";
 
+// sensor data
+const sensorData = {};
+
 // trigger parameters (sensors)
 const trigParameter = {};
 const trigParamUnit = {};
@@ -274,7 +277,7 @@ function inspectBluetooth(item, tab, lf, ind) {
     + tabs(ind + 1, tab) + MSG.set_bt_data + lf;
   for (key in item.params) {
     if (item.params[key]) {
-      str += tabs(ind + 2, tab) + trigParameter[key] + lf;
+      str += tabs(ind + 2, tab) + sensorData[key] + lf;
       cnt++;
     }
   }

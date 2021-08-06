@@ -332,15 +332,22 @@ function initTriggerParams(idx) {
     // }
     items = trigParameter[sen.type];
     if (items) {
-      if (!Array.isArray(items)) {
-        items = [items];
+      if (Array.isArray(items)) {
+        // multiple parameters
+        items.forEach(function(item, idx) {
+          let op = document.createElement("option");
+          op.value = sen.type + "__" + idx;
+          op.text = item;
+          sel.appendChild(op);
+        });
       }
-      items.forEach(function(item, idx) {
+      else {
+        // single parameter
         let op = document.createElement("option");
-        op.value = sen.type + "#" + idx;
+        op.value = sen.type;
         op.text = item;
         sel.appendChild(op);
-      });
+      }
     }
   });
   if (targetJob.sensor.length > 0) {
@@ -409,12 +416,10 @@ function initBluetoothParams(idx) {
     if (params[sen.type] === undefined) params[sen.type] = true;
     if (params[sen.type]) html += ' checked';
     html += '><label for="' + id + '">';
-    html += trigParameter[sen.type];
+    html += sensorData[sen.type];
     if (trigParamUnit[sen.type].length > 0) {
-      paramtype = trig.param.split('#')[0]; // 'type#index' -> 'type'
       html += ' [';
-      // html += trigParamUnit[sen.type];
-      html += trigParamUnit[paramtype];
+      html += trigParamUnit[sen.type];
       html += ']';
     }
     html += '</lable></td></tr>';
@@ -510,14 +515,14 @@ function updateGPIOParams(idx) {
 
 // trigger type change handler
 function changeTriggerParameter(val) {
-  val = val.split('#')[0];
+  val = val.split('__')[0]; // value type
   document.getElementById('trig_val_unit').innerText = trigParamUnit[val];
 }
 
 // add trigger list
 function addTriggerList(trig) {
   let trig_str = '';
-  let types = trig.param.split('#');  // 'type#index' -> ['type', 'index']
+  let types = trig.param.split('__');  // 'type__index' -> ['type', 'index']
   let paramtype = types[0];
   let paramidx = types[1];
 

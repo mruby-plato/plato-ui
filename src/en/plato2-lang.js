@@ -172,6 +172,19 @@ if (LANG == LANG_EN) {
   MSG.dep_bridge      = 'Deploy application\n(Bridge)';
   MSG.dep_copy        = 'Copy';
 
+  // sensor data
+  sensorData['temperature']   = 'temperature';
+  sensorData['humidity']      = 'humidity';
+  sensorData['air_pressure']  = 'air pressure';
+  sensorData['vibration']     = 'count of vibration';
+  sensorData['angle']         = 'angle';
+  sensorData['location']      = 'distance';
+  sensorData['velocity']      = 'velocity';
+  sensorData['battery']       = 'battery power';
+  sensorData['analog_in']     = 'analog value';
+  sensorData['digital_in']    = 'digital value';
+  sensorData['illuminance']   = 'illuminance';
+
   // trigger parameters
   trigParameter['temperature']  = 'temperature';
   trigParameter['humidity']     = 'humidity';
@@ -226,15 +239,16 @@ if (LANG == LANG_EN) {
     str += tabs(ind + 1, tab) + 'Period: ' + item.params.trig_period + ' ' + item.params.trig_peri_unit + lf;
     str += tabs(ind + 1, tab) + MSG.set_tri_cond + lf;
     item.params.triggers.forEach(function(trig, i) {
-      let trigparams = trig.param.split('#'); // 'param#index' -> ['param', 'index]
+      let trigparams = trig.param.split('__');  // 'param__index' -> ['param', 'index]
       str += tabs(ind + 2, tab);
       if (i > 0) str += andOr[trig.and_or] + ' ';
       // str += trigParameter[trig.param] + ' ';
       if (trigparams.length == 1) {
+        // single parameter
         str += trigParameter[trigsparam[0]] + ' ';
       }
       else {
-        // e.g., 'angle#0'
+        // multiple parameter (e.g., 'angle__0')
         str += trigParameter[trigparams[0]][trigparams[1]] + ' ';
       }
       // str += trigCondition[trig.cond] + ' ' + trig.value + trigParamUnit[trig.param] + lf;
