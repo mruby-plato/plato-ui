@@ -317,7 +317,6 @@ function initTriggerParams(idx) {
   targetTrig = params.triggers;
 
   // init trigger parameters
-  let item;
   let sel = document.getElementById('trig_params');
   while(sel.lastChild) {
     sel.removeChild(sel.lastChild);
@@ -345,7 +344,7 @@ function initTriggerParams(idx) {
         // single parameter
         let op = document.createElement("option");
         op.value = sen.type;
-        op.text = item;
+        op.text = items;
         sel.appendChild(op);
       }
     }
